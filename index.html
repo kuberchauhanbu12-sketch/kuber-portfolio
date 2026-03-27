@@ -115,14 +115,14 @@ section { padding: 100px 56px; }
 .cs-card-num { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 10px; }
 .cs-card-title { font-family: 'Playfair Display', serif; font-size: 22px; color: #fff; line-height: 1.2; font-weight: 400; margin-bottom: 8px; }
 .cs-card-sub { font-size: 12px; color: rgba(255,255,255,0.65); line-height: 1.5; }
-.cs-preview-bottom { padding: 24px 32px; flex: 1; }
+.cs-preview-bottom { padding: 24px 32px; flex: 1; display: flex; flex-direction: column; }
 .cs-card-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
 .cs-meta-chip { font-size: 11px; padding: 4px 12px; border-radius: 100px; font-weight: 600; }
 .chip-blue { background: var(--blue-light); color: var(--blue); }
 .chip-dark { background: #F0EFED; color: #555; }
 .cs-card-impact { font-size: 13px; color: #444; line-height: 1.6; }
 .cs-card-impact strong { color: var(--ink); }
-.cs-open-btn { display: flex; align-items: center; justify-content: space-between; margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border); font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--blue); }
+.cs-open-btn { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 16px; border-top: 1px solid var(--border); font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--blue); }
 .cs-open-btn .arrow { transition: transform .2s; }
 .cs-preview-card:hover .cs-open-btn .arrow { transform: translateX(4px); }
 
@@ -231,7 +231,7 @@ footer { background: #080808; padding: 20px 56px; display: flex; align-items: ce
 .js-loaded .fade.d3 { transition-delay: .3s; }
 .js-loaded .fade.visible { opacity: 1; transform: none; }
 
-/* RESPONSIVE */
+/* RESPONSIVE — tablet */
 @media (max-width: 960px) {
   nav { padding: 0 24px; }
   section { padding: 72px 24px; }
@@ -249,7 +249,101 @@ footer { background: #080808; padding: 20px 56px; display: flex; align-items: ce
   .nav-links .nav-link-hide { display: none; }
   .hero-linkedin { width: 100%; }
 }
+
+/* RESPONSIVE — phone */
+@media (max-width: 480px) {
+  nav { padding: 0 18px; height: 52px; }
+  .nav-logo { font-size: 15px; }
+  .nav-cta { padding: 7px 14px; font-size: 11px !important; }
+
+  #hero { padding: 84px 18px 56px; }
+  h1.name { font-size: clamp(46px, 13vw, 72px); margin-bottom: 20px; }
+  .hero-tagline { font-size: 15px; margin-bottom: 32px; }
+  .hero-bg-text { font-size: clamp(90px, 28vw, 140px); right: -10px; }
+  .cta-row { flex-direction: column; gap: 10px; }
+  .btn-dark, .btn-ghost { width: 100%; justify-content: center; padding: 14px 20px; }
+  .hero-stats { grid-template-columns: 1fr 1fr; }
+  .stat-cell { padding: 20px 16px; }
+  .stat-n { font-size: 30px; }
+  .hero-linkedin { width: 100%; }
+
+  section { padding: 56px 18px; }
+  .sec-title { font-size: clamp(30px, 9vw, 44px); }
+
+  .about-layout { grid-template-columns: 1fr; gap: 40px; }
+
+  .cs-grid { grid-template-columns: 1fr; gap: 16px; }
+  .cs-preview-top { min-height: 180px; padding: 28px 22px 24px; }
+  .cs-card-title { font-size: 18px; }
+  .cs-preview-bottom { padding: 18px 22px; }
+
+  .modal-overlay { padding: 0; align-items: flex-end; }
+  .modal { border-radius: 20px 20px 0 0; max-height: 92vh; overflow-y: auto; margin: 0; }
+  .modal-hero { padding: 36px 20px 28px; }
+  .modal-body { padding: 28px 20px 40px; }
+  .modal-close { top: 14px; right: 14px; width: 36px; height: 36px; font-size: 16px; }
+  .modal-title { font-size: clamp(22px, 6vw, 32px) !important; }
+  .modal-subtitle { font-size: 13px; margin-bottom: 24px; }
+  .modal-kpis { gap: 16px; }
+  .modal-kpi-val { font-size: 14px; }
+
+  .m-flow { overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 8px; }
+  .m-step { min-width: 110px; }
+  .m-metrics { grid-template-columns: 1fr 1fr; }
+  .m-two, .m-pillars, .m-four { grid-template-columns: 1fr; }
+  .m-quote { font-size: 17px; padding: 14px 18px; }
+
+  .exp-row { grid-template-columns: 1fr; gap: 4px; padding: 24px 0; }
+  .exp-role { font-size: 16px; }
+  .exp-date { font-size: 11px; margin-bottom: 2px; }
+
+  .contact-layout { grid-template-columns: 1fr; gap: 40px; }
+  .contact-right-quote { font-size: clamp(20px, 5vw, 28px); }
+  .c-link { padding: 14px 16px; gap: 14px; }
+
+  footer { flex-direction: column; gap: 6px; text-align: center; padding: 16px 18px; font-size: 11px; }
+
+  .nav-cta, .btn-dark, .btn-ghost, .cs-preview-card, .c-link, .modal-close { min-height: 44px; }
+}
+
+/* Phone — inline modal grids (override hardcoded style attributes) */
+@media (max-width: 480px) {
+  .modal-overlay .modal [style*="grid-template-columns:repeat(4"],
+  .modal-overlay .modal [style*="grid-template-columns: repeat(4"] {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 12px !important;
+  }
+  .modal-overlay .modal [style*="grid-template-columns:1fr 1fr 1fr"],
+  .modal-overlay .modal [style*="grid-template-columns: 1fr 1fr 1fr"],
+  .modal-overlay .modal [style*="grid-template-columns:repeat(3,1fr)"],
+  .modal-overlay .modal [style*="grid-template-columns: repeat(3"] {
+    grid-template-columns: 1fr !important;
+  }
+  .modal-overlay .modal [style*="grid-template-columns:1fr 3px 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+  .modal-overlay .modal [style*="grid-template-columns:1fr 1fr;gap:16px"],
+  .modal-overlay .modal [style*="grid-template-columns:1fr 1fr;gap:20px"] {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+  .modal-overlay .modal [style*="background:#DDD8CF; "],
+  .modal-overlay .modal [style="background:#DDD8CF;"] {
+    display: none !important;
+  }
+  /* JS-tagged classes — reliable fallback */
+  .mg-4col { grid-template-columns: 1fr 1fr !important; gap: 12px !important; }
+  .mg-3col { grid-template-columns: 1fr !important; }
+  .mg-split { grid-template-columns: 1fr !important; }
+  .mg-2col { grid-template-columns: 1fr !important; gap: 10px !important; }
+  .mg-divider { display: none !important; }
+}
 </style>
+<script>
+function openModal(id){var el=document.getElementById(id);if(!el)return;el.classList.add('open');document.body.style.overflow='hidden';el.scrollTop=0;}
+function closeModal(id){var el=document.getElementById(id);if(!el)return;el.classList.remove('open');document.body.style.overflow='';}
+function closeIfOverlay(e,id){if(e.target===document.getElementById(id))closeModal(id);}
+</script>
 </head>
 <body>
 
@@ -415,17 +509,17 @@ footer { background: #080808; padding: 20px 56px; display: flex; align-items: ce
         <div>
           <div class="exp-role">Student Placement Representative</div>
           <div class="exp-co">CATALYST – Career Services & Development Centre · Internship · Dehradun</div>
-          <div class="exp-desc">Managed end-to-end placement coordination for <strong>200+ students across 15+ companies</strong> — acting as the primary interface between students, faculty stakeholders, and external recruiters. Oversaw strategic planning and execution of career development programs for a <strong>1,000+ student community</strong>.</div>
-          <div class="exp-tags"><span class="exp-tag">End-to-End Coordination</span><span class="exp-tag">Stakeholder Management</span><span class="exp-tag">Process Design</span></div>
+          <div class="exp-desc">Identified a core trust gap between students and the placement cell — students felt unheard, grievances went unaddressed, and engagement was low. Diagnosed the root cause: <strong>no structured feedback channel existed</strong>, so student problems never reached the right people. Designed and implemented a class-wise group system where students could surface issues, and problems that gained majority consensus were escalated and resolved — giving the student body a real voice for the first time. The result: <strong>measurably higher engagement with CATALYST</strong>, with students actively participating rather than passively waiting. Turned a one-directional information pipe into a <strong>two-way feedback loop</strong> — the same instinct that drives good product thinking.</div>
+          <div class="exp-tags"><span class="exp-tag">Problem Discovery</span><span class="exp-tag">Feedback Systems</span><span class="exp-tag">Process Design</span><span class="exp-tag">Stakeholder Management</span><span class="exp-tag">Community Building</span></div>
         </div>
       </div>
       <div class="exp-row fade d2">
         <div class="exp-date">Jan 2025 – Dec 2025</div>
         <div>
-          <div class="exp-role">Vice President</div>
-          <div class="exp-co">CATALYST – Career Services & Development Centre · DIT University</div>
-          <div class="exp-desc">Led strategic planning and execution of career development programs for a <strong>1,000+ student community</strong> — balancing student needs, faculty priorities, and industry partner expectations simultaneously. Classic multi-stakeholder product leadership applied in practice.</div>
-          <div class="exp-tags"><span class="exp-tag">Leadership</span><span class="exp-tag">Strategy</span><span class="exp-tag">Multi-stakeholder</span></div>
+          <div class="exp-role">President, College Chapter</div>
+          <div class="exp-co">SPICMACAY – Society for Promotion of Indian Classical Music & Culture · DIT University</div>
+          <div class="exp-desc">Led the college chapter of SPICMACAY — a 47-year-old national movement present across 8,000+ institutions worldwide — with a clear cultural mandate: <strong>counter the drift toward western pop culture by making Indian classical arts visible and aspirational on campus</strong>. Diagnosed the problem honestly: students weren't disinterested in Indian culture — they'd simply never been given a compelling reason to engage with it. Conceptualised and executed a <strong>Bharatnatyam performance program</strong> on campus, bringing one of India's oldest classical dance forms to an audience that had never experienced it live. The event shifted the cultural conversation — students who attended talked about it, and the chapter saw stronger participation in subsequent programs. Led a volunteer team, managed artist coordination, and handled the full event lifecycle from planning to execution. Applied the same first-principles thinking to culture that PMs apply to products: <strong>understand why the current behaviour exists, then design an experience that makes the better option more accessible.</strong></div>
+          <div class="exp-tags"><span class="exp-tag">Cultural Leadership</span><span class="exp-tag">Event Strategy</span><span class="exp-tag">Volunteer Management</span><span class="exp-tag">Community Activation</span><span class="exp-tag">First-principles Thinking</span></div>
         </div>
       </div>
       <div class="exp-row fade d3">
@@ -433,8 +527,8 @@ footer { background: #080808; padding: 20px 56px; display: flex; align-items: ce
         <div>
           <div class="exp-role">Sergeant, National Cadet Corps (NCC)</div>
           <div class="exp-co">NCC – India · 2 years 5 months</div>
-          <div class="exp-desc">Led and coordinated a team of <strong>30+ cadets</strong> across multi-day training camps and drills. Developed hands-on skills in resource planning, stakeholder communication, and structured execution under pressure — in high-stakes, ambiguous environments. Earned the rank of <strong>Sergeant</strong>, recognising demonstrated leadership and operational discipline.</div>
-          <div class="exp-tags"><span class="exp-tag">Team Leadership</span><span class="exp-tag">Structured Execution</span><span class="exp-tag">Resource Planning</span><span class="exp-tag">Discipline Under Pressure</span></div>
+          <div class="exp-desc">Noticed a pattern others had missed: our college's selection rate for NCC camps was declining — and everyone assumed it was a fitness problem. I dug deeper and found the <strong>real root cause</strong>: cadets were preparing only for the physical component, completely ignoring military knowledge, weapons SOP, and theory — which together account for a significant portion of the selection criteria. The system had optimised for the visible metric (physical drills) and neglected the rest. Diagnosed the gap, built a <strong>structured preparation framework</strong> covering all evaluation dimensions — physical fitness, military theory, weapons knowledge, and SOPs — and rolled it out across the batch. The outcome: <strong>selection rates into competitive NCC camps improved markedly</strong>. The lesson that stayed with me: when a system is underperforming, the problem is almost never where everyone is looking.</div>
+          <div class="exp-tags"><span class="exp-tag">Root Cause Analysis</span><span class="exp-tag">Systems Thinking</span><span class="exp-tag">Team Leadership</span><span class="exp-tag">Structured Execution</span><span class="exp-tag">Performance Improvement</span></div>
         </div>
       </div>
     </div>
@@ -447,9 +541,9 @@ footer { background: #080808; padding: 20px 56px; display: flex; align-items: ce
     <div class="sec-title">Open to PM roles.<br>Available immediately.</div>
     <div class="contact-layout">
       <div class="contact-links-list fade">
-        <a href="/cdn-cgi/l/email-protection#b1dac4d3d4c3d2d9d0c4d9d0dfd3c48083f1d6dcd0d8dd9fd2dedc" class="c-link">
+        <a href="/cdn-cgi/l/email-protection#ddb6a8bfb8afbeb5bca8b5bcb3bfa8ecef9dbab0bcb4b1f3beb2b0" class="c-link">
           <div class="c-icon" style="background:rgba(20,52,200,0.18);">✉️</div>
-          <div><div class="c-label">Email</div><div class="c-val"><span class="__cf_email__" data-cfemail="bfd4cadddacddcd7decad7ded1ddca8e8dffd8d2ded6d391dcd0d2">[email&#160;protected]</span></div></div>
+          <div><div class="c-label">Email</div><div class="c-val"><span class="__cf_email__" data-cfemail="ec87998e899e8f848d99848d828e99dddeac8b818d8580c28f8381">[email&#160;protected]</span></div></div>
         </a>
         <a href="https://www.linkedin.com/in/kuber-chauhanbu12" target="_blank" class="c-link">
           <div class="c-icon" style="background:rgba(10,102,194,0.18);">💼</div>
@@ -494,6 +588,12 @@ footer { background: #080808; padding: 20px 56px; display: flex; align-items: ce
         <div><div class="modal-kpi-label">Market Opportunity</div><div class="modal-kpi-val">4–5 Lakh roles/month</div></div>
         <div><div class="modal-kpi-label">Target Outcome</div><div class="modal-kpi-val">25% → 40–45% intent rate</div></div>
       </div>
+    </div>
+
+    <!-- TL;DR STRIP -->
+    <div style="background:#0E0E0E;padding:20px 60px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+      <span style="font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#1434C8;background:#EBF0FF;padding:4px 10px;border-radius:100px;flex-shrink:0;">TL;DR</span>
+      <span style="font-size:13px;color:#ccc;line-height:1.6;">HireBound had a <strong style="color:#fff;">64% response rate</strong> but 30–50% early attrition. I found the funnel was measuring the wrong thing entirely. I redesigned it with a 3-stage Intent & Fit Qualification Layer that runs <em style="color:#93C5FD;">before</em> skill matching — projecting high-intent pipeline from <strong style="color:#fff;">25% → 40–45%</strong> with a guardrail to protect top-of-funnel volume.</span>
     </div>
 
     <div class="modal-body" style="padding:52px 60px 64px;">
@@ -710,151 +810,298 @@ footer { background: #080808; padding: 20px 56px; display: flex; align-items: ce
   </div>
 </div>
 
-<!-- MODAL 2 -->
+<!-- MODAL 2 — TOP 0.1% NARRATIVE -->
 <div class="modal-overlay" id="cs2" onclick="closeIfOverlay(event,'cs2')">
-  <div class="modal">
+  <div class="modal" style="max-width:900px;">
     <button class="modal-close" onclick="closeModal('cs2')">✕</button>
-    <div class="modal-hero cs-bg-2">
+    <div class="modal-hero cs-bg-2" style="padding:60px 60px 52px;">
       <div class="modal-hero-orb"></div>
-      <div class="modal-num">Case Study 02 · Consumer App · EdTech</div>
-      <div class="modal-title">The Guided Choice Strategy:<br>Duolingo's Day 7 Retention</div>
-      <div class="modal-subtitle">Addressing the Habit Death Zone through Guided Choice Architecture</div>
-      <div class="modal-kpis">
-        <div><div class="modal-kpi-label">Primary Metric</div><div class="modal-kpi-val">Day 7 Retention</div></div>
-        <div><div class="modal-kpi-label">Target</div><div class="modal-kpi-val">+20% in 6 months</div></div>
+      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);border-radius:100px;padding:5px 14px;margin-bottom:20px;"><span style="width:6px;height:6px;background:#6EE7B7;border-radius:50%;display:inline-block;"></span><span style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.8);">Case Study 02 · Consumer App · EdTech · Retention</span></div>
+      <div class="modal-title" style="font-size:clamp(28px,4vw,46px);margin-bottom:14px;">The Guided Choice Strategy:<br><em style="font-style:italic;color:#6EE7B7;">Fixing Duolingo's Habit Death Zone</em></div>
+      <div class="modal-subtitle" style="font-size:16px;margin-bottom:40px;">How I diagnosed why Duolingo's most engaged segment drops from 100% to 15% retention by Day 7 — and designed a choice architecture that repairs the habit loop without breaking the learning system.</div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding-top:28px;border-top:1px solid rgba(255,255,255,0.15);">
+        <div><div class="modal-kpi-label">Product</div><div class="modal-kpi-val">Duolingo (EdTech)</div></div>
+        <div><div class="modal-kpi-label">Core Problem</div><div class="modal-kpi-val">Day 7 Retention Drop</div></div>
         <div><div class="modal-kpi-label">Target Segment</div><div class="modal-kpi-val">18–24 year-olds</div></div>
-        <div><div class="modal-kpi-label">Test Design</div><div class="modal-kpi-val">50/50 A/B Test · 2–4 weeks</div></div>
+        <div><div class="modal-kpi-label">Target Outcome</div><div class="modal-kpi-val">+20% Day 7 Retention</div></div>
       </div>
     </div>
-    <div class="modal-body">
+    <div style="background:#0A2010;padding:20px 60px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;border-bottom:1px solid rgba(110,231,183,0.15);">
+      <span style="font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#0F6E3A;background:#ECFDF5;padding:4px 10px;border-radius:100px;flex-shrink:0;">TL;DR</span>
+      <span style="font-size:13px;color:#9CA3AF;line-height:1.6;">Duolingo's greatest strength — structured learning — was actively causing early churn. I identified the core conflict as an <strong style="color:#fff;">autonomy-structure imbalance</strong>, then designed a <strong style="color:#fff;">Guided Choice Layer</strong> giving users 3–4 session options on each login during Days 1–7. Validated via <strong style="color:#fff;">50/50 A/B test</strong> targeting <strong style="color:#fff;">+20% Day 7 retention</strong> with a guardrail to protect long-term learning quality.</span>
+    </div>
+    <div class="modal-body" style="padding:52px 60px 64px;">
+
       <div class="m-section">
-        <div class="m-label">Why Day 7 Is the Only Metric That Matters</div>
+        <div class="m-label">The Hook — A Product That Fights Its Own Users</div>
         <div class="m-text">
-          <p>Day 7 retention is the <strong>absolute prerequisite for Lifetime Value (LTV)</strong> in a freemium model. Early habit formation (Days 1–7) → Day 7 retention → Long-term engagement → Subscription conversion (5–8%) AND maximised ad impressions per user.</p>
-          <p>Miss Day 7 and users don't come back. The business impact is direct and compounding.</p>
-        </div>
-      </div>
-      <div class="m-section">
-        <div class="m-label">The Habit Death Zone — Diagnosing the Drop</div>
-        <div class="m-text"><p>The 18–24 segment drops from 100% to approximately <strong>15% retention by Day 7</strong>. They arrive with high curiosity and fail to form a consistent habit before the window closes.</p></div>
-        <div class="m-two">
-          <div class="m-box"><h4>System Reality</h4><ul><li>Fixed, strict linear learning path</li><li>Highly predictable early lessons</li><li>Competitive elements locked behind progression</li><li>Weak trigger-action-reward cycle</li></ul></div>
-          <div class="m-box"><h4>User Feeling</h4><ul><li>Lack of control and autonomy</li><li>Repetitive, monotonous early experience</li><li>Work before play — delayed time to fun</li><li>Inconsistent motivation to return</li></ul></div>
+          <p>When I mapped Duolingo's Day 7 retention curve for the 18–24 segment, the pattern was stark. Users arrive with <strong>genuine intent</strong> — they set a language goal, they opened the app, they started. By Day 2 retention is ~40%. By Day 7 it's ~15%.</p>
+          <p>The instinct is to say "users aren't motivated enough." I rejected that entirely. These users were motivated enough to download, set up, and start. The problem had to be inside the product. So I asked the uncomfortable question: <em>What is Duolingo doing during Days 1–7 that is actively making committed users leave?</em></p>
         </div>
         <div class="m-quote green">"Our greatest strength — structured learning — is causing our greatest weakness — early churn."</div>
       </div>
+
+      <div class="m-section">
+        <div class="m-label">Why Day 7 Is the Most Valuable Number in Duolingo's Business</div>
+        <div class="m-text"><p>Day 7 retention is not just a health metric. It is the <strong>absolute prerequisite for LTV</strong> in a freemium model. The chain is: Early Habit (Days 1–7) → Day 7 Retention → Long-term Daily Engagement → Subscription Conversion (5–8%) + Maximised Ad Impressions. Every Day 7 loss is a permanently lost revenue opportunity at Duolingo's scale.</p></div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0;">
+          <div style="background:#F5F3EF;border:1px solid #DDD8CF;border-radius:12px;padding:20px;text-align:center;"><div style="font-family:'Playfair Display',serif;font-size:32px;color:#C84014;line-height:1;">~15%</div><div style="font-size:12px;color:#6B6B6B;margin-top:6px;">Retention remaining by Day 7 in 18–24 segment</div></div>
+          <div style="background:#F5F3EF;border:1px solid #DDD8CF;border-radius:12px;padding:20px;text-align:center;"><div style="font-family:'Playfair Display',serif;font-size:32px;color:#1434C8;line-height:1;">5–8%</div><div style="font-size:12px;color:#6B6B6B;margin-top:6px;">Free-to-paid conversion for retained habit-forming users</div></div>
+          <div style="background:#F5F3EF;border:1px solid #DDD8CF;border-radius:12px;padding:20px;text-align:center;"><div style="font-family:'Playfair Display',serif;font-size:32px;color:#0F6E3A;line-height:1;">10–15m</div><div style="font-size:12px;color:#6B6B6B;margin-top:6px;">Avg daily session — short enough to fix the habit, long enough to matter</div></div>
+        </div>
+      </div>
+
+      <div class="m-section">
+        <div class="m-label">Diagnosing the Habit Death Zone — The System vs. The User</div>
+        <div class="m-text"><p>I built a Diagnostic Matrix mapping what the system does vs. how the user experiences it. This is where the root cause became clear.</p></div>
+        <div style="border:1.5px solid #DDD8CF;border-radius:14px;overflow:hidden;margin:16px 0;">
+          <div style="display:grid;grid-template-columns:1fr 1fr;background:#0E0E0E;padding:12px 24px;"><div style="font-size:12px;font-weight:700;color:#888;letter-spacing:0.06em;text-transform:uppercase;">System Reality</div><div style="font-size:12px;font-weight:700;color:#C84014;letter-spacing:0.06em;text-transform:uppercase;">User Feeling</div></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid #DDD8CF;"><div style="padding:13px 20px;border-right:1px solid #DDD8CF;font-size:13px;color:#444;">Fixed, strict linear learning path.</div><div style="padding:13px 20px;font-size:13px;color:#C84014;">Lack of control and autonomy.</div></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid #DDD8CF;"><div style="padding:13px 20px;border-right:1px solid #DDD8CF;font-size:13px;color:#444;">Highly predictable early lessons.</div><div style="padding:13px 20px;font-size:13px;color:#C84014;">Repetitive and monotonous early experience.</div></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid #DDD8CF;"><div style="padding:13px 20px;border-right:1px solid #DDD8CF;font-size:13px;color:#444;">Competitive elements locked behind progression.</div><div style="padding:13px 20px;font-size:13px;color:#C84014;">Work before play — delayed time to fun.</div></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;"><div style="padding:13px 20px;border-right:1px solid #DDD8CF;font-size:13px;color:#444;">Weak trigger-action-reward cycle.</div><div style="padding:13px 20px;font-size:13px;color:#C84014;">Inconsistent motivation to return.</div></div>
+          <div style="background:#FFF3EE;padding:13px 20px;text-align:center;"><div style="font-size:13px;font-weight:700;color:#C84014;">The system is actively burning out early motivation by enforcing a one-size-fits-all progression sequence.</div></div>
+        </div>
+      </div>
+
+      <div class="m-section">
+        <div class="m-label">The Core Conflict — Autonomy vs. Structure</div>
+        <div class="m-text"><p>Total Chaos (complete autonomy) = high motivation, low educational effectiveness. Rigid Dictation (current state) = high educational effectiveness, high churn. The solution must live exactly in the middle: <strong>Guided Choice</strong> — freedom within boundaries. The design challenge was injecting agency without sacrificing the learning outcomes that make Duolingo actually work.</p></div>
+        <div style="background:#F5F3EF;border:1.5px solid #DDD8CF;border-radius:14px;padding:28px;margin:16px 0;">
+          <div style="display:flex;align-items:center;gap:0;position:relative;flex-wrap:wrap;">
+            <div style="text-align:center;flex:1;min-width:120px;padding:16px 12px;"><div style="width:14px;height:14px;background:#1434C8;border-radius:50%;margin:0 auto 10px;"></div><div style="font-size:13px;font-weight:700;color:#0E0E0E;">Total Chaos</div><div style="font-size:11px;color:#6B6B6B;margin-top:4px;">High motivation, low learning effectiveness</div></div>
+            <div style="text-align:center;flex:1.5;min-width:150px;padding:16px 12px;background:#EBF0FF;border-radius:10px;border:2px solid #1434C8;"><div style="width:14px;height:14px;background:#0F6E3A;border-radius:50%;margin:0 auto 10px;"></div><div style="font-size:13px;font-weight:700;color:#1434C8;">★ Guided Choice</div><div style="font-size:11px;color:#1434C8;margin-top:4px;font-weight:600;">Freedom within boundaries — the optimal synthesis</div></div>
+            <div style="text-align:center;flex:1;min-width:120px;padding:16px 12px;"><div style="width:14px;height:14px;background:#C84014;border-radius:50%;margin:0 auto 10px;"></div><div style="font-size:13px;font-weight:700;color:#0E0E0E;">Rigid Dictation</div><div style="font-size:11px;color:#6B6B6B;margin-top:4px;">Current state. High effectiveness, high churn.</div></div>
+          </div>
+        </div>
+      </div>
+
       <div class="m-section">
         <div class="m-label">The Solution — The Guided Choice Layer</div>
-        <div class="m-text"><p>On each login during Days 1–7, instead of a forced lesson, the user makes a <strong>deliberate selection</strong> from 3–4 capped options:</p></div>
-        <div class="m-four">
-          <div class="m-box"><h4>⚡ Quick Challenge</h4><p>High-energy bursts + competitive fun. Available Day 1. Eliminates the "work before play" problem immediately.</p></div>
-          <div class="m-box"><h4>📚 Practice Basics</h4><p>Core structured learning — chosen voluntarily. The mandatory long-term path, now a deliberate selection.</p></div>
-          <div class="m-box"><h4>🎧 Listening Mode</h4><p>Reduces cognitive load. Ideal for commuting. Keeps streak alive on low-energy days.</p></div>
-          <div class="m-box"><h4>🛡️ Streak Saver</h4><p>Low-friction safety net for high-fatigue days. Capped via dynamic difficulty thresholds to prevent over-reliance.</p></div>
+        <div class="m-text"><p>On each login during Days 1–7: instead of a forced lesson, the user sees a <strong>Choice Screen capped at 3–4 options</strong>. Every path converges to the same destination — XP earned and streak maintained — but the user chose their path. That single act of choice transforms obligation into commitment.</p></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0;">
+          <div style="background:#F5F3EF;border:1.5px solid #DDD8CF;border-radius:12px;padding:20px;"><div style="font-size:16px;margin-bottom:8px;">⚡</div><div style="font-size:14px;font-weight:700;color:#0E0E0E;margin-bottom:6px;">Quick Challenge</div><div style="font-size:13px;color:#555;line-height:1.65;">High-energy bursts + competitive elements. Available from Day 1. Eliminates the "work before play" problem immediately — game fun no longer locked behind 5 lessons.</div></div>
+          <div style="background:#F5F3EF;border:1.5px solid #DDD8CF;border-radius:12px;padding:20px;"><div style="font-size:16px;margin-bottom:8px;">📚</div><div style="font-size:14px;font-weight:700;color:#0E0E0E;margin-bottom:6px;">Practice Basics</div><div style="font-size:13px;color:#555;line-height:1.65;">The core structured programme — same content, but now chosen voluntarily. Transforms a forced routine into a deliberate daily commitment.</div></div>
+          <div style="background:#F5F3EF;border:1.5px solid #DDD8CF;border-radius:12px;padding:20px;"><div style="font-size:16px;margin-bottom:8px;">🎧</div><div style="font-size:14px;font-weight:700;color:#0E0E0E;margin-bottom:6px;">Listening Mode</div><div style="font-size:13px;color:#555;line-height:1.65;">Reduces visual cognitive load. Built for commuting. Keeps the streak alive on low-energy days without forcing a full session or breaking the habit chain.</div></div>
+          <div style="background:#F5F3EF;border:1.5px solid #DDD8CF;border-radius:12px;padding:20px;"><div style="font-size:16px;margin-bottom:8px;">🛡️</div><div style="font-size:14px;font-weight:700;color:#0E0E0E;margin-bottom:6px;">Streak Saver</div><div style="font-size:13px;color:#555;line-height:1.65;">Low-friction safety net. <strong>Frequency-capped</strong> and difficulty-dynamically-increasing — prevents users from relying on it daily, which would undermine learning quality.</div></div>
         </div>
-        <div class="m-text"><p><strong>Guardrail design:</strong> Easy modes frequency-limited. Core learning path remains mandatory beyond Day 7. Max 3–4 options to prevent decision fatigue.</p></div>
       </div>
+
       <div class="m-section">
-        <div class="m-label">Experiment Design & Success Metrics</div>
-        <div class="m-text"><p><strong>Structure:</strong> 50/50 A/B split. Group A: current linear experience. Group B: choice-based experience. Duration: 2–4 weeks.</p></div>
-        <div class="m-metrics">
-          <div class="m-metric green-bg"><div class="mn">+20%</div><div class="ml">Primary: Day 7 Retention Target</div></div>
-          <div class="m-metric dark"><div class="mn">DAU/MAU</div><div class="ml">Streak continuation + session completion rate</div></div>
-          <div class="m-metric light"><div class="mn">5–8%</div><div class="ml">Free-to-paid conversion (downstream business impact)</div></div>
+        <div class="m-label">What I Deliberately Did Not Do — And Why</div>
+        <div style="display:flex;flex-direction:column;gap:10px;margin:16px 0;">
+          <div style="background:#F5F3EF;border:1px solid #DDD8CF;border-radius:12px;padding:16px 20px;display:grid;grid-template-columns:1fr 1fr;gap:16px;"><div><div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#C84014;margin-bottom:5px;">❌ Rejected</div><div style="font-size:13px;color:#444;font-weight:600;">Give users unlimited freedom over content</div></div><div><div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#0F6E3A;margin-bottom:5px;">✓ Why Not</div><div style="font-size:13px;color:#444;">Complete autonomy destroys educational outcomes. Users would skip hard lessons forever. The constraint is the product's core value.</div></div></div>
+          <div style="background:#F5F3EF;border:1px solid #DDD8CF;border-radius:12px;padding:16px 20px;display:grid;grid-template-columns:1fr 1fr;gap:16px;"><div><div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#C84014;margin-bottom:5px;">❌ Rejected</div><div style="font-size:13px;color:#444;font-weight:600;">Apply Guided Choice beyond Day 7</div></div><div><div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#0F6E3A;margin-bottom:5px;">✓ Why Not</div><div style="font-size:13px;color:#444;">Day 7 is the habit formation window. Once users are retained, structured progression resumes. Extending choice indefinitely degrades long-term learning quality.</div></div></div>
+          <div style="background:#F5F3EF;border:1px solid #DDD8CF;border-radius:12px;padding:16px 20px;display:grid;grid-template-columns:1fr 1fr;gap:16px;"><div><div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#C84014;margin-bottom:5px;">❌ Rejected</div><div style="font-size:13px;color:#444;font-weight:600;">More than 4 options per Choice Screen</div></div><div><div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#0F6E3A;margin-bottom:5px;">✓ Why Not</div><div style="font-size:13px;color:#444;">Decision fatigue. The paradox of choice means more options = less action = kills the goal entirely. Hard cap is a design feature, not a limitation.</div></div></div>
         </div>
-        <div class="m-quote green">"By blending structured progression with perceived autonomy, we transform a fleeting curiosity into a permanent habit."</div>
       </div>
+
+      <div class="m-section">
+        <div class="m-label">Experiment Design & Three-Tier Metrics</div>
+        <div class="m-text"><p><strong>50/50 A/B split.</strong> Group A: current linear experience. Group B: choice-based experience. Duration: 2–4 weeks. Constraint: leverage existing gamification infrastructure only — no aggressive paid conversion pushes during the test window.</p></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:20px 0;">
+          <div style="background:#ECFDF5;border:1px solid rgba(15,110,58,0.2);border-radius:12px;padding:20px;"><div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#0F6E3A;margin-bottom:10px;">Primary</div><div style="font-family:'Playfair Display',serif;font-size:28px;color:#0F6E3A;line-height:1;margin-bottom:6px;">+20%</div><div style="font-size:12px;color:#0F6E3A;opacity:.8;">Day 7 Retention — the single most critical number.</div></div>
+          <div style="background:#F5F3EF;border:1px solid #DDD8CF;border-radius:12px;padding:20px;"><div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#444;margin-bottom:10px;">Secondary</div><div style="font-size:13px;color:#444;line-height:1.8;"><strong>↑</strong> Session completion rate<br><strong>↑</strong> Streak continuation rate<br><strong>↑</strong> Average session time<br><strong>↑</strong> DAU to MAU ratio</div></div>
+          <div style="background:#0E0E0E;border-radius:12px;padding:20px;"><div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#555;margin-bottom:10px;">Guardrail</div><div style="font-size:13px;color:#aaa;line-height:1.7;"><strong style="color:#fff;">Core learning progression must not decline.</strong> If Streak Saver becomes the dominant choice, retention is up but the product fails. Monitor Streak Saver usage rate carefully.</div></div>
+        </div>
+      </div>
+
+      <div class="m-section" style="margin-bottom:0;">
+        <div class="m-label">The Takeaway</div>
+        <div style="background:linear-gradient(135deg,#0A3D20,#0F6E3A);border-radius:16px;padding:36px 40px;">
+          <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:22px;color:#fff;line-height:1.5;margin-bottom:20px;">"By blending structured progression with perceived autonomy, we transform a fleeting curiosity into a permanent habit."</div>
+          <div style="font-size:14px;color:rgba(255,255,255,0.75);line-height:1.8;">
+            <p>What I'm most proud of isn't designing four mode options. It's identifying <strong style="color:#fff;">exactly where in the user journey agency needed to be injected</strong> — the daily login moment — and understanding that the architecture had to feel free while still converging on the same destination.</p>
+            <p style="margin-top:12px;">The guardrail metric was actually the hardest to design. It's easy to improve retention by making everything easier. The challenge was improving retention <strong style="color:#fff;">without destroying what makes Duolingo actually work.</strong></p>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
 
-<!-- MODAL 3 -->
+<!-- MODAL 3 — TOP 0.1% NARRATIVE -->
 <div class="modal-overlay" id="cs3" onclick="closeIfOverlay(event,'cs3')">
-  <div class="modal">
+  <div class="modal" style="max-width:900px;">
     <button class="modal-close" onclick="closeModal('cs3')">✕</button>
-    <div class="modal-hero cs-bg-3">
+    <div class="modal-hero cs-bg-3" style="padding:60px 60px 52px;">
       <div class="modal-hero-orb"></div>
-      <div class="modal-num">Case Study 03 · Two-sided Marketplace · Mobility</div>
-      <div class="modal-title">Optimising Uber Night Service:<br>Saving 39,000 Rides Daily</div>
-      <div class="modal-subtitle">Strategy to reduce night cancellations 30% within 6 months</div>
-      <div class="modal-kpis">
+      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);border-radius:100px;padding:5px 14px;margin-bottom:20px;"><span style="width:6px;height:6px;background:#FCA5A5;border-radius:50%;display:inline-block;"></span><span style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.8);">Case Study 03 · Two-sided Marketplace · Mobility</span></div>
+      <div class="modal-title" style="font-size:clamp(28px,4vw,46px);margin-bottom:14px;">Optimising Uber Night Service:<br><em style="font-style:italic;color:#FCA5A5;">Saving 39,000 Rides Every Night</em></div>
+      <div class="modal-subtitle" style="font-size:16px;margin-bottom:40px;">How I found that Uber's night cancellation crisis wasn't a driver problem or a rider problem — it was an information asymmetry problem affecting both sides simultaneously — and built a 2-pillar framework to fix it.</div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding-top:28px;border-top:1px solid rgba(255,255,255,0.15);">
         <div><div class="modal-kpi-label">Focus Window</div><div class="modal-kpi-val">18:00 – 05:00</div></div>
         <div><div class="modal-kpi-label">Baseline</div><div class="modal-kpi-val">25% cancellation rate</div></div>
-        <div><div class="modal-kpi-label">Target</div><div class="modal-kpi-val">17.5% (−30%)</div></div>
-        <div><div class="modal-kpi-label">Rides Saved</div><div class="modal-kpi-val">39,000 per night</div></div>
+        <div><div class="modal-kpi-label">Target</div><div class="modal-kpi-val">17.5% in 6 months</div></div>
+        <div><div class="modal-kpi-label">Rides Recovered</div><div class="modal-kpi-val">39,000 per night</div></div>
       </div>
     </div>
-    <div class="modal-body">
+    <div style="background:#2D0A00;padding:20px 60px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;border-bottom:1px solid rgba(252,165,165,0.15);">
+      <span style="font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#C84014;background:#FFF3EE;padding:4px 10px;border-radius:100px;flex-shrink:0;">TL;DR</span>
+      <span style="font-size:13px;color:#9CA3AF;line-height:1.6;">Uber loses <strong style="color:#fff;">130,000 rides every night</strong> in India to cancellations. The root cause wasn't driver behaviour — it was <strong style="color:#fff;">information asymmetry on both sides</strong>. My 2-pillar framework closes the driver blind spot (supply) and the rider blind spot (demand), projecting <strong style="color:#fff;">39,000 recovered rides/night</strong> — a 30% reduction in 6 months.</span>
+    </div>
+    <div class="modal-body" style="padding:52px 60px 64px;">
+
       <div class="m-section">
-        <div class="m-label">The Compounding Cost of Cancellations</div>
+        <div class="m-label">The Hook — Why Cancellations Are Worse Than They Look</div>
         <div class="m-text">
-          <p>Night cancellations trigger a <strong>negative feedback doom loop</strong>: driver inefficiency → poor rider experience → platform trust erosion → user migration → revenue loss → fewer drivers incentivised → more cancellations.</p>
-          <p><strong>Opportunity sizing:</strong> 1.3M estimated daily rides in India. 40% occur at night (520K). 25% cancellation rate = 130K cancellations/night. A 30% reduction saves <strong>39,000 rides every single night</strong>.</p>
+          <p>A 25% night cancellation rate sounds like an operational problem you fix with a policy change. When I mapped the full system, I realised it was far more structural. Night cancellations don't just lose one transaction — they trigger a <strong>negative feedback doom loop</strong> that damages the entire marketplace.</p>
+          <p>Cancelled ride → Driver wasted fuel and time on an unfulfilled pickup → Rider waits longer, grows anxious → Rider switches to a competitor app → Platform loses a user → Revenue drops → Fewer drivers incentivised to work nights → More cancellations next night. <strong>Every cancellation makes the next one more likely.</strong></p>
+        </div>
+        <div style="background:#0E0E0E;border-radius:14px;padding:28px;margin:20px 0;">
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#555;margin-bottom:16px;text-align:center;">Sizing the Opportunity</div>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;text-align:center;">
+            <div><div style="font-family:'Playfair Display',serif;font-size:26px;color:#93C5FD;line-height:1;">1.3M</div><div style="font-size:11px;color:#666;margin-top:4px;">Total daily rides in India</div></div>
+            <div><div style="font-family:'Playfair Display',serif;font-size:26px;color:#93C5FD;line-height:1;">520K</div><div style="font-size:11px;color:#666;margin-top:4px;">Night rides (40% of total)</div></div>
+            <div><div style="font-family:'Playfair Display',serif;font-size:26px;color:#F87171;line-height:1;">130K</div><div style="font-size:11px;color:#666;margin-top:4px;">Night cancellations daily</div></div>
+            <div><div style="font-family:'Playfair Display',serif;font-size:26px;color:#86EFAC;line-height:1;">39K</div><div style="font-size:11px;color:#666;margin-top:4px;"><strong style="color:#fff;">Rides to recover per night</strong></div></div>
+          </div>
         </div>
       </div>
+
       <div class="m-section">
-        <div class="m-label">Two-sided User Research</div>
-        <div class="m-two">
-          <div class="m-box"><h4>🚗 Demand Side — Riders</h4><ul><li>Ages 18–30: price-sensitive, switches apps instantly if delayed</li><li>Ages 31–60: values reliability above all else</li><li><strong>Core expectation:</strong> fast pickups, transparency, safety</li></ul></div>
-          <div class="m-box"><h4>🚙 Supply Side — Drivers</h4><ul><li>New (0–2y): motivated by incentives, generally accepts most rides</li><li>Experienced (3–5y): highly selective, avoids long or unprofitable pickups</li><li><strong>Core motivation:</strong> profitability, predictable routes, safety</li></ul></div>
+        <div class="m-label">My Approach — Mapping Both Sides Before Forming Any Hypothesis</div>
+        <div class="m-text"><p>The most dangerous move in a two-sided marketplace problem is blaming one side too early. I forced myself to deeply understand both before forming any solution hypothesis.</p></div>
+        <div style="border:1.5px solid #DDD8CF;border-radius:14px;overflow:hidden;margin:16px 0;">
+          <div style="display:grid;grid-template-columns:1fr 3px 1fr;">
+            <div style="padding:24px;">
+              <div style="display:inline-block;background:#FFF3EE;border-top:3px solid #C84014;padding:8px 14px;border-radius:0 0 8px 8px;font-size:12px;font-weight:700;color:#C84014;margin-bottom:16px;">Demand Side — Riders</div>
+              <div style="display:flex;flex-direction:column;gap:10px;">
+                <div style="padding:12px;background:#F5F3EF;border-radius:8px;"><div style="font-size:11px;font-weight:700;color:#C84014;margin-bottom:3px;">Age 18–30</div><div style="font-size:12px;color:#555;">Price-sensitive, actively compares apps. Highly prone to switching if delayed even slightly at night.</div></div>
+                <div style="padding:12px;background:#F5F3EF;border-radius:8px;"><div style="font-size:11px;font-weight:700;color:#C84014;margin-bottom:3px;">Age 31–60</div><div style="font-size:12px;color:#555;">Values reliability above all. Less likely to switch — but once trust breaks at night, they may never return.</div></div>
+                <div style="padding:12px;background:#EBF0FF;border-radius:8px;"><div style="font-size:11px;font-weight:700;color:#1434C8;margin-bottom:3px;">Core Need</div><div style="font-size:12px;color:#444;">Fast confirmation, transparency, safety, and reliable pickup when they're most vulnerable.</div></div>
+              </div>
+            </div>
+            <div style="background:#DDD8CF;"></div>
+            <div style="padding:24px;">
+              <div style="display:inline-block;background:#EBF0FF;border-top:3px solid #1434C8;padding:8px 14px;border-radius:0 0 8px 8px;font-size:12px;font-weight:700;color:#1434C8;margin-bottom:16px;">Supply Side — Drivers</div>
+              <div style="display:flex;flex-direction:column;gap:10px;">
+                <div style="padding:12px;background:#F5F3EF;border-radius:8px;"><div style="font-size:11px;font-weight:700;color:#1434C8;margin-bottom:3px;">New (0–2 years)</div><div style="font-size:12px;color:#555;">Building ratings. Incentive-motivated. Generally accepts most rides to establish reputation.</div></div>
+                <div style="padding:12px;background:#F5F3EF;border-radius:8px;"><div style="font-size:11px;font-weight:700;color:#1434C8;margin-bottom:3px;">Experienced (3–5 years)</div><div style="font-size:12px;color:#555;">Highly selective. Ruthlessly avoids uncertainty. Prioritises familiar, profitable routes only.</div></div>
+                <div style="padding:12px;background:#EBF0FF;border-radius:8px;"><div style="font-size:11px;font-weight:700;color:#1434C8;margin-bottom:3px;">Core Need</div><div style="font-size:12px;color:#444;">Profitable rides, predictable routes, safety, and clear earnings visibility before committing.</div></div>
+              </div>
+            </div>
+          </div>
+          <div style="background:#0E0E0E;padding:14px 24px;"><div style="font-size:13px;font-weight:600;color:#aaa;text-align:center;"><strong style="color:#fff;">Strategic conclusion:</strong> Drivers hold ultimate veto power — they accept, ignore, or cancel every ride. Supply-side confidence must be the primary focus.</div></div>
         </div>
-        <div class="m-text"><p><strong>Strategic conclusion:</strong> Drivers hold ultimate veto power. Focus must be on supply-side confidence first.</p></div>
       </div>
+
       <div class="m-section">
-        <div class="m-label">Root Cause — Information Asymmetry</div>
+        <div class="m-label">Root Cause — Information Asymmetry on Both Sides</div>
+        <div class="m-text"><p>After mapping both sides, the real pattern became visible. Neither side was behaving irrationally. Both were making <strong>perfectly rational decisions based on incomplete information</strong>. The cancellations weren't a motivation problem. They were an information problem.</p></div>
         <div class="m-quote orange">"Most cancellations occur because neither side has the full picture. Uncertainty breeds cancellations."</div>
-        <div class="m-two">
-          <div class="m-box"><h4>Driver Blind Spots</h4><ul><li>Exact drop location and destination</li><li>Route convenience and traffic conditions</li><li>Immediate trip profitability</li></ul></div>
-          <div class="m-box"><h4>Rider Blind Spots</h4><ul><li>Realistic expected wait times</li><li>True ride confirmation status</li><li>Driver commitment level to pickup</li></ul></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0;">
+          <div style="background:#EBF0FF;border:1.5px solid rgba(20,52,200,0.25);border-radius:12px;padding:20px;"><div style="font-size:13px;font-weight:700;color:#1434C8;margin-bottom:12px;">🚗 Driver Blind Spots (cause driver cancellations)</div><div style="display:flex;flex-direction:column;gap:8px;"><div style="font-size:13px;color:#444;display:flex;gap:8px;"><span style="color:#C84014;flex-shrink:0;">→</span>Exact drop location and destination before accepting</div><div style="font-size:13px;color:#444;display:flex;gap:8px;"><span style="color:#C84014;flex-shrink:0;">→</span>Route convenience and live traffic conditions</div><div style="font-size:13px;color:#444;display:flex;gap:8px;"><span style="color:#C84014;flex-shrink:0;">→</span>Immediate trip profitability per kilometre</div></div></div>
+          <div style="background:#FFF3EE;border:1.5px solid rgba(200,64,20,0.25);border-radius:12px;padding:20px;"><div style="font-size:13px;font-weight:700;color:#C84014;margin-bottom:12px;">🙋 Rider Blind Spots (cause rider abandonment)</div><div style="display:flex;flex-direction:column;gap:8px;"><div style="font-size:13px;color:#444;display:flex;gap:8px;"><span style="color:#C84014;flex-shrink:0;">→</span>Realistic expected wait time for this specific booking</div><div style="font-size:13px;color:#444;display:flex;gap:8px;"><span style="color:#C84014;flex-shrink:0;">→</span>True ride confirmation status in real-time</div><div style="font-size:13px;color:#444;display:flex;gap:8px;"><span style="color:#C84014;flex-shrink:0;">→</span>Actual driver commitment to the pickup</div></div></div>
         </div>
       </div>
+
       <div class="m-section">
-        <div class="m-label">The 2-Pillar Solution Framework</div>
-        <div class="m-pillars">
-          <div class="m-pillar blue"><h4>🔵 Pillar 1: Empowering Supply</h4><ul><li><strong>Directional Drop-offs:</strong> Show distance range + rough direction before acceptance — cures route anxiety without revealing exact address</li><li><strong>Night Surge Incentives:</strong> Targeted bonus payouts during night hours — compensates for lower volume and higher perceived risk</li></ul></div>
-          <div class="m-pillar orange"><h4>🟠 Pillar 2: Reassuring Demand</h4><ul><li><strong>Accurate Wait Timers:</strong> Real-time arrival clocks reduce rider anxiety and app-switching</li><li><strong>Smart Reassignment:</strong> Instant background re-routing if driver rejects — friction masked from rider</li><li><strong>Booking Transparency:</strong> Clear UI states (Searching → Accepted → Arriving)</li></ul></div>
+        <div class="m-label">The 2-Pillar Solution — Closing Both Blind Spots Simultaneously</div>
+        <div class="m-text"><p>I designed two parallel pillars. They work together: Pillar 1 removes driver uncertainty (supply). Pillar 2 removes rider anxiety (demand). Neither alone is sufficient.</p></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0;">
+          <div style="background:#EBF0FF;border:1.5px solid rgba(20,52,200,0.25);border-radius:14px;padding:24px;">
+            <div style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#1434C8;margin-bottom:16px;">🔵 Pillar 1 — Empowering Supply (Drivers)</div>
+            <div style="display:flex;flex-direction:column;gap:12px;">
+              <div style="background:#fff;border-radius:10px;padding:15px;"><div style="font-size:13px;font-weight:700;color:#0E0E0E;margin-bottom:5px;">A: Directional Drop-offs</div><div style="font-size:12px;color:#555;line-height:1.65;">Show direction + distance range (e.g. "Northwest, 8–12km") before acceptance — not the exact address. Cures route anxiety without compromising rider privacy.</div></div>
+              <div style="background:#fff;border-radius:10px;padding:15px;"><div style="font-size:13px;font-weight:700;color:#0E0E0E;margin-bottom:5px;">B: Night Surge Incentives</div><div style="font-size:12px;color:#555;line-height:1.65;">Targeted bonus payouts during 18:00–05:00. Compensates for lower volume and higher perceived risk — fundamentally shifts driver motivation to accept night requests.</div></div>
+            </div>
+          </div>
+          <div style="background:#FFF3EE;border:1.5px solid rgba(200,64,20,0.25);border-radius:14px;padding:24px;">
+            <div style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#C84014;margin-bottom:16px;">🟠 Pillar 2 — Reassuring Demand (Riders)</div>
+            <div style="display:flex;flex-direction:column;gap:12px;">
+              <div style="background:#fff;border-radius:10px;padding:15px;"><div style="font-size:13px;font-weight:700;color:#0E0E0E;margin-bottom:5px;">C: Accurate Wait Timers</div><div style="font-size:12px;color:#555;">Real-time, accurate arrival clocks proactively reduce rider anxiety and prevent app-switching before it happens.</div></div>
+              <div style="background:#fff;border-radius:10px;padding:15px;"><div style="font-size:13px;font-weight:700;color:#0E0E0E;margin-bottom:5px;">D: Smart Reassignment</div><div style="font-size:12px;color:#555;">If driver rejects, system instantly triggers background re-routing. The friction is masked from the rider — they never know a rejection happened.</div></div>
+              <div style="background:#fff;border-radius:10px;padding:15px;"><div style="font-size:13px;font-weight:700;color:#0E0E0E;margin-bottom:5px;">E: Booking Transparency</div><div style="font-size:12px;color:#555;">Clear UI states: Searching → Accepted → Arriving. Keeps the rider anchored to the platform and builds confidence in the process at night.</div></div>
+            </div>
+          </div>
         </div>
       </div>
+
       <div class="m-section">
-        <div class="m-label">Metrics Dashboard</div>
-        <div class="m-metrics">
-          <div class="m-metric light"><div class="mn">17.5%</div><div class="ml">Target Cancellation Rate (from 25%)</div></div>
-          <div class="m-metric dark"><div class="mn">39,000</div><div class="ml">Rides Recovered Per Night</div></div>
-          <div class="m-metric green-bg"><div class="mn">130K→91K</div><div class="ml">Daily Night Cancellations</div></div>
-        </div>
-        <div class="m-text">
-          <p><strong>Also tracked:</strong> Driver acceptance rate, ride completion rate, night active users, revenue growth from completed night rides.</p>
-          <p><strong>The bottom line:</strong> For riders — faster confirmations when most vulnerable. For drivers — better earnings and route control. For the platform — marketplace efficiency, long-term trust, recovered revenue.</p>
+        <div class="m-label">What I Chose Not To Do — The Hard Trade-offs</div>
+        <div style="display:flex;flex-direction:column;gap:10px;margin:16px 0;">
+          <div style="background:#F5F3EF;border:1px solid #DDD8CF;border-radius:12px;padding:16px 20px;display:grid;grid-template-columns:1fr 1fr;gap:16px;"><div><div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#C84014;margin-bottom:5px;">❌ Rejected</div><div style="font-size:13px;color:#444;font-weight:600;">Show full destination upfront to all drivers</div></div><div><div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#0F6E3A;margin-bottom:5px;">✓ Why Not</div><div style="font-size:13px;color:#444;">Experienced drivers would cherry-pick only long, high-value routes — leaving short-trip riders stranded and reducing overall marketplace efficiency.</div></div></div>
+          <div style="background:#F5F3EF;border:1px solid #DDD8CF;border-radius:12px;padding:16px 20px;display:grid;grid-template-columns:1fr 1fr;gap:16px;"><div><div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#C84014;margin-bottom:5px;">❌ Rejected</div><div style="font-size:13px;color:#444;font-weight:600;">Penalise drivers financially for cancellations</div></div><div><div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#0F6E3A;margin-bottom:5px;">✓ Why Not</div><div style="font-size:13px;color:#444;">Punitive measures reduce night driver supply, making the original problem worse. Drivers cancel because of uncertainty, not laziness. Fix the uncertainty.</div></div></div>
+          <div style="background:#F5F3EF;border:1px solid #DDD8CF;border-radius:12px;padding:16px 20px;display:grid;grid-template-columns:1fr 1fr;gap:16px;"><div><div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#C84014;margin-bottom:5px;">❌ Rejected</div><div style="font-size:13px;color:#444;font-weight:600;">Focus exclusively on financial incentives</div></div><div><div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#0F6E3A;margin-bottom:5px;">✓ Why Not</div><div style="font-size:13px;color:#444;">Surge pricing alone doesn't fix route anxiety. A driver who doesn't know where they're going cancels even with a bonus. Both pillars must work in parallel.</div></div></div>
         </div>
       </div>
+
+      <div class="m-section">
+        <div class="m-label">Three-Tier Success Metrics</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:16px 0;">
+          <div style="background:#EBF0FF;border:1px solid rgba(20,52,200,0.2);border-radius:12px;padding:20px;"><div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#1434C8;margin-bottom:10px;">Primary</div><div style="font-family:'Playfair Display',serif;font-size:26px;color:#1434C8;line-height:1;margin-bottom:6px;">25%→17.5%</div><div style="font-size:12px;color:#1434C8;opacity:.8;">Night Cancellation Rate — the single headline number.</div></div>
+          <div style="background:#F5F3EF;border:1px solid #DDD8CF;border-radius:12px;padding:20px;"><div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#444;margin-bottom:10px;">Secondary</div><div style="font-size:13px;color:#444;line-height:1.8;"><strong>↑</strong> Driver acceptance rate<br><strong>↑</strong> Ride completion rate<br><strong>↑</strong> Night active users<br><strong>↑</strong> Revenue per night hour</div></div>
+          <div style="background:#0E0E0E;border-radius:12px;padding:20px;"><div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#555;margin-bottom:10px;">Guardrail</div><div style="font-size:13px;color:#aaa;line-height:1.7;"><strong style="color:#fff;">Incentive cost must not exceed revenue recovered.</strong> Monitor cost-per-recovered-ride against incremental revenue. If surge costs more than it saves, the economics fail.</div></div>
+        </div>
+      </div>
+
+      <div class="m-section" style="margin-bottom:0;">
+        <div class="m-label">The Takeaway</div>
+        <div style="background:linear-gradient(135deg,#5C1A00,#C84014);border-radius:16px;padding:36px 40px;">
+          <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:22px;color:#fff;line-height:1.5;margin-bottom:20px;">"The best marketplace solutions don't pick sides. They give each side exactly the information they need to make the right decision."</div>
+          <div style="font-size:14px;color:rgba(255,255,255,0.75);line-height:1.8;">
+            <p>The most important decision in this case study was <strong style="color:#fff;">refusing to pick a side</strong>. Every PM's instinct when seeing a cancellation problem is to focus on drivers or riders. The insight — that both sides were rational actors constrained by missing information — is what made a real solution possible.</p>
+            <p style="margin-top:12px;">The guardrail metric — monitoring incentive cost against recovered revenue — is what separates a product decision from a financial disaster. Good product thinking always includes the question: "What could make this go badly even if it seems to work?"</p>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-// Add class so CSS animations only apply when JS is running
-document.body.classList.add('js-loaded');
-
-const io = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.06, rootMargin: '0px 0px -40px 0px' });
-document.querySelectorAll('.fade').forEach(el => io.observe(el));
-
-// Hero fades in immediately
-setTimeout(() => document.querySelectorAll('#hero .fade').forEach(el => el.classList.add('visible')), 80);
-// Safety net — make everything visible after 1.5s regardless
-setTimeout(() => document.querySelectorAll('.fade').forEach(el => el.classList.add('visible')), 1500);
-
+<script>
+// Modal functions — global, loaded before any onclick fires
 function openModal(id) {
-  const el = document.getElementById(id);
+  var el = document.getElementById(id);
+  if (!el) return;
   el.classList.add('open');
   document.body.style.overflow = 'hidden';
   el.scrollTop = 0;
 }
 function closeModal(id) {
-  document.getElementById(id).classList.remove('open');
+  var el = document.getElementById(id);
+  if (!el) return;
+  el.classList.remove('open');
   document.body.style.overflow = '';
 }
 function closeIfOverlay(e, id) {
   if (e.target === document.getElementById(id)) closeModal(id);
 }
+
+// Tag inline-grid elements for mobile CSS overrides
+(function() {
+  document.querySelectorAll('.modal [style]').forEach(function(el) {
+    var s = el.getAttribute('style') || '';
+    if (/grid-template-columns\s*:\s*repeat\(4/.test(s)) el.classList.add('mg-4col');
+    if (/grid-template-columns\s*:\s*(repeat\(3|1fr 1fr 1fr)/.test(s)) el.classList.add('mg-3col');
+    if (/grid-template-columns\s*:\s*1fr 3px 1fr/.test(s)) el.classList.add('mg-split');
+    if (/grid-template-columns\s*:\s*1fr 1fr/.test(s) && /gap\s*:\s*(16|20)px/.test(s)) el.classList.add('mg-2col');
+    if (/background\s*:\s*#DDD8CF/.test(s) && el.children.length === 0) el.classList.add('mg-divider');
+  });
+})();
+
+// Close on Escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal-overlay.open').forEach(function(m) {
+      m.classList.remove('open');
+    });
+    document.body.style.overflow = '';
+  }
+});
+
+// Fade animations — content visible by default, animated only after JS loads
+document.body.classList.add('js-loaded');
+
+var io = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.06, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.fade').forEach(function(el) { io.observe(el); });
+
+// Hero visible immediately
+setTimeout(function() {
+  document.querySelectorAll('#hero .fade').forEach(function(el) { e
