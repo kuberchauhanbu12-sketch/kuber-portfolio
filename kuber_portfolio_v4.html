@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kuber Chauhan — Product Manager Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #F5F2EC; --ink: #0E0E0E; --blue: #1434C8; --blue-mid: #2D52E8;
+  --blue-light: #EBF0FF; --border: #DDD8CF; --mid: #6B6B6B; --card: #FDFCF9;
+  --orange: #C84014; --green: #0F6E3A; --gold: #B8860B;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Syne', sans-serif; background: var(--cream); color: var(--ink); font-size: 15px; line-height: 1.65; overflow-x: hidden; }
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-thumb { background: var(--blue); border-radius: 2px; }
+
+/* NAV */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; background: rgba(245,242,236,0.94); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); height: 58px; display: flex; align-items: center; justify-content: space-between; padding: 0 56px; }
+.nav-logo { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--ink); text-decoration: none; letter-spacing: -0.01em; }
+.nav-links { display: flex; gap: 36px; align-items: center; }
+.nav-links a { font-size: 13px; font-weight: 600; color: var(--mid); text-decoration: none; letter-spacing: 0.04em; text-transform: uppercase; transition: color .2s; }
+.nav-links a:hover { color: var(--blue); }
+.nav-cta { background: var(--ink); color: #fff !important; padding: 8px 20px; border-radius: 6px; font-size: 12px !important; letter-spacing: 0.06em !important; transition: background .2s !important; }
+.nav-cta:hover { background: var(--blue) !important; }
+
+/* HERO */
+#hero { min-height: 100vh; padding: 120px 56px 80px; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; }
+.hero-bg-text { position: absolute; top: 50%; right: -20px; transform: translateY(-50%); font-family: 'Playfair Display', serif; font-size: clamp(120px, 16vw, 220px); color: rgba(20,52,200,0.04); font-weight: 700; line-height: 1; pointer-events: none; user-select: none; white-space: nowrap; }
+.hero-inner { max-width: 1160px; margin: 0 auto; width: 100%; }
+.hero-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 48px; flex-wrap: wrap; }
+.hero-left { flex: 1; min-width: 280px; }
+.hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--blue-light); border: 1px solid rgba(20,52,200,0.2); color: var(--blue); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 16px; border-radius: 100px; margin-bottom: 28px; }
+.hero-dot { width: 7px; height: 7px; background: var(--blue); border-radius: 50%; animation: blink 1.8s ease-in-out infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.25} }
+h1.name { font-family: 'Playfair Display', serif; font-size: clamp(58px, 7.5vw, 112px); font-weight: 400; line-height: 0.92; letter-spacing: -0.03em; color: var(--ink); margin-bottom: 28px; }
+h1.name span { display: block; }
+h1.name em { color: var(--blue); font-style: italic; }
+.hero-tagline { font-size: 17px; color: var(--mid); line-height: 1.7; max-width: 480px; margin-bottom: 44px; font-weight: 400; }
+.hero-tagline strong { color: var(--ink); font-weight: 700; }
+.cta-row { display: flex; gap: 14px; flex-wrap: wrap; }
+.btn-dark { display: inline-flex; align-items: center; gap: 9px; background: var(--ink); color: #fff; padding: 14px 28px; border-radius: 8px; font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; text-decoration: none; transition: all .2s; }
+.btn-dark:hover { background: var(--blue); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(20,52,200,0.25); }
+.btn-ghost { display: inline-flex; align-items: center; gap: 9px; border: 1.5px solid var(--border); color: var(--ink); padding: 14px 28px; border-radius: 8px; font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; text-decoration: none; transition: all .2s; background: transparent; }
+.btn-ghost:hover { border-color: var(--blue); color: var(--blue); }
+
+/* LINKEDIN CARD */
+.hero-linkedin { flex-shrink: 0; width: 320px; background: #fff; border: 1px solid var(--border); border-radius: 20px; padding: 26px; position: relative; overflow: hidden; align-self: flex-start; margin-top: 8px; box-shadow: 0 4px 24px rgba(0,0,0,0.06); text-decoration: none; display: block; transition: box-shadow .2s, transform .2s; }
+.hero-linkedin:hover { box-shadow: 0 8px 40px rgba(20,52,200,0.15); transform: translateY(-2px); }
+.hero-linkedin::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #0A66C2, #1434C8); }
+.li-header { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+.li-icon { width: 34px; height: 34px; border-radius: 8px; background: #0A66C2; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.li-icon svg { width: 18px; height: 18px; fill: #fff; }
+.li-title { font-size: 12px; font-weight: 700; color: var(--ink); line-height: 1.3; }
+.li-sub { font-size: 11px; color: var(--mid); margin-top: 2px; }
+.li-streak-row { display: flex; align-items: center; gap: 12px; background: var(--blue-light); border-radius: 10px; padding: 12px 16px; margin-bottom: 16px; }
+.li-streak-num { font-family: 'Playfair Display', serif; font-size: 38px; color: var(--blue); line-height: 1; font-weight: 700; }
+.li-streak-text { font-size: 12px; color: var(--blue); font-weight: 600; line-height: 1.4; }
+.li-streak-text span { display: block; font-weight: 400; color: var(--mid); font-size: 11px; margin-top: 2px; }
+.li-posts { display: flex; flex-direction: column; gap: 7px; margin-bottom: 16px; }
+.li-post { display: flex; align-items: flex-start; gap: 10px; padding: 9px 12px; border: 1px solid var(--border); border-radius: 10px; transition: border-color .2s, background .2s; }
+.li-post:hover { border-color: rgba(20,52,200,0.3); background: var(--blue-light); }
+.li-post-emoji { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+.li-post-topic { font-size: 11px; font-weight: 700; color: var(--ink); line-height: 1.3; }
+.li-post-type { font-size: 10px; color: var(--mid); margin-top: 2px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; }
+.li-cta { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 10px 16px; background: #0A66C2; color: #fff; border-radius: 8px; font-size: 12px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+.li-cta svg { width: 13px; height: 13px; fill: #fff; flex-shrink: 0; }
+
+/* STATS */
+.hero-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; margin-top: 72px; }
+.stat-cell { background: var(--card); padding: 28px 28px; display: flex; flex-direction: column; gap: 6px; transition: background .2s; }
+.stat-cell:hover { background: var(--blue-light); }
+.stat-n { font-family: 'Playfair Display', serif; font-size: 40px; color: var(--ink); line-height: 1; }
+.stat-l { font-size: 12px; color: var(--mid); font-weight: 500; line-height: 1.4; }
+
+/* SHARED */
+section { padding: 100px 56px; }
+.sec-inner { max-width: 1160px; margin: 0 auto; }
+.sec-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); margin-bottom: 14px; }
+.sec-title { font-family: 'Playfair Display', serif; font-size: clamp(38px, 4.5vw, 60px); font-weight: 400; line-height: 1.08; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 20px; }
+.sec-sub { font-size: 16px; color: var(--mid); max-width: 520px; line-height: 1.75; }
+
+/* ABOUT */
+#about { background: #0C0C0C; }
+#about .sec-eyebrow { color: #555; }
+#about .sec-title { color: #fff; }
+.about-layout { display: grid; grid-template-columns: 1fr 400px; gap: 80px; margin-top: 60px; align-items: start; }
+.about-text { color: #999; font-size: 16px; line-height: 1.85; }
+.about-text p + p { margin-top: 18px; }
+.about-text strong { color: #fff; font-weight: 600; }
+.about-text em { color: var(--blue-mid); font-style: normal; font-weight: 600; }
+.skills-stack { display: flex; flex-direction: column; gap: 10px; }
+.sk-row { border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 16px 20px; transition: border-color .2s, background .2s; }
+.sk-row:hover { border-color: rgba(20,52,200,0.4); background: rgba(20,52,200,0.06); }
+.sk-name { font-size: 12px; font-weight: 700; color: #fff; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 9px; }
+.sk-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.sk-chip { font-size: 11px; padding: 3px 10px; background: rgba(20,52,200,0.2); color: #93B0FF; border-radius: 100px; font-weight: 500; }
+
+/* CASE STUDIES */
+#work { background: var(--cream); }
+.work-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 56px; gap: 24px; flex-wrap: wrap; }
+.cs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.cs-preview-card { border-radius: 20px; overflow: hidden; cursor: pointer; border: 1px solid var(--border); transition: transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s; position: relative; display: flex; flex-direction: column; background: var(--card); }
+.cs-preview-card:hover { transform: translateY(-6px); box-shadow: 0 24px 64px rgba(0,0,0,0.12); }
+.cs-preview-top { padding: 36px 32px 32px; position: relative; overflow: hidden; min-height: 220px; display: flex; flex-direction: column; justify-content: flex-end; }
+.cs-bg-1 { background: linear-gradient(145deg, #0A1A7A 0%, #1434C8 55%, #3060FF 100%); }
+.cs-bg-2 { background: linear-gradient(145deg, #0A3D20 0%, #0F6E3A 55%, #1AAD58 100%); }
+.cs-bg-3 { background: linear-gradient(145deg, #5C1A00 0%, #C84014 55%, #F06030 100%); }
+.cs-card-orb { position: absolute; top: -30px; right: -30px; width: 160px; height: 160px; border-radius: 50%; background: rgba(255,255,255,0.07); pointer-events: none; }
+.cs-card-orb2 { position: absolute; bottom: -20px; left: 30px; width: 80px; height: 80px; border-radius: 50%; background: rgba(255,255,255,0.04); pointer-events: none; }
+.cs-card-num { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 10px; }
+.cs-card-title { font-family: 'Playfair Display', serif; font-size: 22px; color: #fff; line-height: 1.2; font-weight: 400; margin-bottom: 8px; }
+.cs-card-sub { font-size: 12px; color: rgba(255,255,255,0.65); line-height: 1.5; }
+.cs-preview-bottom { padding: 24px 32px; flex: 1; display: flex; flex-direction: column; }
+.cs-card-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.cs-meta-chip { font-size: 11px; padding: 4px 12px; border-radius: 100px; font-weight: 600; }
+.chip-blue { background: var(--blue-light); color: var(--blue); }
+.chip-dark { background: #F0EFED; color: #555; }
+.cs-card-impact { font-size: 13px; color: #444; line-height: 1.6; }
+.cs-card-impact strong { color: var(--ink); }
+.cs-open-btn { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 16px; border-top: 1px solid var(--border); font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--blue); }
+.cs-open-btn .arrow { transition: transform .2s; }
+.cs-preview-card:hover .cs-open-btn .arrow { transform: translateX(4px); }
+
+/* MODAL */
+.modal-overlay { position: fixed; inset: 0; z-index: 500; background: rgba(10,10,10,0.82); backdrop-filter: blur(8px); opacity: 0; pointer-events: none; transition: opacity .3s ease; display: flex; align-items: flex-start; justify-content: center; padding: 32px 20px; overflow-y: auto; }
+.modal-overlay.open { opacity: 1; pointer-events: all; }
+.modal { background: var(--cream); border-radius: 24px; width: 100%; max-width: 840px; transform: translateY(32px) scale(0.97); transition: transform .35s cubic-bezier(.22,1,.36,1); overflow: hidden; position: relative; margin: auto; }
+.modal-overlay.open .modal { transform: translateY(0) scale(1); }
+.modal-close { position: absolute; top: 20px; right: 20px; z-index: 10; width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.15); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 18px; color: #fff; transition: background .2s; }
+.modal-close:hover { background: rgba(255,255,255,0.3); }
+.modal-hero { padding: 56px 56px 48px; position: relative; overflow: hidden; }
+.modal-hero-orb { position: absolute; top: -50px; right: -50px; width: 300px; height: 300px; border-radius: 50%; background: rgba(255,255,255,0.06); pointer-events: none; }
+.modal-num { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 14px; }
+.modal-title { font-family: 'Playfair Display', serif; font-size: clamp(28px, 4vw, 44px); color: #fff; line-height: 1.12; font-weight: 400; margin-bottom: 10px; }
+.modal-subtitle { font-size: 15px; color: rgba(255,255,255,0.65); margin-bottom: 36px; }
+.modal-kpis { display: flex; gap: 28px; flex-wrap: wrap; }
+.modal-kpi-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 4px; }
+.modal-kpi-val { font-size: 16px; font-weight: 700; color: #fff; }
+.modal-body { padding: 48px 56px 56px; }
+.m-section { margin-bottom: 40px; }
+.m-section:last-child { margin-bottom: 0; }
+.m-label { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+.m-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.m-text { font-size: 15px; color: #444; line-height: 1.8; }
+.m-text p + p { margin-top: 14px; }
+.m-text ul { padding-left: 20px; margin-top: 10px; }
+.m-text li { margin-bottom: 6px; }
+.m-text strong { color: var(--ink); font-weight: 700; }
+.m-quote { border-left: 3px solid var(--blue); padding: 18px 24px; background: var(--blue-light); border-radius: 0 12px 12px 0; font-family: 'Playfair Display', serif; font-style: italic; font-size: 20px; color: var(--blue); line-height: 1.5; margin: 20px 0; }
+.m-quote.green { border-color: var(--green); background: #ECFDF5; color: var(--green); }
+.m-quote.orange { border-color: var(--orange); background: #FFF3EE; color: var(--orange); }
+.m-two { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 16px 0; }
+.m-box { background: #F5F3EF; border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+.m-box h4 { font-size: 13px; font-weight: 700; color: var(--ink); margin-bottom: 10px; }
+.m-box ul { padding-left: 16px; }
+.m-box li { font-size: 13px; color: #555; line-height: 1.7; }
+.m-box li + li { margin-top: 4px; }
+.m-box p { font-size: 13px; color: #555; line-height: 1.7; }
+.m-flow { display: flex; align-items: stretch; gap: 0; margin: 20px 0; overflow-x: auto; }
+.m-step { background: #F5F3EF; border: 1.5px solid var(--border); border-radius: 10px; padding: 16px 18px; flex: 1; min-width: 130px; text-align: center; }
+.m-step-num { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); margin-bottom: 5px; }
+.m-step-name { font-size: 13px; font-weight: 700; color: var(--ink); }
+.m-step-time { font-size: 11px; color: var(--mid); margin-top: 3px; }
+.m-arrow { align-self: center; font-size: 16px; color: var(--border); padding: 0 6px; flex-shrink: 0; }
+.m-step.highlight { border-color: var(--blue); background: var(--blue-light); }
+.m-step.highlight .m-step-name { color: var(--blue); }
+.m-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 16px 0; }
+.m-metric { border-radius: 12px; padding: 20px; text-align: center; }
+.m-metric.dark { background: var(--ink); }
+.m-metric.light { background: var(--blue-light); border: 1px solid rgba(20,52,200,0.15); }
+.m-metric.green-bg { background: #ECFDF5; border: 1px solid rgba(15,110,58,0.15); }
+.m-metric .mn { font-family: 'Playfair Display', serif; font-size: 28px; line-height: 1; }
+.m-metric.dark .mn { color: #fff; }
+.m-metric.light .mn { color: var(--blue); }
+.m-metric.green-bg .mn { color: var(--green); }
+.m-metric .ml { font-size: 11px; margin-top: 6px; }
+.m-metric.dark .ml { color: #888; }
+.m-metric.light .ml { color: var(--blue); opacity: .7; }
+.m-metric.green-bg .ml { color: var(--green); opacity: .8; }
+.m-pillars { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 16px 0; }
+.m-pillar { border-radius: 12px; padding: 22px; }
+.m-pillar.blue { background: var(--blue-light); border: 1px solid rgba(20,52,200,0.2); }
+.m-pillar.orange { background: #FFF3EE; border: 1px solid rgba(200,64,20,0.2); }
+.m-pillar h4 { font-size: 13px; font-weight: 700; color: var(--ink); margin-bottom: 12px; }
+.m-pillar ul { padding-left: 16px; }
+.m-pillar li { font-size: 13px; color: #444; line-height: 1.7; }
+.m-pillar li + li { margin-top: 6px; }
+.m-four { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0; }
+
+/* EXPERIENCE */
+#experience { background: #F0EDE6; }
+.exp-rows { margin-top: 52px; }
+.exp-row { display: grid; grid-template-columns: 180px 1fr; gap: 48px; padding: 36px 0; border-bottom: 1px solid var(--border); }
+.exp-row:first-child { border-top: 1px solid var(--border); }
+.exp-date { font-size: 12px; color: var(--mid); font-weight: 600; letter-spacing: 0.04em; padding-top: 2px; }
+.exp-role { font-size: 18px; font-weight: 700; color: var(--ink); margin-bottom: 3px; }
+.exp-co { font-size: 14px; color: var(--blue); font-weight: 600; margin-bottom: 12px; }
+.exp-desc { font-size: 14px; color: #555; line-height: 1.75; }
+.exp-desc strong { color: var(--ink); font-weight: 700; }
+.exp-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+.exp-tag { font-size: 11px; padding: 3px 12px; background: #fff; border: 1px solid var(--border); border-radius: 100px; color: var(--mid); }
+
+/* CONTACT */
+#contact { background: var(--ink); }
+#contact .sec-eyebrow { color: #444; }
+#contact .sec-title { color: #fff; }
+.contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-top: 60px; align-items: center; }
+.contact-links-list { display: flex; flex-direction: column; gap: 14px; }
+.c-link { display: flex; align-items: center; gap: 18px; padding: 18px 22px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; text-decoration: none; transition: all .2s; }
+.c-link:hover { background: rgba(20,52,200,0.15); border-color: rgba(20,52,200,0.4); transform: translateX(5px); }
+.c-icon { width: 42px; height: 42px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+.c-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #555; margin-bottom: 2px; }
+.c-val { font-size: 14px; font-weight: 600; color: #fff; }
+.contact-right-quote { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(24px, 3vw, 36px); line-height: 1.35; color: #fff; }
+.contact-right-quote span { color: #4B78FF; }
+.contact-note { font-size: 14px; color: #555; margin-top: 24px; line-height: 1.75; }
+
+/* FOOTER */
+footer { background: #080808; padding: 20px 56px; display: flex; align-items: center; justify-content: space-between; font-size: 12px; color: #333; }
+
+/* ANIMATIONS — content visible by default, animated only when JS loads */
+.fade { opacity: 1; transform: none; }
+.js-loaded .fade { opacity: 0; transform: translateY(28px); transition: opacity .65s ease, transform .65s ease; }
+.js-loaded .fade.d1 { transition-delay: .1s; }
+.js-loaded .fade.d2 { transition-delay: .2s; }
+.js-loaded .fade.d3 { transition-delay: .3s; }
+.js-loaded .fade.visible { opacity: 1; transform: none; }
+
+/* RESPONSIVE — tablet */
+@media (max-width: 960px) {
+  nav { padding: 0 24px; }
+  section { padding: 72px 24px; }
+  #hero { padding: 100px 24px 72px; }
+  .about-layout { grid-template-columns: 1fr; }
+  .cs-grid { grid-template-columns: 1fr; }
+  .hero-stats { grid-template-columns: 1fr 1fr; }
+  .exp-row { grid-template-columns: 1fr; gap: 8px; }
+  .contact-layout { grid-template-columns: 1fr; }
+  .modal-hero { padding: 40px 28px 36px; }
+  .modal-body { padding: 36px 28px 48px; }
+  .m-two, .m-pillars, .m-four { grid-template-columns: 1fr; }
+  .m-metrics { grid-template-columns: 1fr 1fr; }
+  footer { flex-direction: column; gap: 8px; text-align: center; padding: 20px 24px; }
+  .nav-links .nav-link-hide { display: none; }
+  .hero-linkedin { width: 100%; }
+}
+
+/* RESPONSIVE — phone */
+@media (max-width: 480px) {
+  nav { padding: 0 18px; height: 52px; }
+  .nav-logo { font-size: 15px; }
+  .nav-cta { padding: 7px 14px; font-size: 11px !important; }
+
+  #hero { padding: 84px 18px 56px; }
+  h1.name { font-size: clamp(46px, 13vw, 72px); margin-bottom: 20px; }
+  .hero-tagline { font-size: 15px; margin-bottom: 32px; }
+  .hero-bg-text { font-size: clamp(90px, 28vw, 140px); right: -10px; }
+  .cta-row { flex-direction: column; gap: 10px; }
+  .btn-dark, .btn-ghost { width: 100%; justify-content: center; padding: 14px 20px; }
+  .hero-stats { grid-template-columns: 1fr 1fr; }
+  .stat-cell { padding: 20px 16px; }
+  .stat-n { font-size: 30px; }
+  .hero-linkedin { width: 100%; }
+
+  section { padding: 56px 18px; }
+  .sec-title { font-size: clamp(30px, 9vw, 44px); }
+
+  .about-layout { grid-template-columns: 1fr; gap: 40px; }
+
+  .cs-grid { grid-template-columns: 1fr; gap: 16px; }
+  .cs-preview-top { min-height: 180px; padding: 28px 22px 24px; }
+  .cs-card-title { font-size: 18px; }
+  .cs-preview-bottom { padding: 18px 22px; }
+
+  .modal-overlay { padding: 0; align-items: flex-end; }
+  .modal { border-radius: 20px 20px 0 0; max-height: 92vh; overflow-y: auto; margin: 0; }
+  .modal-hero { padding: 36px 20px 28px; }
+  .modal-body { padding: 28px 20px 40px; }
+  .modal-close { top: 14px; right: 14px; width: 36px; height: 36px; font-size: 16px; }
+  .modal-title { font-size: clamp(22px, 6vw, 32px) !important; }
+  .modal-subtitle { font-size: 13px; margin-bottom: 24px; }
+  .modal-kpis { gap: 16px; }
+  .modal-kpi-val { font-size: 14px; }
+
+  .m-flow { overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 8px; }
+  .m-step { min-width: 110px; }
+  .m-metrics { grid-template-columns: 1fr 1fr; }
+  .m-two, .m-pillars, .m-four { grid-template-columns: 1fr; }
+  .m-quote { font-size: 17px; padding: 14px 18px; }
+
+  .exp-row { grid-template-columns: 1fr; gap: 4px; padding: 24px 0; }
+  .exp-role { font-size: 16px; }
+  .exp-date { font-size: 11px; margin-bottom: 2px; }
+
+  .contact-layout { grid-template-columns: 1fr; gap: 40px; }
+  .contact-right-quote { font-size: clamp(20px, 5vw, 28px); }
+  .c-link { padding: 14px 16px; gap: 14px; }
+
+  footer { flex-direction: column; gap: 6px; text-align: center; padding: 16px 18px; font-size: 11px; }
+
+  .nav-cta, .btn-dark, .btn-ghost, .cs-preview-card, .c-link, .modal-close { min-height: 44px; }
+}
+
+/* Phone — inline modal grids (override hardcoded style attributes) */
+@media (max-width: 480px) {
+  .modal-overlay .modal [style*="grid-template-columns:repeat(4"],
+  .modal-overlay .modal [style*="grid-template-columns: repeat(4"] {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 12px !important;
+  }
+  .modal-overlay .modal [style*="grid-template-columns:1fr 1fr 1fr"],
+  .modal-overlay .modal [style*="grid-template-columns: 1fr 1fr 1fr"],
+  .modal-overlay .modal [style*="grid-template-columns:repeat(3,1fr)"],
+  .modal-overlay .modal [style*="grid-template-columns: repeat(3"] {
+    grid-template-columns: 1fr !important;
+  }
+  .modal-overlay .modal [style*="grid-template-columns:1fr 3px 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+  .modal-overlay .modal [style*="grid-template-columns:1fr 1fr;gap:16px"],
+  .modal-overlay .modal [style*="grid-template-columns:1fr 1fr;gap:20px"] {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+  .modal-overlay .modal [style*="background:#DDD8CF; "],
+  .modal-overlay .modal [style="background:#DDD8CF;"] {
+    display: none !important;
+  }
+  /* JS-tagged classes — reliable fallback */
+  .mg-4col { grid-template-columns: 1fr 1fr !important; gap: 12px !important; }
+  .mg-3col { grid-template-columns: 1fr !important; }
+  .mg-split { grid-template-columns: 1fr !important; }
+  .mg-2col { grid-template-columns: 1fr !important; gap: 10px !important; }
+  .mg-divider { display: none !important; }
+}
+</style>
+<script>
+function openModal(id){var el=document.getElementById(id);if(!el)return;el.classList.add('open');document.body.style.overflow='hidden';el.scrollTop=0;}
+function closeModal(id){var el=document.getElementById(id);if(!el)return;el.classList.remove('open');document.body.style.overflow='';}
+function closeIfOverlay(e,id){if(e.target===document.getElementById(id))closeModal(id);}
+</script>
+</head>
+<body>
+
+<nav>
+  <a href="#hero" class="nav-logo">Kuber Chauhan</a>
+  <div class="nav-links">
+    <a href="#about" class="nav-link-hide">About</a>
+    <a href="#work" class="nav-link-hide">Case Studies</a>
+    <a href="#experience" class="nav-link-hide">Experience</a>
+    <a href="#contact" class="nav-cta">Let's Talk →</a>
+  </div>
+</nav>
+
+<section id="hero">
+  <div class="hero-bg-text">PM</div>
+  <div class="hero-inner">
+    <div class="hero-top">
+      <div class="hero-left">
+        <div class="hero-badge"><span class="hero-dot"></span> Actively interviewing for Product Roles · Available Immediately</div>
+        <h1 class="name"><span>Kuber</span><span><em>Chauhan</em></span></h1>
+        <p class="hero-tagline">
+          I build product thinking from first principles.<br><br>
+          I break down messy, ambiguous problems into structured systems — then design solutions that engineering teams can actually execute.<br><br>
+          Every case study here is built like a real product: clear problem → sharp insights → execution-ready specs → measurable impact.
+        </p>
+        <div class="cta-row">
+          <a href="#work" class="btn-dark">View Case Studies ↓</a>
+          <a href="https://www.linkedin.com/in/kuber-chauhanbu12" target="_blank" class="btn-ghost">LinkedIn Profile →</a>
+        </div>
+      </div>
+
+      <a href="https://www.linkedin.com/in/kuber-chauhanbu12" target="_blank" class="hero-linkedin">
+        <div class="li-header">
+          <div class="li-icon"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></div>
+          <div>
+            <div class="li-title">45 Days of PM Thinking in Public</div>
+            <div class="li-sub">Daily posts · Teardowns · Frameworks</div>
+          </div>
+        </div>
+        <div class="li-streak-row">
+          <div class="li-streak-num">45</div>
+          <div class="li-streak-text">Day streak — and counting<span>Posting real product thinking every single day</span></div>
+        </div>
+        <div class="li-posts">
+          <div class="li-post">
+            <div class="li-post-emoji">🔍</div>
+            <div><div class="li-post-topic">Why Duolingo's Day 7 retention collapses — and how to fix it</div><div class="li-post-type">Product Teardown</div></div>
+          </div>
+          <div class="li-post">
+            <div class="li-post-emoji">📊</div>
+            <div><div class="li-post-topic">North Star vs. Vanity Metrics — the PM's real test</div><div class="li-post-type">Framework Breakdown</div></div>
+          </div>
+          <div class="li-post">
+            <div class="li-post-emoji">🚗</div>
+            <div><div class="li-post-topic">Uber's night cancellation doom loop — root cause analysis</div><div class="li-post-type">Case Study</div></div>
+          </div>
+        </div>
+        <div class="li-cta">
+          <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          Follow the journey on LinkedIn →
+        </div>
+      </a>
+    </div>
+
+    <div class="hero-stats fade">
+      <div class="stat-cell"><div class="stat-n">3</div><div class="stat-l">In-depth PM case studies, structured end-to-end</div></div>
+      <div class="stat-cell"><div class="stat-n">+20%</div><div class="stat-l">Enrollment conversion uplift at Coding Ninjas</div></div>
+      <div class="stat-cell"><div class="stat-n">200+</div><div class="stat-l">Students coordinated across 15+ companies</div></div>
+      <div class="stat-cell"><div class="stat-n">45d</div><div class="stat-l">Building PM thinking in public on LinkedIn — daily</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="sec-inner">
+    <div class="sec-eyebrow">Who I Am</div>
+    <div class="sec-title">CS student. PM thinker.<br>Problem-first, always.</div>
+    <div class="about-layout">
+      <div class="about-text fade">
+        <p>Building products is really about solving the right problem for the right user — and that realisation completely changed my trajectory from a CS degree to a PM career path.</p>
+        <p>I'm <strong>Kuber Chauhan</strong> — a B.Tech (CSE) graduate from DIT University (2026), actively transitioning into Product Management. I don't just read about frameworks — I apply them. Every case study I've written goes from <em>raw problem discovery</em> to <em>engineering-ready specs</em> with metrics defined.</p>
+        <p>I led a 1,000+ student community as VP of CATALYST, coordinated placements for 200+ students across 15 companies, and served as a <strong>Sergeant in NCC</strong> — leading teams under pressure, managing competing priorities, and executing with discipline. I understand stakeholder management not from a textbook, but from doing it.</p>
+        <p>Currently: <strong>45 days of building in public</strong> on LinkedIn. Real teardowns. Real frameworks. Real product thinking — every day.</p>
+      </div>
+      <div class="skills-stack fade d1">
+        <div class="sk-row"><div class="sk-name">Product</div><div class="sk-chips"><span class="sk-chip">Discovery</span><span class="sk-chip">Roadmapping</span><span class="sk-chip">PRDs</span><span class="sk-chip">User Stories</span><span class="sk-chip">KPIs</span></div></div>
+        <div class="sk-row"><div class="sk-name">Agile</div><div class="sk-chips"><span class="sk-chip">Scrum</span><span class="sk-chip">Kanban</span><span class="sk-chip">Sprint Planning</span><span class="sk-chip">Backlog Mgmt</span></div></div>
+        <div class="sk-row"><div class="sk-name">Analytics</div><div class="sk-chips"><span class="sk-chip">Funnel Analysis</span><span class="sk-chip">A/B Testing</span><span class="sk-chip">Amplitude</span><span class="sk-chip">SQL</span></div></div>
+        <div class="sk-row"><div class="sk-name">Tools</div><div class="sk-chips"><span class="sk-chip">Jira</span><span class="sk-chip">Figma</span><span class="sk-chip">Notion</span><span class="sk-chip">Mixpanel</span><span class="sk-chip">Tableau</span></div></div>
+        <div class="sk-row"><div class="sk-name">Communication</div><div class="sk-chips"><span class="sk-chip">Stakeholder Mgmt</span><span class="sk-chip">Pitch Decks</span><span class="sk-chip">Reporting</span></div></div>
+        <div class="sk-row"><div class="sk-name">Tech</div><div class="sk-chips"><span class="sk-chip">GenAI Tools</span><span class="sk-chip">Prompt Engineering</span><span class="sk-chip">Python</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="sec-inner">
+    <div class="work-header">
+      <div>
+        <div class="sec-eyebrow">Case Studies</div>
+        <div class="sec-title">3 real problems.<br>Structured from scratch.</div>
+      </div>
+      <div class="sec-sub">Each case study follows full PM discipline — problem framing, user research, root cause analysis, solution design, metrics. Click any card to read the full breakdown.</div>
+    </div>
+    <div class="cs-grid">
+      <div class="cs-preview-card fade" onclick="openModal('cs1')">
+        <div class="cs-preview-top cs-bg-1"><div class="cs-card-orb"></div><div class="cs-card-orb2"></div>
+          <div class="cs-card-num">01 · B2B SaaS · Hiring Platform</div>
+          <div class="cs-card-title">The Signal in the Noise: HireBound's Commitment Problem</div>
+          <div class="cs-card-sub">Strategic product pivot from sourcing volume to commitment prediction</div>
+        </div>
+        <div class="cs-preview-bottom">
+          <div class="cs-card-meta"><span class="cs-meta-chip chip-blue">B2B SaaS</span><span class="cs-meta-chip chip-dark">Hiring Marketplace</span><span class="cs-meta-chip chip-dark">Strategic Pivot</span></div>
+          <div class="cs-card-impact">64% response rate — but hiring still fails. Root cause: <strong>wrong metric, wrong system.</strong> I redesigned the qualification layer to predict commitment, not capability.</div>
+          <div class="cs-open-btn"><span>Read Full Case Study</span><span class="arrow">→</span></div>
+        </div>
+      </div>
+      <div class="cs-preview-card fade d1" onclick="openModal('cs2')">
+        <div class="cs-preview-top cs-bg-2"><div class="cs-card-orb"></div><div class="cs-card-orb2"></div>
+          <div class="cs-card-num">02 · Consumer App · EdTech</div>
+          <div class="cs-card-title">The Guided Choice Strategy: Duolingo Day 7 Retention</div>
+          <div class="cs-card-sub">Addressing the Habit Death Zone through controlled user agency</div>
+        </div>
+        <div class="cs-preview-bottom">
+          <div class="cs-card-meta"><span class="cs-meta-chip chip-blue">Consumer</span><span class="cs-meta-chip chip-dark">EdTech</span><span class="cs-meta-chip chip-dark">Retention · A/B Test</span></div>
+          <div class="cs-card-impact">Users drop from 100% to ~15% retention by Day 7. Root cause: <strong>structured learning is actively killing early motivation.</strong> Solution: Guided Choice Layer.</div>
+          <div class="cs-open-btn"><span>Read Full Case Study</span><span class="arrow">→</span></div>
+        </div>
+      </div>
+      <div class="cs-preview-card fade d2" onclick="openModal('cs3')">
+        <div class="cs-preview-top cs-bg-3"><div class="cs-card-orb"></div><div class="cs-card-orb2"></div>
+          <div class="cs-card-num">03 · Marketplace · Mobility</div>
+          <div class="cs-card-title">Optimising Uber Night Service: Saving 39,000 Rides Daily</div>
+          <div class="cs-card-sub">Strategy to reduce night cancellations 30% in 6 months</div>
+        </div>
+        <div class="cs-preview-bottom">
+          <div class="cs-card-meta"><span class="cs-meta-chip chip-blue">Marketplace</span><span class="cs-meta-chip chip-dark">Mobility</span><span class="cs-meta-chip chip-dark">Two-sided Platform</span></div>
+          <div class="cs-card-impact">25% night cancellation rate. Root cause: <strong>information asymmetry on both sides.</strong> I built a 2-pillar framework targeting supply-side confidence and demand-side transparency.</div>
+          <div class="cs-open-btn"><span>Read Full Case Study</span><span class="arrow">→</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="sec-inner">
+    <div class="sec-eyebrow">Experience</div>
+    <div class="sec-title">Where I've led,<br>shipped, and delivered.</div>
+    <div class="exp-rows">
+      <div class="exp-row fade">
+        <div class="exp-date">Jan 2026 – Mar 2026</div>
+        <div>
+          <div class="exp-role">Admission Counselor</div>
+          <div class="exp-co">Coding Ninjas · Full-time · Gurugram</div>
+          <div class="exp-desc">Drove high-ticket B2C conversion for premium Data Analytics & Full-Stack engineering bootcamps. Ran <strong>50+ weekly consultations</strong>, translating complex product offerings into clear customer-facing messaging. Built internal enablement materials — pitch decks, one-pagers, consultation guides — adopted by a team of counselors. Documented <strong>100+ student feedback interactions</strong> into structured insight reports, reducing query resolution time by ~30%. Applied product thinking to redesign course recommendations, boosting enrollment conversion by <strong>~20%</strong>.</div>
+          <div class="exp-tags"><span class="exp-tag">User Research</span><span class="exp-tag">Product Messaging</span><span class="exp-tag">CRM</span><span class="exp-tag">Cross-functional</span><span class="exp-tag">Stakeholder Communication</span><span class="exp-tag">Revenue Analysis</span></div>
+        </div>
+      </div>
+      <div class="exp-row fade d1">
+        <div class="exp-date">Mar 2025 – Nov 2025</div>
+        <div>
+          <div class="exp-role">Student Placement Representative</div>
+          <div class="exp-co">CATALYST – Career Services & Development Centre · Internship · Dehradun</div>
+          <div class="exp-desc">Identified a core trust gap between students and the placement cell — students felt unheard, grievances went unaddressed, and engagement was low. Diagnosed the root cause: <strong>no structured feedback channel existed</strong>, so student problems never reached the right people. Designed and implemented a class-wise group system where students could surface issues, and problems that gained majority consensus were escalated and resolved — giving the student body a real voice for the first time. The result: <strong>measurably higher engagement with CATALYST</strong>, with students actively participating rather than passively waiting. Turned a one-directional information pipe into a <strong>two-way feedback loop</strong> — the same instinct that drives good product thinking.</div>
+          <div class="exp-tags"><span class="exp-tag">Problem Discovery</span><span class="exp-tag">Feedback Systems</span><span class="exp-tag">Process Design</span><span class="exp-tag">Stakeholder Management</span><span class="exp-tag">Community Building</span></div>
+        </div>
+      </div>
+      <div class="exp-row fade d2">
+        <div class="exp-date">Jan 2025 – Dec 2025</div>
+        <div>
+          <div class="exp-role">President, College Chapter</div>
+          <div class="exp-co">SPICMACAY – Society for Promotion of Indian Classical Music & Culture · DIT University</div>
+          <div class="exp-desc">Led the college chapter of SPICMACAY — a 47-year-old national movement present across 8,000+ institutions worldwide — with a clear cultural mandate: <strong>counter the drift toward western pop culture by making Indian classical arts visible and aspirational on campus</strong>. Diagnosed the problem honestly: students weren't disinterested in Indian culture — they'd simply never been given a compelling reason to engage with it. Conceptualised and executed a <strong>Bharatnatyam performance program</strong> on campus, bringing one of India's oldest classical dance forms to an audience that had never experienced it live. The event shifted the cultural conversation — students who attended talked about it, and the chapter saw stronger participation in subsequent programs. Led a volunteer team, managed artist coordination, and handled the full event lifecycle from planning to execution. Applied the same first-principles thinking to culture that PMs apply to products: <strong>understand why the current behaviour exists, then design an experience that makes the better option more accessible.</strong></div>
+          <div class="exp-tags"><span class="exp-tag">Cultural Leadership</span><span class="exp-tag">Event Strategy</span><span class="exp-tag">Volunteer Management</span><span class="exp-tag">Community Activation</span><span class="exp-tag">First-principles Thinking</span></div>
+        </div>
+      </div>
+      <div class="exp-row fade d3">
+        <div class="exp-date">Oct 2022 – Feb 2025</div>
+        <div>
+          <div class="exp-role">Sergeant, National Cadet Corps (NCC)</div>
+          <div class="exp-co">NCC – India · 2 years 5 months</div>
+          <div class="exp-desc">Noticed a pattern others had missed: our college's selection rate for NCC camps was declining — and everyone assumed it was a fitness problem. I dug deeper and found the <strong>real root cause</strong>: cadets were preparing only for the physical component, completely ignoring military knowledge, weapons SOP, and theory — which together account for a significant portion of the selection criteria. The system had optimised for the visible metric (physical drills) and neglected the rest. Diagnosed the gap, built a <strong>structured preparation framework</strong> covering all evaluation dimensions — physical fitness, military theory, weapons knowledge, and SOPs — and rolled it out across the batch. The outcome: <strong>selection rates into competitive NCC camps improved markedly</strong>. The lesson that stayed with me: when a system is underperforming, the problem is almost never where everyone is looking.</div>
+          <div class="exp-tags"><span class="exp-tag">Root Cause Analysis</span><span class="exp-tag">Systems Thinking</span><span class="exp-tag">Team Leadership</span><span class="exp-tag">Structured Execution</span><span class="exp-tag">Performance Improvement</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="sec-inner">
+    <div class="sec-eyebrow">Let's Connect</div>
+    <div class="sec-title">Open to PM roles.<br>Available immediately.</div>
+    <div class="contact-layout">
+      <div class="contact-links-list fade">
+        <a href="mailto:kuberchauhanbu12@gmail.com" class="c-link">
+          <div class="c-icon" style="background:rgba(20,52,200,0.18);">✉️</div>
+          <div><div class="c-label">Email</div><div class="c-val">kuberchauhanbu12@gmail.com</div></div>
+        </a>
+        <a href="tel:+919315736510" class="c-link">
+          <div class="c-icon" style="background:rgba(20,52,200,0.18);">📞</div>
+          <div><div class="c-label">Phone</div><div class="c-val">+91 93157 36510</div></div>
+        </a>
+        <a href="https://www.linkedin.com/in/kuber-chauhanbu12" target="_blank" class="c-link">
+          <div class="c-icon" style="background:rgba(10,102,194,0.18);">💼</div>
+          <div><div class="c-label">LinkedIn</div><div class="c-val">linkedin.com/in/kuber-chauhanbu12</div></div>
+        </a>
+        <a href="#" onclick="openResumeModal(event)" class="c-link">
+          <div class="c-icon" style="background:rgba(20,52,200,0.12);">📄</div>
+          <div><div class="c-label">Resume</div><div class="c-val">Request PDF Resume →</div></div>
+        </a>
+      </div>
+      <div class="contact-right fade d1">
+        <div class="contact-right-quote">"The best PMs don't wait for a title to start <span>thinking like one.</span>"</div>
+        <p class="contact-note">I've been documenting my PM thinking publicly for 45 days. Three case studies. Real frameworks. Real problems. If you're looking for someone who shows their thinking — not just talks about it — let's connect.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Kuber Chauhan</span>
+  <span>Gurgaon, India · Open to Relocate</span>
+  <span>Built with intention.</span>
+</footer>
+
+<!-- MODAL 1 — TOP 0.1% NARRATIVE CASE STUDY -->
+<div class="modal-overlay" id="cs1" onclick="closeIfOverlay(event,'cs1')">
+  <div class="modal" style="max-width:900px;">
+    <button class="modal-close" onclick="closeModal('cs1')">✕</button>
+
+    <!-- HERO BANNER -->
+    <div class="modal-hero cs-bg-1" style="padding:60px 60px 52px;">
+      <div class="modal-hero-orb"></div>
+      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);border-radius:100px;padding:5px 14px;margin-bottom:20px;">
+        <span style="width:6px;height:6px;background:#7EB3FF;border-radius:50%;display:inline-block;"></span>
+        <span style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.8);">Case Study 01 · B2B SaaS · Strategic Product Pivot</span>
+      </div>
+      <div class="modal-title" style="font-size:clamp(30px,4vw,48px);margin-bottom:14px;">The Signal in the Noise:<br><em style="font-style:italic;color:#93C5FD;">Engineering Commitment</em></div>
+      <div class="modal-subtitle" style="font-size:16px;margin-bottom:40px;">How I diagnosed why HireBound's 64% response rate still couldn't prevent 30–50% early attrition — and redesigned the entire qualification architecture to fix the right problem.</div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding-top:28px;border-top:1px solid rgba(255,255,255,0.15);">
+        <div><div class="modal-kpi-label">Company Type</div><div class="modal-kpi-val">B2B Hiring SaaS</div></div>
+        <div><div class="modal-kpi-label">Core Problem</div><div class="modal-kpi-val">30–50% early attrition</div></div>
+        <div><div class="modal-kpi-label">Market Opportunity</div><div class="modal-kpi-val">4–5 Lakh roles/month</div></div>
+        <div><div class="modal-kpi-label">Target Outcome</div><div class="modal-kpi-val">25% → 40–45% intent rate</div></div>
+      </div>
+    </div>
+
+    <!-- TL;DR STRIP -->
+    <div style="background:#0E0E0E;padding:20px 60px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+      <span style="font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#1434C8;background:#EBF0FF;padding:4px 10px;border-radius:100px;flex-shrink:0;">TL;DR</span>
+      <span style="font-size:13px;color:#ccc;line-height:1.6;">HireBound had a <strong style="color:#fff;">64% response rate</strong> but 30–50% early attrition. I found the funnel was measuring the wrong thing entirely. I redesigned it with a 3-stage Intent & Fit Qualification Layer that runs <em style="color:#93C5FD;">before</em> skill matching — projecting high-intent pipeline from <strong style="color:#fff;">25% → 40–45%</strong> with a guardrail to protect top-of-funnel volume.</span>
+    </div>
+
+    <div class="modal-body" style="padding:52px 60px 64px;">
+
+      <!-- SECTION 1: THE HOOK -->
+      <div class="m-section">
+        <div class="m-label">The Hook — What Everyone Was Getting Wrong</div>
+        <div class="m-text">
+          <p>When I first looked at HireBound's numbers, everything looked fine. A <strong>~64% top-of-funnel response rate</strong> is genuinely impressive for a hiring platform. Most product teams would call that a win and ship it.</p>
+          <p>But I noticed something that changed my entire framing: the response rate was high, yet clients were churning. Recruiters were complaining. And <strong>30–50% of placed candidates were leaving within 90 days</strong>. The product was technically working — and completely failing at the same time.</p>
+          <p>That's when I asked the question nobody had asked yet: <em>What is a 64% response rate actually measuring?</em></p>
+        </div>
+        <div class="m-quote">"A system can be highly active and completely unreliable at the same time. HireBound had optimised for the wrong signal."</div>
+      </div>
+
+      <!-- SECTION 2: CONTEXT -->
+      <div class="m-section">
+        <div class="m-label">Context — Why This Market Is Uniquely Hard</div>
+        <div class="m-text">
+          <p>India fills <strong>4–5 lakh sales roles every single month</strong>. That's not a niche problem — it's a massive, high-repeat hiring market. And high repeat demand means even a marginal improvement in candidate quality and retention unlocks <strong>compounding business value</strong> for every client.</p>
+          <p>But here's what makes sales hiring brutal: it has some of the <strong>highest early attrition rates across any industry</strong>. 30–50% of candidates leave within 90 days. Not because they couldn't do the job — but because of misaligned expectations, overpromised roles, and candidates who were never genuinely committed to begin with.</p>
+          <p>HireBound's opportunity wasn't to fix a broken product. It was to <strong>pivot the entire value proposition</strong> from "we find you candidates" to "we find you candidates who stay."</p>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:20px 0;">
+          <div style="background:#F5F3EF;border:1px solid #DDD8CF;border-radius:12px;padding:20px;text-align:center;">
+            <div style="font-family:'Playfair Display',serif;font-size:32px;color:#1434C8;line-height:1;">4–5L</div>
+            <div style="font-size:12px;color:#6B6B6B;margin-top:6px;">Sales roles filled monthly in India</div>
+          </div>
+          <div style="background:#F5F3EF;border:1px solid #DDD8CF;border-radius:12px;padding:20px;text-align:center;">
+            <div style="font-family:'Playfair Display',serif;font-size:32px;color:#C84014;line-height:1;">30–50%</div>
+            <div style="font-size:12px;color:#6B6B6B;margin-top:6px;">Early attrition within 90 days</div>
+          </div>
+          <div style="background:#F5F3EF;border:1px solid #DDD8CF;border-radius:12px;padding:20px;text-align:center;">
+            <div style="font-family:'Playfair Display',serif;font-size:32px;color:#0F6E3A;line-height:1;">~64%</div>
+            <div style="font-size:12px;color:#6B6B6B;margin-top:6px;">Top-of-funnel response rate — but low-intent</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 3: THE REAL PROBLEM -->
+      <div class="m-section">
+        <div class="m-label">Diagnosing the Real Problem — Not the Symptom</div>
+        <div class="m-text">
+          <p>Most people looking at this data would say the problem is <em>candidate quality</em>. I didn't think that was right. I believed the problem was upstream — in the system's design itself.</p>
+          <p>I mapped the existing funnel and found something critical: the current architecture goes directly from a <strong>massive candidate pool</strong> → <strong>skill-based qualification</strong> → pipeline. It never asks whether candidates are actively looking, whether they can commit to the job's actual demands, or whether their expectations match reality.</p>
+          <p>The result: <strong>false positives at scale</strong>. Candidates who look qualified on paper, respond because the friction is low, but were never truly committed. The funnel is optimised for speed of matching, not reliability of hiring.</p>
+        </div>
+        <div style="background:#FFF3EE;border:1px solid rgba(200,64,20,0.25);border-radius:14px;padding:24px 28px;margin:20px 0;">
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#C84014;margin-bottom:12px;">The Flawed Funnel — Symptom · Diagnosis · Result</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;">
+            <div><div style="font-size:13px;font-weight:700;color:#0E0E0E;margin-bottom:6px;">Symptom</div><div style="font-size:13px;color:#555;">Candidates are marked as strong matches prematurely.</div></div>
+            <div><div style="font-size:13px;font-weight:700;color:#0E0E0E;margin-bottom:6px;">Diagnosis</div><div style="font-size:13px;color:#555;">Skill-based qualification bypasses expectation alignment entirely.</div></div>
+            <div><div style="font-size:13px;font-weight:700;color:#0E0E0E;margin-bottom:6px;">Result</div><div style="font-size:13px;color:#555;">Optimised for speed of matching, not reliability of hiring.</div></div>
+          </div>
+        </div>
+        <div class="m-quote">"Hiring is not a matching problem. It is a commitment prediction problem."</div>
+      </div>
+
+      <!-- SECTION 4: USER RESEARCH -->
+      <div class="m-section">
+        <div class="m-label">My Approach — Understanding Both Sides of the Marketplace</div>
+        <div class="m-text">
+          <p>Before designing anything, I needed to understand the real pain on both sides. I built a Marketplace Friction Matrix to map the goals, failures, and fears of both users — not just the recruiter, who was the obvious customer.</p>
+        </div>
+        <div style="border:1.5px solid #DDD8CF;border-radius:16px;overflow:hidden;margin:20px 0;">
+          <div style="background:#0E0E0E;padding:14px 24px;display:flex;align-items:center;gap:8px;">
+            <span style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#888;">Marketplace Friction Matrix</span>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 3px 1fr;">
+            <div style="padding:28px;">
+              <div style="font-size:14px;font-weight:700;color:#0E0E0E;margin-bottom:18px;">👩‍💼 Sarah — The Recruiter</div>
+              <div style="display:flex;flex-direction:column;gap:12px;">
+                <div style="display:flex;gap:10px;align-items:flex-start;"><span style="width:20px;height:20px;background:#EBF0FF;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;flex-shrink:0;margin-top:1px;">✓</span><div><div style="font-size:12px;font-weight:700;color:#1434C8;margin-bottom:2px;">Ultimate Goal</div><div style="font-size:13px;color:#444;">Hire reliable candidates who stay beyond 90 days.</div></div></div>
+                <div style="display:flex;gap:10px;align-items:flex-start;"><span style="width:20px;height:20px;background:#FFF3EE;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;flex-shrink:0;margin-top:1px;">✗</span><div><div style="font-size:12px;font-weight:700;color:#C84014;margin-bottom:2px;">Core Frustration</div><div style="font-size:13px;color:#444;">Candidates say yes, don't join, or leave in 30 days.</div></div></div>
+                <div style="display:flex;gap:10px;align-items:flex-start;"><span style="width:20px;height:20px;background:#FEF2F2;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;flex-shrink:0;margin-top:1px;">!</span><div><div style="font-size:12px;font-weight:700;color:#991B1B;margin-bottom:2px;">Deepest Fear</div><div style="font-size:13px;color:#444;">Even after using tools, if hires fail — I'm still responsible.</div></div></div>
+              </div>
+            </div>
+            <div style="background:#DDD8CF;"></div>
+            <div style="padding:28px;">
+              <div style="font-size:14px;font-weight:700;color:#0E0E0E;margin-bottom:18px;">👨‍💼 Manish — The Candidate</div>
+              <div style="display:flex;flex-direction:column;gap:12px;">
+                <div style="display:flex;gap:10px;align-items:flex-start;"><span style="width:20px;height:20px;background:#EBF0FF;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;flex-shrink:0;margin-top:1px;">✓</span><div><div style="font-size:12px;font-weight:700;color:#1434C8;margin-bottom:2px;">Ultimate Goal</div><div style="font-size:13px;color:#444;">Find a real job quickly without wasting time.</div></div></div>
+                <div style="display:flex;gap:10px;align-items:flex-start;"><span style="width:20px;height:20px;background:#FFF3EE;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;flex-shrink:0;margin-top:1px;">✗</span><div><div style="font-size:12px;font-weight:700;color:#C84014;margin-bottom:2px;">Core Frustration</div><div style="font-size:13px;color:#444;">Unclear if opportunities are real. Repetitive, impersonal interactions.</div></div></div>
+                <div style="display:flex;gap:10px;align-items:flex-start;"><span style="width:20px;height:20px;background:#FEF2F2;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;flex-shrink:0;margin-top:1px;">!</span><div><div style="font-size:12px;font-weight:700;color:#991B1B;margin-bottom:2px;">Deepest Fear</div><div style="font-size:13px;color:#444;">Is this worth my time — or just another dead-end?</div></div></div>
+              </div>
+            </div>
+          </div>
+          <div style="background:#0E0E0E;padding:14px 24px;"><div style="font-size:13px;font-weight:600;color:#aaa;text-align:center;">The current system optimises for response volume — creating high activity but low mutual trust on both sides.</div></div>
+        </div>
+        <div class="m-text">
+          <p>This exercise gave me the real insight: <strong>both users are being failed by the same root cause</strong> — a system that treats hiring as a matching game instead of a trust and commitment problem. Sarah needs reliability. Manish needs transparency. Neither is getting it.</p>
+        </div>
+      </div>
+
+      <!-- SECTION 5: THE SOLUTION -->
+      <div class="m-section">
+        <div class="m-label">The Solution — The Intent & Fit Qualification Layer</div>
+        <div class="m-text">
+          <p>My solution was to add a lightweight pre-qualification system that runs <em>before</em> skill matching. The key design constraint I set for myself: it had to be <strong>fast enough that candidates don't drop off</strong>, but thorough enough to genuinely filter for commitment.</p>
+          <p>I designed 3 stages in sequence, each with a specific job to do:</p>
+        </div>
+        <div style="margin:24px 0;">
+          <div style="display:flex;align-items:stretch;gap:0;overflow-x:auto;">
+            <div style="background:#F5F3EF;border:1.5px solid #DDD8CF;border-radius:10px 0 0 10px;padding:20px 18px;flex:1;min-width:140px;text-align:center;border-right:none;">
+              <div style="font-size:9px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#1434C8;margin-bottom:8px;">Stage 1 · 10–15 sec</div>
+              <div style="font-size:14px;font-weight:700;color:#0E0E0E;margin-bottom:8px;">Intent Check</div>
+              <div style="font-size:11px;color:#6B6B6B;line-height:1.6;">Are you actively looking? Specifically in sales? How soon can you join?</div>
+              <div style="background:#EBF0FF;border-radius:6px;padding:5px 10px;margin-top:10px;font-size:10px;font-weight:700;color:#1434C8;">Yields Intent Score</div>
+            </div>
+            <div style="align-self:center;font-size:18px;color:#DDD8CF;padding:0 4px;flex-shrink:0;">→</div>
+            <div style="background:#F5F3EF;border:1.5px solid #DDD8CF;padding:20px 18px;flex:1;min-width:140px;text-align:center;border-right:none;border-left:none;">
+              <div style="font-size:9px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#1434C8;margin-bottom:8px;">Stage 2 · 20–30 sec</div>
+              <div style="font-size:14px;font-weight:700;color:#0E0E0E;margin-bottom:8px;">Fit & Expectation</div>
+              <div style="font-size:11px;color:#6B6B6B;line-height:1.6;">Can you work 6 days/week? Salary range ₹X–₹Y? Open to relocation?</div>
+              <div style="background:#EBF0FF;border-radius:6px;padding:5px 10px;margin-top:10px;font-size:10px;font-weight:700;color:#1434C8;">Yields Fit Score</div>
+            </div>
+            <div style="align-self:center;font-size:18px;color:#DDD8CF;padding:0 4px;flex-shrink:0;">→</div>
+            <div style="background:#F5F3EF;border:1.5px solid #DDD8CF;padding:20px 18px;flex:1;min-width:140px;text-align:center;border-right:none;border-left:none;">
+              <div style="font-size:9px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#6B6B6B;margin-bottom:8px;">Stage 3 · Existing System</div>
+              <div style="font-size:14px;font-weight:700;color:#0E0E0E;margin-bottom:8px;">Skill Qualification</div>
+              <div style="font-size:11px;color:#6B6B6B;line-height:1.6;">Applied only to high-intent, strong-fit candidates. Not to everyone.</div>
+            </div>
+            <div style="align-self:center;font-size:18px;color:#DDD8CF;padding:0 4px;flex-shrink:0;">→</div>
+            <div style="background:#EBF0FF;border:1.5px solid rgba(20,52,200,0.3);border-radius:0 10px 10px 0;padding:20px 18px;flex:1;min-width:120px;text-align:center;border-left:none;">
+              <div style="font-size:9px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#1434C8;margin-bottom:8px;">Output</div>
+              <div style="font-size:14px;font-weight:700;color:#1434C8;margin-bottom:8px;">Committed Hires</div>
+              <div style="font-size:11px;color:#1434C8;opacity:.8;line-height:1.6;">Intent + Fit validated before skills are even assessed.</div>
+            </div>
+          </div>
+        </div>
+        <div class="m-text">
+          <p>But I wanted to go further. I noticed that even this layer had a friction problem: every new interaction would re-ask the same questions. So I designed a second layer — the <strong>Candidate Memory Layer</strong>.</p>
+        </div>
+        <div style="background:#0C0C0C;border-radius:16px;padding:28px;margin:20px 0;">
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#555;margin-bottom:16px;">The Candidate Memory Layer</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+            <div>
+              <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:16px;">
+                <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:10px 14px;font-size:13px;color:#ccc;">Stored Intent</div>
+                <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:10px 14px;font-size:13px;color:#ccc;">Stored Preferences</div>
+                <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:10px 14px;font-size:13px;color:#ccc;">Baseline Expectations</div>
+              </div>
+              <div style="text-align:center;font-size:13px;color:#555;">All feeding into one →</div>
+            </div>
+            <div style="display:flex;flex-direction:column;justify-content:center;gap:14px;">
+              <div style="background:rgba(20,52,200,0.25);border-radius:10px;padding:14px;"><div style="font-size:12px;font-weight:700;color:#93C5FD;margin-bottom:4px;">Dynamic Updating</div><div style="font-size:12px;color:#aaa;">Event-driven architecture — not time-based resets. Updates when behaviour changes.</div></div>
+              <div style="background:rgba(20,52,200,0.25);border-radius:10px;padding:14px;"><div style="font-size:12px;font-weight:700;color:#93C5FD;margin-bottom:4px;">Friction Reduction</div><div style="font-size:12px;color:#aaa;">Reuses stored data in future interactions. Never asks the same question twice.</div></div>
+            </div>
+          </div>
+          <div style="background:rgba(255,255,255,0.05);border-radius:10px;padding:16px;margin-top:20px;text-align:center;">
+            <div style="font-size:14px;color:#fff;font-weight:600;">Shifts the system's core question from:<br><span style="color:#F87171;text-decoration:line-through;">"Can they do the job?"</span> &nbsp;→&nbsp; <span style="color:#86EFAC;">"Will they do the job and stay?"</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 6: TRADE-OFFS -->
+      <div class="m-section">
+        <div class="m-label">What I Deliberately Chose Not To Do — And Why</div>
+        <div class="m-text">
+          <p>This is where I think most case studies go wrong — they only show the solution. Here's what I rejected and the reasoning behind each decision:</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px;margin:16px 0;">
+          <div style="background:#F5F3EF;border:1px solid #DDD8CF;border-radius:12px;padding:18px 22px;display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+            <div><div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#C84014;margin-bottom:6px;">❌ Rejected Option</div><div style="font-size:13px;color:#444;font-weight:600;">Add more skill-assessment questions at top of funnel</div></div>
+            <div><div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#0F6E3A;margin-bottom:6px;">✓ Why I Rejected It</div><div style="font-size:13px;color:#444;">Skills aren't the problem. A more skilled candidate with low intent still leaves. This would increase drop-off and not improve retention.</div></div>
+          </div>
+          <div style="background:#F5F3EF;border:1px solid #DDD8CF;border-radius:12px;padding:18px 22px;display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+            <div><div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#C84014;margin-bottom:6px;">❌ Rejected Option</div><div style="font-size:13px;color:#444;font-weight:600;">Build a long multi-step screening form</div></div>
+            <div><div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#0F6E3A;margin-bottom:6px;">✓ Why I Rejected It</div><div style="font-size:13px;color:#444;">High-friction screening would hurt top-of-funnel. The system's response rate advantage is an asset. I designed stages to take under 45 seconds total.</div></div>
+          </div>
+          <div style="background:#F5F3EF;border:1px solid #DDD8CF;border-radius:12px;padding:18px 22px;display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+            <div><div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#C84014;margin-bottom:6px;">❌ Rejected Option</div><div style="font-size:13px;color:#444;font-weight:600;">Replace the existing skill qualification system</div></div>
+            <div><div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#0F6E3A;margin-bottom:6px;">✓ Why I Rejected It</div><div style="font-size:13px;color:#444;">The existing system works. I designed my layer to precede it, not replace it — minimising engineering risk while maximising impact.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 7: SUCCESS METRICS -->
+      <div class="m-section">
+        <div class="m-label">Success Metrics — How I'd Know If This Actually Worked</div>
+        <div class="m-text">
+          <p>I defined three tiers of metrics — primary, secondary, and guardrail — because a good PM doesn't just measure the thing they optimised for. They also watch for what could go wrong.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:20px 0;">
+          <div style="background:#EBF0FF;border:1px solid rgba(20,52,200,0.2);border-radius:12px;padding:20px;">
+            <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#1434C8;margin-bottom:10px;">Primary Metric</div>
+            <div style="font-family:'Playfair Display',serif;font-size:28px;color:#1434C8;line-height:1;margin-bottom:6px;">25% → 45%</div>
+            <div style="font-size:12px;color:#1434C8;opacity:.8;">High-intent response rate. This is the core proof the system is filtering for commitment, not volume.</div>
+          </div>
+          <div style="background:#ECFDF5;border:1px solid rgba(15,110,58,0.2);border-radius:12px;padding:20px;">
+            <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#0F6E3A;margin-bottom:10px;">Secondary Metrics</div>
+            <div style="font-size:13px;color:#0F6E3A;line-height:1.7;"><strong>↑</strong> 90-day retention rate<br><strong>↑</strong> Interview conversion rate<br><strong>↑</strong> Client repeat rate<br><strong>↓</strong> Time to hire</div>
+          </div>
+          <div style="background:#0E0E0E;border-radius:12px;padding:20px;">
+            <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#555;margin-bottom:10px;">Guardrail Metric</div>
+            <div style="font-size:13px;color:#aaa;line-height:1.7;"><strong style="color:#fff;">Top-of-funnel response rate must NOT drop below 50%.</strong> If the pre-qualification adds friction that kills responses, the cure is worse than the disease.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 8: TAKEAWAY -->
+      <div class="m-section" style="margin-bottom:0;">
+        <div class="m-label">The Takeaway — What This Case Study Shows About How I Think</div>
+        <div style="background:linear-gradient(135deg,#0A1A7A,#1434C8);border-radius:16px;padding:36px 40px;">
+          <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:22px;color:#fff;line-height:1.5;margin-bottom:20px;">"The best hiring systems don't just find candidates — they find candidates who stay."</div>
+          <div style="font-size:14px;color:rgba(255,255,255,0.75);line-height:1.8;">
+            <p>What I'm most proud of in this case study isn't the solution itself — it's the <strong>reframing of the problem</strong>. Everyone looking at HireBound saw a response rate. I saw a retention problem disguised as a volume win.</p>
+            <p style="margin-top:12px;">The skill I'm developing as a PM isn't just designing solutions. It's <strong>knowing which problem is actually worth solving</strong> — and having the discipline to reject the obvious answer when it's the wrong one.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- MODAL 2 — TOP 0.1% NARRATIVE -->
+<div class="modal-overlay" id="cs2" onclick="closeIfOverlay(event,'cs2')">
+  <div class="modal" style="max-width:900px;">
+    <button class="modal-close" onclick="closeModal('cs2')">✕</button>
+    <div class="modal-hero cs-bg-2" style="padding:60px 60px 52px;">
+      <div class="modal-hero-orb"></div>
+      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);border-radius:100px;padding:5px 14px;margin-bottom:20px;"><span style="width:6px;height:6px;background:#6EE7B7;border-radius:50%;display:inline-block;"></span><span style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.8);">Case Study 02 · Consumer App · EdTech · Retention</span></div>
+      <div class="modal-title" style="font-size:clamp(28px,4vw,46px);margin-bottom:14px;">The Guided Choice Strategy:<br><em style="font-style:italic;color:#6EE7B7;">Fixing Duolingo's Habit Death Zone</em></div>
+      <div class="modal-subtitle" style="font-size:16px;margin-bottom:40px;">How I diagnosed why Duolingo's most engaged segment drops from 100% to 15% retention by Day 7 — and designed a choice architecture that repairs the habit loop without breaking the learning system.</div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding-top:28px;border-top:1px solid rgba(255,255,255,0.15);">
+        <div><div class="modal-kpi-label">Product</div><div class="modal-kpi-val">Duolingo (EdTech)</div></div>
+        <div><div class="modal-kpi-label">Core Problem</div><div class="modal-kpi-val">Day 7 Retention Drop</div></div>
+        <div><div class="modal-kpi-label">Target Segment</div><div class="modal-kpi-val">18–24 year-olds</div></div>
+        <div><div class="modal-kpi-label">Target Outcome</div><div class="modal-kpi-val">+20% Day 7 Retention</div></div>
+      </div>
+    </div>
+    <div style="background:#0A2010;padding:20px 60px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;border-bottom:1px solid rgba(110,231,183,0.15);">
+      <span style="font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#0F6E3A;background:#ECFDF5;padding:4px 10px;border-radius:100px;flex-shrink:0;">TL;DR</span>
+      <span style="font-size:13px;color:#9CA3AF;line-height:1.6;">Duolingo's greatest strength — structured learning — was actively causing early churn. I identified the core conflict as an <strong style="color:#fff;">autonomy-structure imbalance</strong>, then designed a <strong style="color:#fff;">Guided Choice Layer</strong> giving users 3–4 session options on each login during Days 1–7. Validated via <strong style="color:#fff;">50/50 A/B test</strong> targeting <strong style="color:#fff;">+20% Day 7 retention</strong> with a guardrail to protect long-term learning quality.</span>
+    </div>
+    <div class="modal-body" style="padding:52px 60px 64px;">
+
+      <div class="m-section">
+        <div class="m-label">The Hook — A Product That Fights Its Own Users</div>
+        <div class="m-text">
+          <p>When I mapped Duolingo's Day 7 retention curve for the 18–24 segment, the pattern was stark. Users arrive with <strong>genuine intent</strong> — they set a language goal, they opened the app, they started. By Day 2 retention is ~40%. By Day 7 it's ~15%.</p>
+          <p>The instinct is to say "users aren't motivated enough." I rejected that entirely. These users were motivated enough to download, set up, and start. The problem had to be inside the product. So I asked the uncomfortable question: <em>What is Duolingo doing during Days 1–7 that is actively making committed users leave?</em></p>
+        </div>
+        <div class="m-quote green">"Our greatest strength — structured learning — is causing our greatest weakness — early churn."</div>
+      </div>
+
+      <div class="m-section">
+        <div class="m-label">Why Day 7 Is the Most Valuable Number in Duolingo's Business</div>
+        <div class="m-text"><p>Day 7 retention is not just a health metric. It is the <strong>absolute prerequisite for LTV</strong> in a freemium model. The chain is: Early Habit (Days 1–7) → Day 7 Retention → Long-term Daily Engagement → Subscription Conversion (5–8%) + Maximised Ad Impressions. Every Day 7 loss is a permanently lost revenue opportunity at Duolingo's scale.</p></div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0;">
+          <div style="background:#F5F3EF;border:1px solid #DDD8CF;border-radius:12px;padding:20px;text-align:center;"><div style="font-family:'Playfair Display',serif;font-size:32px;color:#C84014;line-height:1;">~15%</div><div style="font-size:12px;color:#6B6B6B;margin-top:6px;">Retention remaining by Day 7 in 18–24 segment</div></div>
+          <div style="background:#F5F3EF;border:1px solid #DDD8CF;border-radius:12px;padding:20px;text-align:center;"><div style="font-family:'Playfair Display',serif;font-size:32px;color:#1434C8;line-height:1;">5–8%</div><div style="font-size:12px;color:#6B6B6B;margin-top:6px;">Free-to-paid conversion for retained habit-forming users</div></div>
+          <div style="background:#F5F3EF;border:1px solid #DDD8CF;border-radius:12px;padding:20px;text-align:center;"><div style="font-family:'Playfair Display',serif;font-size:32px;color:#0F6E3A;line-height:1;">10–15m</div><div style="font-size:12px;color:#6B6B6B;margin-top:6px;">Avg daily session — short enough to fix the habit, long enough to matter</div></div>
+        </div>
+      </div>
+
+      <div class="m-section">
+        <div class="m-label">Diagnosing the Habit Death Zone — The System vs. The User</div>
+        <div class="m-text"><p>I built a Diagnostic Matrix mapping what the system does vs. how the user experiences it. This is where the root cause became clear.</p></div>
+        <div style="border:1.5px solid #DDD8CF;border-radius:14px;overflow:hidden;margin:16px 0;">
+          <div style="display:grid;grid-template-columns:1fr 1fr;background:#0E0E0E;padding:12px 24px;"><div style="font-size:12px;font-weight:700;color:#888;letter-spacing:0.06em;text-transform:uppercase;">System Reality</div><div style="font-size:12px;font-weight:700;color:#C84014;letter-spacing:0.06em;text-transform:uppercase;">User Feeling</div></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid #DDD8CF;"><div style="padding:13px 20px;border-right:1px solid #DDD8CF;font-size:13px;color:#444;">Fixed, strict linear learning path.</div><div style="padding:13px 20px;font-size:13px;color:#C84014;">Lack of control and autonomy.</div></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid #DDD8CF;"><div style="padding:13px 20px;border-right:1px solid #DDD8CF;font-size:13px;color:#444;">Highly predictable early lessons.</div><div style="padding:13px 20px;font-size:13px;color:#C84014;">Repetitive and monotonous early experience.</div></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid #DDD8CF;"><div style="padding:13px 20px;border-right:1px solid #DDD8CF;font-size:13px;color:#444;">Competitive elements locked behind progression.</div><div style="padding:13px 20px;font-size:13px;color:#C84014;">Work before play — delayed time to fun.</div></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;"><div style="padding:13px 20px;border-right:1px solid #DDD8CF;font-size:13px;color:#444;">Weak trigger-action-reward cycle.</div><div style="padding:13px 20px;font-size:13px;color:#C84014;">Inconsistent motivation to return.</div></div>
+          <div style="background:#FFF3EE;padding:13px 20px;text-align:center;"><div style="font-size:13px;font-weight:700;color:#C84014;">The system is actively burning out early motivation by enforcing a one-size-fits-all progression sequence.</div></div>
+        </div>
+      </div>
+
+      <div class="m-section">
+        <div class="m-label">The Core Conflict — Autonomy vs. Structure</div>
+        <div class="m-text"><p>Total Chaos (complete autonomy) = high motivation, low educational effectiveness. Rigid Dictation (current state) = high educational effectiveness, high churn. The solution must live exactly in the middle: <strong>Guided Choice</strong> — freedom within boundaries. The design challenge was injecting agency without sacrificing the learning outcomes that make Duolingo actually work.</p></div>
+        <div style="background:#F5F3EF;border:1.5px solid #DDD8CF;border-radius:14px;padding:28px;margin:16px 0;">
+          <div style="display:flex;align-items:center;gap:0;position:relative;flex-wrap:wrap;">
+            <div style="text-align:center;flex:1;min-width:120px;padding:16px 12px;"><div style="width:14px;height:14px;background:#1434C8;border-radius:50%;margin:0 auto 10px;"></div><div style="font-size:13px;font-weight:700;color:#0E0E0E;">Total Chaos</div><div style="font-size:11px;color:#6B6B6B;margin-top:4px;">High motivation, low learning effectiveness</div></div>
+            <div style="text-align:center;flex:1.5;min-width:150px;padding:16px 12px;background:#EBF0FF;border-radius:10px;border:2px solid #1434C8;"><div style="width:14px;height:14px;background:#0F6E3A;border-radius:50%;margin:0 auto 10px;"></div><div style="font-size:13px;font-weight:700;color:#1434C8;">★ Guided Choice</div><div style="font-size:11px;color:#1434C8;margin-top:4px;font-weight:600;">Freedom within boundaries — the optimal synthesis</div></div>
+            <div style="text-align:center;flex:1;min-width:120px;padding:16px 12px;"><div style="width:14px;height:14px;background:#C84014;border-radius:50%;margin:0 auto 10px;"></div><div style="font-size:13px;font-weight:700;color:#0E0E0E;">Rigid Dictation</div><div style="font-size:11px;color:#6B6B6B;margin-top:4px;">Current state. High effectiveness, high churn.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="m-section">
+        <div class="m-label">The Solution — The Guided Choice Layer</div>
+        <div class="m-text"><p>On each login during Days 1–7: instead of a forced lesson, the user sees a <strong>Choice Screen capped at 3–4 options</strong>. Every path converges to the same destination — XP earned and streak maintained — but the user chose their path. That single act of choice transforms obligation into commitment.</p></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0;">
+          <div style="background:#F5F3EF;border:1.5px solid #DDD8CF;border-radius:12px;padding:20px;"><div style="font-size:16px;margin-bottom:8px;">⚡</div><div style="font-size:14px;font-weight:700;color:#0E0E0E;margin-bottom:6px;">Quick Challenge</div><div style="font-size:13px;color:#555;line-height:1.65;">High-energy bursts + competitive elements. Available from Day 1. Eliminates the "work before play" problem immediately — game fun no longer locked behind 5 lessons.</div></div>
+          <div style="background:#F5F3EF;border:1.5px solid #DDD8CF;border-radius:12px;padding:20px;"><div style="font-size:16px;margin-bottom:8px;">📚</div><div style="font-size:14px;font-weight:700;color:#0E0E0E;margin-bottom:6px;">Practice Basics</div><div style="font-size:13px;color:#555;line-height:1.65;">The core structured programme — same content, but now chosen voluntarily. Transforms a forced routine into a deliberate daily commitment.</div></div>
+          <div style="background:#F5F3EF;border:1.5px solid #DDD8CF;border-radius:12px;padding:20px;"><div style="font-size:16px;margin-bottom:8px;">🎧</div><div style="font-size:14px;font-weight:700;color:#0E0E0E;margin-bottom:6px;">Listening Mode</div><div style="font-size:13px;color:#555;line-height:1.65;">Reduces visual cognitive load. Built for commuting. Keeps the streak alive on low-energy days without forcing a full session or breaking the habit chain.</div></div>
+          <div style="background:#F5F3EF;border:1.5px solid #DDD8CF;border-radius:12px;padding:20px;"><div style="font-size:16px;margin-bottom:8px;">🛡️</div><div style="font-size:14px;font-weight:700;color:#0E0E0E;margin-bottom:6px;">Streak Saver</div><div style="font-size:13px;color:#555;line-height:1.65;">Low-friction safety net. <strong>Frequency-capped</strong> and difficulty-dynamically-increasing — prevents users from relying on it daily, which would undermine learning quality.</div></div>
+        </div>
+      </div>
+
+      <div class="m-section">
+        <div class="m-label">What I Deliberately Did Not Do — And Why</div>
+        <div style="display:flex;flex-direction:column;gap:10px;margin:16px 0;">
+          <div style="background:#F5F3EF;border:1px solid #DDD8CF;border-radius:12px;padding:16px 20px;display:grid;grid-template-columns:1fr 1fr;gap:16px;"><div><div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#C84014;margin-bottom:5px;">❌ Rejected</div><div style="font-size:13px;color:#444;font-weight:600;">Give users unlimited freedom over content</div></div><div><div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#0F6E3A;margin-bottom:5px;">✓ Why Not</div><div style="font-size:13px;color:#444;">Complete autonomy destroys educational outcomes. Users would skip hard lessons forever. The constraint is the product's core value.</div></div></div>
+          <div style="background:#F5F3EF;border:1px solid #DDD8CF;border-radius:12px;padding:16px 20px;display:grid;grid-template-columns:1fr 1fr;gap:16px;"><div><div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#C84014;margin-bottom:5px;">❌ Rejected</div><div style="font-size:13px;color:#444;font-weight:600;">Apply Guided Choice beyond Day 7</div></div><div><div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#0F6E3A;margin-bottom:5px;">✓ Why Not</div><div style="font-size:13px;color:#444;">Day 7 is the habit formation window. Once users are retained, structured progression resumes. Extending choice indefinitely degrades long-term learning quality.</div></div></div>
+          <div style="background:#F5F3EF;border:1px solid #DDD8CF;border-radius:12px;padding:16px 20px;display:grid;grid-template-columns:1fr 1fr;gap:16px;"><div><div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#C84014;margin-bottom:5px;">❌ Rejected</div><div style="font-size:13px;color:#444;font-weight:600;">More than 4 options per Choice Screen</div></div><div><div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#0F6E3A;margin-bottom:5px;">✓ Why Not</div><div style="font-size:13px;color:#444;">Decision fatigue. The paradox of choice means more options = less action = kills the goal entirely. Hard cap is a design feature, not a limitation.</div></div></div>
+        </div>
+      </div>
+
+      <div class="m-section">
+        <div class="m-label">Experiment Design & Three-Tier Metrics</div>
+        <div class="m-text"><p><strong>50/50 A/B split.</strong> Group A: current linear experience. Group B: choice-based experience. Duration: 2–4 weeks. Constraint: leverage existing gamification infrastructure only — no aggressive paid conversion pushes during the test window.</p></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:20px 0;">
+          <div style="background:#ECFDF5;border:1px solid rgba(15,110,58,0.2);border-radius:12px;padding:20px;"><div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#0F6E3A;margin-bottom:10px;">Primary</div><div style="font-family:'Playfair Display',serif;font-size:28px;color:#0F6E3A;line-height:1;margin-bottom:6px;">+20%</div><div style="font-size:12px;color:#0F6E3A;opacity:.8;">Day 7 Retention — the single most critical number.</div></div>
+          <div style="background:#F5F3EF;border:1px solid #DDD8CF;border-radius:12px;padding:20px;"><div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#444;margin-bottom:10px;">Secondary</div><div style="font-size:13px;color:#444;line-height:1.8;"><strong>↑</strong> Session completion rate<br><strong>↑</strong> Streak continuation rate<br><strong>↑</strong> Average session time<br><strong>↑</strong> DAU to MAU ratio</div></div>
+          <div style="background:#0E0E0E;border-radius:12px;padding:20px;"><div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#555;margin-bottom:10px;">Guardrail</div><div style="font-size:13px;color:#aaa;line-height:1.7;"><strong style="color:#fff;">Core learning progression must not decline.</strong> If Streak Saver becomes the dominant choice, retention is up but the product fails. Monitor Streak Saver usage rate carefully.</div></div>
+        </div>
+      </div>
+
+      <div class="m-section" style="margin-bottom:0;">
+        <div class="m-label">The Takeaway</div>
+        <div style="background:linear-gradient(135deg,#0A3D20,#0F6E3A);border-radius:16px;padding:36px 40px;">
+          <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:22px;color:#fff;line-height:1.5;margin-bottom:20px;">"By blending structured progression with perceived autonomy, we transform a fleeting curiosity into a permanent habit."</div>
+          <div style="font-size:14px;color:rgba(255,255,255,0.75);line-height:1.8;">
+            <p>What I'm most proud of isn't designing four mode options. It's identifying <strong style="color:#fff;">exactly where in the user journey agency needed to be injected</strong> — the daily login moment — and understanding that the architecture had to feel free while still converging on the same destination.</p>
+            <p style="margin-top:12px;">The guardrail metric was actually the hardest to design. It's easy to improve retention by making everything easier. The challenge was improving retention <strong style="color:#fff;">without destroying what makes Duolingo actually work.</strong></p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- MODAL 3 — TOP 0.1% NARRATIVE -->
+<div class="modal-overlay" id="cs3" onclick="closeIfOverlay(event,'cs3')">
+  <div class="modal" style="max-width:900px;">
+    <button class="modal-close" onclick="closeModal('cs3')">✕</button>
+    <div class="modal-hero cs-bg-3" style="padding:60px 60px 52px;">
+      <div class="modal-hero-orb"></div>
+      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);border-radius:100px;padding:5px 14px;margin-bottom:20px;"><span style="width:6px;height:6px;background:#FCA5A5;border-radius:50%;display:inline-block;"></span><span style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.8);">Case Study 03 · Two-sided Marketplace · Mobility</span></div>
+      <div class="modal-title" style="font-size:clamp(28px,4vw,46px);margin-bottom:14px;">Optimising Uber Night Service:<br><em style="font-style:italic;color:#FCA5A5;">Saving 39,000 Rides Every Night</em></div>
+      <div class="modal-subtitle" style="font-size:16px;margin-bottom:40px;">How I found that Uber's night cancellation crisis wasn't a driver problem or a rider problem — it was an information asymmetry problem affecting both sides simultaneously — and built a 2-pillar framework to fix it.</div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding-top:28px;border-top:1px solid rgba(255,255,255,0.15);">
+        <div><div class="modal-kpi-label">Focus Window</div><div class="modal-kpi-val">18:00 – 05:00</div></div>
+        <div><div class="modal-kpi-label">Baseline</div><div class="modal-kpi-val">25% cancellation rate</div></div>
+        <div><div class="modal-kpi-label">Target</div><div class="modal-kpi-val">17.5% in 6 months</div></div>
+        <div><div class="modal-kpi-label">Rides Recovered</div><div class="modal-kpi-val">39,000 per night</div></div>
+      </div>
+    </div>
+    <div style="background:#2D0A00;padding:20px 60px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;border-bottom:1px solid rgba(252,165,165,0.15);">
+      <span style="font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#C84014;background:#FFF3EE;padding:4px 10px;border-radius:100px;flex-shrink:0;">TL;DR</span>
+      <span style="font-size:13px;color:#9CA3AF;line-height:1.6;">Uber loses <strong style="color:#fff;">130,000 rides every night</strong> in India to cancellations. The root cause wasn't driver behaviour — it was <strong style="color:#fff;">information asymmetry on both sides</strong>. My 2-pillar framework closes the driver blind spot (supply) and the rider blind spot (demand), projecting <strong style="color:#fff;">39,000 recovered rides/night</strong> — a 30% reduction in 6 months.</span>
+    </div>
+    <div class="modal-body" style="padding:52px 60px 64px;">
+
+      <div class="m-section">
+        <div class="m-label">The Hook — Why Cancellations Are Worse Than They Look</div>
+        <div class="m-text">
+          <p>A 25% night cancellation rate sounds like an operational problem you fix with a policy change. When I mapped the full system, I realised it was far more structural. Night cancellations don't just lose one transaction — they trigger a <strong>negative feedback doom loop</strong> that damages the entire marketplace.</p>
+          <p>Cancelled ride → Driver wasted fuel and time on an unfulfilled pickup → Rider waits longer, grows anxious → Rider switches to a competitor app → Platform loses a user → Revenue drops → Fewer drivers incentivised to work nights → More cancellations next night. <strong>Every cancellation makes the next one more likely.</strong></p>
+        </div>
+        <div style="background:#0E0E0E;border-radius:14px;padding:28px;margin:20px 0;">
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#555;margin-bottom:16px;text-align:center;">Sizing the Opportunity</div>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;text-align:center;">
+            <div><div style="font-family:'Playfair Display',serif;font-size:26px;color:#93C5FD;line-height:1;">1.3M</div><div style="font-size:11px;color:#666;margin-top:4px;">Total daily rides in India</div></div>
+            <div><div style="font-family:'Playfair Display',serif;font-size:26px;color:#93C5FD;line-height:1;">520K</div><div style="font-size:11px;color:#666;margin-top:4px;">Night rides (40% of total)</div></div>
+            <div><div style="font-family:'Playfair Display',serif;font-size:26px;color:#F87171;line-height:1;">130K</div><div style="font-size:11px;color:#666;margin-top:4px;">Night cancellations daily</div></div>
+            <div><div style="font-family:'Playfair Display',serif;font-size:26px;color:#86EFAC;line-height:1;">39K</div><div style="font-size:11px;color:#666;margin-top:4px;"><strong style="color:#fff;">Rides to recover per night</strong></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="m-section">
+        <div class="m-label">My Approach — Mapping Both Sides Before Forming Any Hypothesis</div>
+        <div class="m-text"><p>The most dangerous move in a two-sided marketplace problem is blaming one side too early. I forced myself to deeply understand both before forming any solution hypothesis.</p></div>
+        <div style="border:1.5px solid #DDD8CF;border-radius:14px;overflow:hidden;margin:16px 0;">
+          <div style="display:grid;grid-template-columns:1fr 3px 1fr;">
+            <div style="padding:24px;">
+              <div style="display:inline-block;background:#FFF3EE;border-top:3px solid #C84014;padding:8px 14px;border-radius:0 0 8px 8px;font-size:12px;font-weight:700;color:#C84014;margin-bottom:16px;">Demand Side — Riders</div>
+              <div style="display:flex;flex-direction:column;gap:10px;">
+                <div style="padding:12px;background:#F5F3EF;border-radius:8px;"><div style="font-size:11px;font-weight:700;color:#C84014;margin-bottom:3px;">Age 18–30</div><div style="font-size:12px;color:#555;">Price-sensitive, actively compares apps. Highly prone to switching if delayed even slightly at night.</div></div>
+                <div style="padding:12px;background:#F5F3EF;border-radius:8px;"><div style="font-size:11px;font-weight:700;color:#C84014;margin-bottom:3px;">Age 31–60</div><div style="font-size:12px;color:#555;">Values reliability above all. Less likely to switch — but once trust breaks at night, they may never return.</div></div>
+                <div style="padding:12px;background:#EBF0FF;border-radius:8px;"><div style="font-size:11px;font-weight:700;color:#1434C8;margin-bottom:3px;">Core Need</div><div style="font-size:12px;color:#444;">Fast confirmation, transparency, safety, and reliable pickup when they're most vulnerable.</div></div>
+              </div>
+            </div>
+            <div style="background:#DDD8CF;"></div>
+            <div style="padding:24px;">
+              <div style="display:inline-block;background:#EBF0FF;border-top:3px solid #1434C8;padding:8px 14px;border-radius:0 0 8px 8px;font-size:12px;font-weight:700;color:#1434C8;margin-bottom:16px;">Supply Side — Drivers</div>
+              <div style="display:flex;flex-direction:column;gap:10px;">
+                <div style="padding:12px;background:#F5F3EF;border-radius:8px;"><div style="font-size:11px;font-weight:700;color:#1434C8;margin-bottom:3px;">New (0–2 years)</div><div style="font-size:12px;color:#555;">Building ratings. Incentive-motivated. Generally accepts most rides to establish reputation.</div></div>
+                <div style="padding:12px;background:#F5F3EF;border-radius:8px;"><div style="font-size:11px;font-weight:700;color:#1434C8;margin-bottom:3px;">Experienced (3–5 years)</div><div style="font-size:12px;color:#555;">Highly selective. Ruthlessly avoids uncertainty. Prioritises familiar, profitable routes only.</div></div>
+                <div style="padding:12px;background:#EBF0FF;border-radius:8px;"><div style="font-size:11px;font-weight:700;color:#1434C8;margin-bottom:3px;">Core Need</div><div style="font-size:12px;color:#444;">Profitable rides, predictable routes, safety, and clear earnings visibility before committing.</div></div>
+              </div>
+            </div>
+          </div>
+          <div style="background:#0E0E0E;padding:14px 24px;"><div style="font-size:13px;font-weight:600;color:#aaa;text-align:center;"><strong style="color:#fff;">Strategic conclusion:</strong> Drivers hold ultimate veto power — they accept, ignore, or cancel every ride. Supply-side confidence must be the primary focus.</div></div>
+        </div>
+      </div>
+
+      <div class="m-section">
+        <div class="m-label">Root Cause — Information Asymmetry on Both Sides</div>
+        <div class="m-text"><p>After mapping both sides, the real pattern became visible. Neither side was behaving irrationally. Both were making <strong>perfectly rational decisions based on incomplete information</strong>. The cancellations weren't a motivation problem. They were an information problem.</p></div>
+        <div class="m-quote orange">"Most cancellations occur because neither side has the full picture. Uncertainty breeds cancellations."</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0;">
+          <div style="background:#EBF0FF;border:1.5px solid rgba(20,52,200,0.25);border-radius:12px;padding:20px;"><div style="font-size:13px;font-weight:700;color:#1434C8;margin-bottom:12px;">🚗 Driver Blind Spots (cause driver cancellations)</div><div style="display:flex;flex-direction:column;gap:8px;"><div style="font-size:13px;color:#444;display:flex;gap:8px;"><span style="color:#C84014;flex-shrink:0;">→</span>Exact drop location and destination before accepting</div><div style="font-size:13px;color:#444;display:flex;gap:8px;"><span style="color:#C84014;flex-shrink:0;">→</span>Route convenience and live traffic conditions</div><div style="font-size:13px;color:#444;display:flex;gap:8px;"><span style="color:#C84014;flex-shrink:0;">→</span>Immediate trip profitability per kilometre</div></div></div>
+          <div style="background:#FFF3EE;border:1.5px solid rgba(200,64,20,0.25);border-radius:12px;padding:20px;"><div style="font-size:13px;font-weight:700;color:#C84014;margin-bottom:12px;">🙋 Rider Blind Spots (cause rider abandonment)</div><div style="display:flex;flex-direction:column;gap:8px;"><div style="font-size:13px;color:#444;display:flex;gap:8px;"><span style="color:#C84014;flex-shrink:0;">→</span>Realistic expected wait time for this specific booking</div><div style="font-size:13px;color:#444;display:flex;gap:8px;"><span style="color:#C84014;flex-shrink:0;">→</span>True ride confirmation status in real-time</div><div style="font-size:13px;color:#444;display:flex;gap:8px;"><span style="color:#C84014;flex-shrink:0;">→</span>Actual driver commitment to the pickup</div></div></div>
+        </div>
+      </div>
+
+      <div class="m-section">
+        <div class="m-label">The 2-Pillar Solution — Closing Both Blind Spots Simultaneously</div>
+        <div class="m-text"><p>I designed two parallel pillars. They work together: Pillar 1 removes driver uncertainty (supply). Pillar 2 removes rider anxiety (demand). Neither alone is sufficient.</p></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0;">
+          <div style="background:#EBF0FF;border:1.5px solid rgba(20,52,200,0.25);border-radius:14px;padding:24px;">
+            <div style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#1434C8;margin-bottom:16px;">🔵 Pillar 1 — Empowering Supply (Drivers)</div>
+            <div style="display:flex;flex-direction:column;gap:12px;">
+              <div style="background:#fff;border-radius:10px;padding:15px;"><div style="font-size:13px;font-weight:700;color:#0E0E0E;margin-bottom:5px;">A: Directional Drop-offs</div><div style="font-size:12px;color:#555;line-height:1.65;">Show direction + distance range (e.g. "Northwest, 8–12km") before acceptance — not the exact address. Cures route anxiety without compromising rider privacy.</div></div>
+              <div style="background:#fff;border-radius:10px;padding:15px;"><div style="font-size:13px;font-weight:700;color:#0E0E0E;margin-bottom:5px;">B: Night Surge Incentives</div><div style="font-size:12px;color:#555;line-height:1.65;">Targeted bonus payouts during 18:00–05:00. Compensates for lower volume and higher perceived risk — fundamentally shifts driver motivation to accept night requests.</div></div>
+            </div>
+          </div>
+          <div style="background:#FFF3EE;border:1.5px solid rgba(200,64,20,0.25);border-radius:14px;padding:24px;">
+            <div style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#C84014;margin-bottom:16px;">🟠 Pillar 2 — Reassuring Demand (Riders)</div>
+            <div style="display:flex;flex-direction:column;gap:12px;">
+              <div style="background:#fff;border-radius:10px;padding:15px;"><div style="font-size:13px;font-weight:700;color:#0E0E0E;margin-bottom:5px;">C: Accurate Wait Timers</div><div style="font-size:12px;color:#555;">Real-time, accurate arrival clocks proactively reduce rider anxiety and prevent app-switching before it happens.</div></div>
+              <div style="background:#fff;border-radius:10px;padding:15px;"><div style="font-size:13px;font-weight:700;color:#0E0E0E;margin-bottom:5px;">D: Smart Reassignment</div><div style="font-size:12px;color:#555;">If driver rejects, system instantly triggers background re-routing. The friction is masked from the rider — they never know a rejection happened.</div></div>
+              <div style="background:#fff;border-radius:10px;padding:15px;"><div style="font-size:13px;font-weight:700;color:#0E0E0E;margin-bottom:5px;">E: Booking Transparency</div><div style="font-size:12px;color:#555;">Clear UI states: Searching → Accepted → Arriving. Keeps the rider anchored to the platform and builds confidence in the process at night.</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="m-section">
+        <div class="m-label">What I Chose Not To Do — The Hard Trade-offs</div>
+        <div style="display:flex;flex-direction:column;gap:10px;margin:16px 0;">
+          <div style="background:#F5F3EF;border:1px solid #DDD8CF;border-radius:12px;padding:16px 20px;display:grid;grid-template-columns:1fr 1fr;gap:16px;"><div><div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#C84014;margin-bottom:5px;">❌ Rejected</div><div style="font-size:13px;color:#444;font-weight:600;">Show full destination upfront to all drivers</div></div><div><div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#0F6E3A;margin-bottom:5px;">✓ Why Not</div><div style="font-size:13px;color:#444;">Experienced drivers would cherry-pick only long, high-value routes — leaving short-trip riders stranded and reducing overall marketplace efficiency.</div></div></div>
+          <div style="background:#F5F3EF;border:1px solid #DDD8CF;border-radius:12px;padding:16px 20px;display:grid;grid-template-columns:1fr 1fr;gap:16px;"><div><div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#C84014;margin-bottom:5px;">❌ Rejected</div><div style="font-size:13px;color:#444;font-weight:600;">Penalise drivers financially for cancellations</div></div><div><div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#0F6E3A;margin-bottom:5px;">✓ Why Not</div><div style="font-size:13px;color:#444;">Punitive measures reduce night driver supply, making the original problem worse. Drivers cancel because of uncertainty, not laziness. Fix the uncertainty.</div></div></div>
+          <div style="background:#F5F3EF;border:1px solid #DDD8CF;border-radius:12px;padding:16px 20px;display:grid;grid-template-columns:1fr 1fr;gap:16px;"><div><div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#C84014;margin-bottom:5px;">❌ Rejected</div><div style="font-size:13px;color:#444;font-weight:600;">Focus exclusively on financial incentives</div></div><div><div style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#0F6E3A;margin-bottom:5px;">✓ Why Not</div><div style="font-size:13px;color:#444;">Surge pricing alone doesn't fix route anxiety. A driver who doesn't know where they're going cancels even with a bonus. Both pillars must work in parallel.</div></div></div>
+        </div>
+      </div>
+
+      <div class="m-section">
+        <div class="m-label">Three-Tier Success Metrics</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:16px 0;">
+          <div style="background:#EBF0FF;border:1px solid rgba(20,52,200,0.2);border-radius:12px;padding:20px;"><div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#1434C8;margin-bottom:10px;">Primary</div><div style="font-family:'Playfair Display',serif;font-size:26px;color:#1434C8;line-height:1;margin-bottom:6px;">25%→17.5%</div><div style="font-size:12px;color:#1434C8;opacity:.8;">Night Cancellation Rate — the single headline number.</div></div>
+          <div style="background:#F5F3EF;border:1px solid #DDD8CF;border-radius:12px;padding:20px;"><div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#444;margin-bottom:10px;">Secondary</div><div style="font-size:13px;color:#444;line-height:1.8;"><strong>↑</strong> Driver acceptance rate<br><strong>↑</strong> Ride completion rate<br><strong>↑</strong> Night active users<br><strong>↑</strong> Revenue per night hour</div></div>
+          <div style="background:#0E0E0E;border-radius:12px;padding:20px;"><div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#555;margin-bottom:10px;">Guardrail</div><div style="font-size:13px;color:#aaa;line-height:1.7;"><strong style="color:#fff;">Incentive cost must not exceed revenue recovered.</strong> Monitor cost-per-recovered-ride against incremental revenue. If surge costs more than it saves, the economics fail.</div></div>
+        </div>
+      </div>
+
+      <div class="m-section" style="margin-bottom:0;">
+        <div class="m-label">The Takeaway</div>
+        <div style="background:linear-gradient(135deg,#5C1A00,#C84014);border-radius:16px;padding:36px 40px;">
+          <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:22px;color:#fff;line-height:1.5;margin-bottom:20px;">"The best marketplace solutions don't pick sides. They give each side exactly the information they need to make the right decision."</div>
+          <div style="font-size:14px;color:rgba(255,255,255,0.75);line-height:1.8;">
+            <p>The most important decision in this case study was <strong style="color:#fff;">refusing to pick a side</strong>. Every PM's instinct when seeing a cancellation problem is to focus on drivers or riders. The insight — that both sides were rational actors constrained by missing information — is what made a real solution possible.</p>
+            <p style="margin-top:12px;">The guardrail metric — monitoring incentive cost against recovered revenue — is what separates a product decision from a financial disaster. Good product thinking always includes the question: "What could make this go badly even if it seems to work?"</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- RESUME REQUEST MODAL -->
+<div class="modal-overlay" id="resume-modal" onclick="closeResumeIfOverlay(event)" style="z-index:600;">
+  <div class="modal" style="max-width:520px;border-radius:20px;overflow:hidden;">
+    <button class="modal-close" onclick="closeResumeModal()" style="background:rgba(0,0,0,0.15);color:#333;">✕</button>
+    <div style="background:var(--ink);padding:40px 44px 32px;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#555;margin-bottom:12px;">Resume Request</div>
+      <div style="font-family:'Playfair Display',serif;font-size:26px;color:#fff;line-height:1.2;margin-bottom:10px;">I'll send it to you<br><em style="color:#4B78FF;font-style:italic;">within 1 hour.</em></div>
+      <div style="font-size:13px;color:#666;line-height:1.6;">Just leave your details below and I'll personally send my resume to your contact.</div>
+    </div>
+    <div style="padding:32px 44px 40px;background:var(--cream);">
+      <div id="resume-form-area">
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div>
+            <label style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid);display:block;margin-bottom:7px;">Your Name *</label>
+            <input id="rf-name" type="text" placeholder="e.g. Priya Sharma" style="width:100%;padding:12px 16px;border:1.5px solid var(--border);border-radius:10px;font-family:'Syne',sans-serif;font-size:14px;color:var(--ink);background:#fff;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='var(--blue)'" onblur="this.style.borderColor='var(--border)'">
+          </div>
+          <div>
+            <label style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid);display:block;margin-bottom:7px;">Company Name *</label>
+            <input id="rf-company" type="text" placeholder="e.g. Razorpay" style="width:100%;padding:12px 16px;border:1.5px solid var(--border);border-radius:10px;font-family:'Syne',sans-serif;font-size:14px;color:var(--ink);background:#fff;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='var(--blue)'" onblur="this.style.borderColor='var(--border)'">
+          </div>
+          <div>
+            <label style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid);display:block;margin-bottom:7px;">Your Phone or Email *</label>
+            <input id="rf-contact" type="text" placeholder="e.g. 9876543210 or hr@company.com" style="width:100%;padding:12px 16px;border:1.5px solid var(--border);border-radius:10px;font-family:'Syne',sans-serif;font-size:14px;color:var(--ink);background:#fff;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='var(--blue)'" onblur="this.style.borderColor='var(--border)'">
+          </div>
+          <div id="rf-error" style="display:none;background:#FFF3EE;border:1px solid rgba(200,64,20,0.3);border-radius:8px;padding:10px 14px;font-size:13px;color:#C84014;"></div>
+          <button onclick="submitResumeRequest()" id="rf-btn" style="width:100%;padding:14px;background:var(--ink);color:#fff;border:none;border-radius:10px;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;transition:background .2s;">Send Request →</button>
+          <div style="font-size:12px;color:var(--mid);text-align:center;line-height:1.6;">I'll respond within 1 hour with my resume attached.</div>
+        </div>
+      </div>
+      <div id="resume-success" style="display:none;text-align:center;padding:16px 0;">
+        <div style="font-size:40px;margin-bottom:16px;">✅</div>
+        <div style="font-family:'Playfair Display',serif;font-size:22px;color:var(--ink);margin-bottom:10px;">Request received!</div>
+        <div style="font-size:14px;color:var(--mid);line-height:1.7;">I'll send my resume to your contact within 1 hour. Looking forward to connecting.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+(function(){ emailjs.init("user_placeholder"); })();
+
+function openResumeModal(e) {
+  e.preventDefault();
+  document.getElementById('resume-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeResumeModal() {
+  document.getElementById('resume-modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function closeResumeIfOverlay(e) {
+  if (e.target === document.getElementById('resume-modal')) closeResumeModal();
+}
+
+function submitResumeRequest() {
+  var name = document.getElementById('rf-name').value.trim();
+  var company = document.getElementById('rf-company').value.trim();
+  var contact = document.getElementById('rf-contact').value.trim();
+  var errEl = document.getElementById('rf-error');
+  var btn = document.getElementById('rf-btn');
+
+  errEl.style.display = 'none';
+  if (!name || !company || !contact) {
+    errEl.textContent = 'Please fill in all fields before submitting.';
+    errEl.style.display = 'block';
+    return;
+  }
+
+  btn.textContent = 'Sending...';
+  btn.style.opacity = '0.7';
+  btn.disabled = true;
+
+  // Send via EmailJS
+  emailjs.send('service_placeholder', 'template_placeholder', {
+    from_name: name,
+    company: company,
+    contact: contact,
+    to_email: 'kuberchauhanbu12@gmail.com'
+  }).then(function() {
+    document.getElementById('resume-form-area').style.display = 'none';
+    document.getElementById('resume-success').style.display = 'block';
+  }, function() {
+    // Fallback: open mailto if EmailJS fails
+    var subject = encodeURIComponent('Resume Request from ' + name + ' - ' + company);
+    var body = encodeURIComponent('Name: ' + name + '\nCompany: ' + company + '\nContact: ' + contact);
+    window.open('mailto:kuberchauhanbu12@gmail.com?subject=' + subject + '&body=' + body);
+    document.getElementById('resume-form-area').style.display = 'none';
+    document.getElementById('resume-success').style.display = 'block';
+    btn.textContent = 'Send Request →';
+    btn.style.opacity = '1';
+    btn.disabled = false;
+  });
+}
+</script>
+
+<script>
+// Modal functions — global, loaded before any onclick fires
+function openModal(id) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  el.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  el.scrollTop = 0;
+}
+function closeModal(id) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  el.classList.remove('open');
+  document.body.style.overflow = '';
+}
+function closeIfOverlay(e, id) {
+  if (e.target === document.getElementById(id)) closeModal(id);
+}
+
+// Tag inline-grid elements for mobile CSS overrides
+(function() {
+  document.querySelectorAll('.modal [style]').forEach(function(el) {
+    var s = el.getAttribute('style') || '';
+    if (/grid-template-columns\s*:\s*repeat\(4/.test(s)) el.classList.add('mg-4col');
+    if (/grid-template-columns\s*:\s*(repeat\(3|1fr 1fr 1fr)/.test(s)) el.classList.add('mg-3col');
+    if (/grid-template-columns\s*:\s*1fr 3px 1fr/.test(s)) el.classList.add('mg-split');
+    if (/grid-template-columns\s*:\s*1fr 1fr/.test(s) && /gap\s*:\s*(16|20)px/.test(s)) el.classList.add('mg-2col');
+    if (/background\s*:\s*#DDD8CF/.test(s) && el.children.length === 0) el.classList.add('mg-divider');
+  });
+})();
+
+// Close on Escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal-overlay.open').forEach(function(m) {
+      m.classList.remove('open');
+    });
+    document.body.style.overflow = '';
+  }
+});
+
+// Fade animations — content visible by default, animated only after JS loads
+document.body.classList.add('js-loaded');
+
+var io = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.06, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.fade').forEach(function(el) { io.observe(el); });
+
+// Hero visible immediately
+setTimeout(function() {
+  document.querySelectorAll('#hero .fade').forEach(function(el) { e
