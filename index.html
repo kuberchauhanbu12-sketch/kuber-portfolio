@@ -663,60 +663,123 @@ footer { background: #080808; padding: 20px 56px; display: flex; align-items: ce
         <div><div class="modal-kpi-label">Market</div><div class="modal-kpi-val">4–5 Lakh roles/month</div></div>
       </div>
     </div>
-    <div class="modal-body">
+    <div class="modal-body"><div class="m-section">
+<div class="m-label">Executive Summary</div>
+<div class="m-text">
+<p>Hiring at scale is not failing due to lack of candidates — it is failing due to lack of <strong>commitment</strong>.</p>
+<p>HireBound optimises for top-of-funnel response (~64%), but suffers from 30–50% early attrition. The system is measuring activity, not reliability.</p>
+<p><strong>Solution:</strong> Shift from skill-based matching → intent & commitment prediction.</p>
+<p><strong>Impact:</strong> High-intent pipeline improves from ~25% → 40–45%, driving retention and repeat hiring.</p>
+</div>
+</div>
 
-      <div class="m-section">
-        <div class="m-label">The Problem</div>
-        <div class="m-text">
-          <p>HireBound already achieves a massive <strong>~64% response rate</strong> at the top of the funnel. That's not the problem. Hiring keeps failing because candidates say yes — then don't show. Early attrition runs <strong>30–50% within the first 90 days</strong> across the industry.</p>
-          <p>The system is optimising for the wrong thing: response volume instead of commitment quality.</p>
-        </div>
-        <div class="m-quote">"Hiring doesn't fail due to a lack of candidates — it fails due to a lack of committed candidates."</div>
-      </div>
+<div class="m-section">
+<div class="m-label">Problem Framing</div>
+<div class="m-text">
+<p>On paper, HireBound performs well — strong response rates and large candidate pools.</p>
+<p>But downstream reality tells a different story:</p>
+<ul>
+<li>High drop-offs post-offer</li>
+<li>Low 90-day retention (30–50% attrition)</li>
+<li>Recruiters losing trust in the system</li>
+</ul>
+<p>The system is solving for <strong>speed of matching</strong>, not <strong>quality of commitment</strong>.</p>
+</div>
+<div class="m-quote">“Hiring doesn’t fail due to lack of candidates — it fails due to lack of committed candidates.”</div>
+</div>
 
-      <div class="m-section">
-        <div class="m-label">User Research — The Marketplace Friction Matrix</div>
-        <div class="m-two">
-          <div class="m-box">
-            <h4>👩‍💼 Sarah — The Recruiter</h4>
-            <ul>
-              <li><strong>Goal:</strong> Hire reliable candidates who stay past 90 days</li>
-              <li><strong>Pain:</strong> Candidates accept then vanish</li>
-              <li><strong>Fear:</strong> Held accountable when tools fail her</li>
-            </ul>
-          </div>
-          <div class="m-box">
-            <h4>👨‍💼 Manish — The Candidate</h4>
-            <ul>
-              <li><strong>Goal:</strong> Find a real job, quickly</li>
-              <li><strong>Pain:</strong> Unclear if opportunities are genuine</li>
-              <li><strong>Fear:</strong> Wasting time on dead-ends</li>
-            </ul>
-          </div>
-        </div>
-        <div class="m-text"><p><strong>Key insight:</strong> The current system optimises for response volume, creating high activity but low mutual trust on both sides of the marketplace.</p></div>
-      </div>
+<div class="m-section">
+<div class="m-label">Market Opportunity</div>
+<div class="m-text">
+<p>India sees <strong>4–5 lakh sales roles filled every month</strong>.</p>
+<p>With <strong>30–50% early attrition</strong>, even small improvements in retention unlock massive economic value.</p>
+<p>This is not a UX problem — it is a <strong>system efficiency problem at scale</strong>.</p>
+</div>
+</div>
 
-      <div class="m-section">
-        <div class="m-label">Root Cause — The Flawed Funnel</div>
-        <div class="m-text">
-          <p>The funnel prioritises <strong>skill-based qualification early</strong>, entirely bypassing expectation alignment. This produces false positives — candidates who look qualified but aren't actually committed to joining or staying.</p>
-          <p>The result: a low-intent pipeline that creates high downstream drop-off, wasted recruiter time, and eroded client trust.</p>
-        </div>
-        <div class="m-quote">"Hiring is not a matching problem. It is a commitment prediction problem."</div>
-      </div>
+<div class="m-section">
+<div class="m-label">User Research Insights</div>
+<div class="m-two">
+<div class="m-box">
+<h4>Recruiter (Sarah)</h4>
+<ul>
+<li>Goal: Reliable hires who stay</li>
+<li>Pain: Candidates accept then drop</li>
+<li>Fear: Being accountable for failed hires</li>
+</ul>
+</div>
+<div class="m-box">
+<h4>Candidate (Manish)</h4>
+<ul>
+<li>Goal: Find real opportunities quickly</li>
+<li>Pain: Unclear job quality</li>
+<li>Fear: Wasting time on dead leads</li>
+</ul>
+</div>
+</div>
+<p><strong>Insight:</strong> The system creates activity, not trust — leading to low-intent participation on both sides.</p>
+</div>
 
-      <div class="m-section">
-        <div class="m-label">The Solution — Intent & Fit Qualification Layer</div>
-        <div class="m-text"><p>A lightweight 3-stage pre-qualification system inserted <em>before</em> skill matching. Fast, low-friction, filters for commitment first.</p></div>
-        <div class="m-flow">
-          <div class="m-step"><div class="m-step-num">Stage 1</div><div class="m-step-name">Intent Check</div><div class="m-step-time">10–15 sec · Actively looking? Sales-specific? Join date?</div></div>
-          <div class="m-arrow">→</div>
-          <div class="m-step"><div class="m-step-num">Stage 2</div><div class="m-step-name">Fit & Expectation</div><div class="m-step-time">20–30 sec · 6 days/week? Salary range? Relocation?</div></div>
-          <div class="m-arrow">→</div>
-          <div class="m-step"><div class="m-step-num">Stage 3</div><div class="m-step-name">Skill Qualification</div><div class="m-step-time">Existing system — now applied only to high-intent fits</div></div>
-          <div class="m-arrow">→</div>
-          <div class="m-step highlight"><div class="m-step-num">Output</div><div class="m-step-name">Committed Hires</div><div class="m-step-time">Intent Score + Fit Score validated</div></div>
+<div class="m-section">
+<div class="m-label">Root Cause</div>
+<div class="m-text">
+<p>The funnel is fundamentally flawed:</p>
+<ul>
+<li>Skill qualification happens too early</li>
+<li>No expectation alignment before matching</li>
+<li>Creates false positives (qualified ≠ committed)</li>
+</ul>
+<p>Result: A high-volume but low-intent pipeline.</p>
+</div>
+<div class="m-quote">“Hiring is not a matching problem. It is a commitment prediction problem.”</div>
+</div>
+
+<div class="m-section">
+<div class="m-label">Solution Design</div>
+<div class="m-text">
+<p>A <strong>3-layer pre-qualification system</strong> before skill matching:</p>
+</div>
+<div class="m-flow">
+<div class="m-step"><div class="m-step-name">Intent Check</div><div class="m-step-time">Are they actively looking?</div></div>
+<div class="m-arrow">→</div>
+<div class="m-step"><div class="m-step-name">Fit & Expectation</div><div class="m-step-time">Salary, schedule, relocation</div></div>
+<div class="m-arrow">→</div>
+<div class="m-step highlight"><div class="m-step-name">Skill Match</div><div class="m-step-time">Only for high-intent users</div></div>
+</div>
+</div>
+
+<div class="m-section">
+<div class="m-label">System Thinking Upgrade</div>
+<div class="m-text">
+<p>Introduced a <strong>Candidate Memory Layer</strong>:</p>
+<ul>
+<li>Stores intent, preferences, expectations</li>
+<li>Reduces repeated friction</li>
+<li>Uses event-driven updates (not static profiles)</li>
+</ul>
+<p>This shifts the system from:</p>
+<p><strong>“Can they do the job?” → “Will they do the job and stay?”</strong></p>
+</div>
+</div>
+
+<div class="m-section">
+<div class="m-label">Success Metrics</div>
+<div class="m-metrics">
+<div class="m-metric light"><div class="mn">25%→45%</div><div class="ml">High-Intent Pipeline</div></div>
+<div class="m-metric dark"><div class="mn">↑</div><div class="ml">Interview Conversion</div></div>
+<div class="m-metric green-bg"><div class="mn">90-Day</div><div class="ml">Retention Increase</div></div>
+</div>
+</div>
+
+<div class="m-section">
+<div class="m-label">Strategic Outcome</div>
+<div class="m-text">
+<p>HireBound evolves from:</p>
+<p><strong>Automation tool for sourcing → Decision engine for reliable hiring</strong></p>
+<p>The system no longer optimises for activity — it optimises for outcomes.</p>
+</div>
+</div>
+</div></div>
         </div>
         <div class="m-text"><p>Plus: a <strong>Candidate Memory Layer</strong> using event-driven architecture — stores intent, preferences, and baseline expectations. Reuses data in future interactions instead of re-asking. Shifts the core question from <strong>"Can they do the job?"</strong> → <strong>"Will they do the job and stay?"</strong></p></div>
       </div>
