@@ -541,17 +541,21 @@ function closeIfOverlay(e,id){if(e.target===document.getElementById(id))closeMod
     <div class="sec-title">Open to PM roles.<br>Available immediately.</div>
     <div class="contact-layout">
       <div class="contact-links-list fade">
-        <a href="/cdn-cgi/l/email-protection#ddb6a8bfb8afbeb5bca8b5bcb3bfa8ecef9dbab0bcb4b1f3beb2b0" class="c-link">
+        <a href="mailto:kuberchauhanbu12@gmail.com" class="c-link">
           <div class="c-icon" style="background:rgba(20,52,200,0.18);">✉️</div>
-          <div><div class="c-label">Email</div><div class="c-val"><span class="__cf_email__" data-cfemail="ec87998e899e8f848d99848d828e99dddeac8b818d8580c28f8381">[email&#160;protected]</span></div></div>
+          <div><div class="c-label">Email</div><div class="c-val">kuberchauhanbu12@gmail.com</div></div>
+        </a>
+        <a href="tel:+919315736510" class="c-link">
+          <div class="c-icon" style="background:rgba(20,52,200,0.18);">📞</div>
+          <div><div class="c-label">Phone</div><div class="c-val">+91 93157 36510</div></div>
         </a>
         <a href="https://www.linkedin.com/in/kuber-chauhanbu12" target="_blank" class="c-link">
           <div class="c-icon" style="background:rgba(10,102,194,0.18);">💼</div>
           <div><div class="c-label">LinkedIn</div><div class="c-val">linkedin.com/in/kuber-chauhanbu12</div></div>
         </a>
-        <a href="#" class="c-link">
+        <a href="#" onclick="openResumeModal(event)" class="c-link">
           <div class="c-icon" style="background:rgba(20,52,200,0.12);">📄</div>
-          <div><div class="c-label">Resume</div><div class="c-val">Download PDF Resume →</div></div>
+          <div><div class="c-label">Resume</div><div class="c-val">Request PDF Resume →</div></div>
         </a>
       </div>
       <div class="contact-right fade d1">
@@ -1051,6 +1055,102 @@ function closeIfOverlay(e,id){if(e.target===document.getElementById(id))closeMod
     </div>
   </div>
 </div>
+
+<!-- RESUME REQUEST MODAL -->
+<div class="modal-overlay" id="resume-modal" onclick="closeResumeIfOverlay(event)" style="z-index:600;">
+  <div class="modal" style="max-width:520px;border-radius:20px;overflow:hidden;">
+    <button class="modal-close" onclick="closeResumeModal()" style="background:rgba(0,0,0,0.15);color:#333;">✕</button>
+    <div style="background:var(--ink);padding:40px 44px 32px;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#555;margin-bottom:12px;">Resume Request</div>
+      <div style="font-family:'Playfair Display',serif;font-size:26px;color:#fff;line-height:1.2;margin-bottom:10px;">I'll send it to you<br><em style="color:#4B78FF;font-style:italic;">within 1 hour.</em></div>
+      <div style="font-size:13px;color:#666;line-height:1.6;">Just leave your details below and I'll personally send my resume to your contact.</div>
+    </div>
+    <div style="padding:32px 44px 40px;background:var(--cream);">
+      <div id="resume-form-area">
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div>
+            <label style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid);display:block;margin-bottom:7px;">Your Name *</label>
+            <input id="rf-name" type="text" placeholder="e.g. Priya Sharma" style="width:100%;padding:12px 16px;border:1.5px solid var(--border);border-radius:10px;font-family:'Syne',sans-serif;font-size:14px;color:var(--ink);background:#fff;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='var(--blue)'" onblur="this.style.borderColor='var(--border)'">
+          </div>
+          <div>
+            <label style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid);display:block;margin-bottom:7px;">Company Name *</label>
+            <input id="rf-company" type="text" placeholder="e.g. Razorpay" style="width:100%;padding:12px 16px;border:1.5px solid var(--border);border-radius:10px;font-family:'Syne',sans-serif;font-size:14px;color:var(--ink);background:#fff;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='var(--blue)'" onblur="this.style.borderColor='var(--border)'">
+          </div>
+          <div>
+            <label style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid);display:block;margin-bottom:7px;">Your Phone or Email *</label>
+            <input id="rf-contact" type="text" placeholder="e.g. 9876543210 or hr@company.com" style="width:100%;padding:12px 16px;border:1.5px solid var(--border);border-radius:10px;font-family:'Syne',sans-serif;font-size:14px;color:var(--ink);background:#fff;outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='var(--blue)'" onblur="this.style.borderColor='var(--border)'">
+          </div>
+          <div id="rf-error" style="display:none;background:#FFF3EE;border:1px solid rgba(200,64,20,0.3);border-radius:8px;padding:10px 14px;font-size:13px;color:#C84014;"></div>
+          <button onclick="submitResumeRequest()" id="rf-btn" style="width:100%;padding:14px;background:var(--ink);color:#fff;border:none;border-radius:10px;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;transition:background .2s;">Send Request →</button>
+          <div style="font-size:12px;color:var(--mid);text-align:center;line-height:1.6;">I'll respond within 1 hour with my resume attached.</div>
+        </div>
+      </div>
+      <div id="resume-success" style="display:none;text-align:center;padding:16px 0;">
+        <div style="font-size:40px;margin-bottom:16px;">✅</div>
+        <div style="font-family:'Playfair Display',serif;font-size:22px;color:var(--ink);margin-bottom:10px;">Request received!</div>
+        <div style="font-size:14px;color:var(--mid);line-height:1.7;">I'll send my resume to your contact within 1 hour. Looking forward to connecting.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+(function(){ emailjs.init("user_placeholder"); })();
+
+function openResumeModal(e) {
+  e.preventDefault();
+  document.getElementById('resume-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeResumeModal() {
+  document.getElementById('resume-modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function closeResumeIfOverlay(e) {
+  if (e.target === document.getElementById('resume-modal')) closeResumeModal();
+}
+
+function submitResumeRequest() {
+  var name = document.getElementById('rf-name').value.trim();
+  var company = document.getElementById('rf-company').value.trim();
+  var contact = document.getElementById('rf-contact').value.trim();
+  var errEl = document.getElementById('rf-error');
+  var btn = document.getElementById('rf-btn');
+
+  errEl.style.display = 'none';
+  if (!name || !company || !contact) {
+    errEl.textContent = 'Please fill in all fields before submitting.';
+    errEl.style.display = 'block';
+    return;
+  }
+
+  btn.textContent = 'Sending...';
+  btn.style.opacity = '0.7';
+  btn.disabled = true;
+
+  // Send via EmailJS
+  emailjs.send('service_placeholder', 'template_placeholder', {
+    from_name: name,
+    company: company,
+    contact: contact,
+    to_email: 'kuberchauhanbu12@gmail.com'
+  }).then(function() {
+    document.getElementById('resume-form-area').style.display = 'none';
+    document.getElementById('resume-success').style.display = 'block';
+  }, function() {
+    // Fallback: open mailto if EmailJS fails
+    var subject = encodeURIComponent('Resume Request from ' + name + ' - ' + company);
+    var body = encodeURIComponent('Name: ' + name + '\nCompany: ' + company + '\nContact: ' + contact);
+    window.open('mailto:kuberchauhanbu12@gmail.com?subject=' + subject + '&body=' + body);
+    document.getElementById('resume-form-area').style.display = 'none';
+    document.getElementById('resume-success').style.display = 'block';
+    btn.textContent = 'Send Request →';
+    btn.style.opacity = '1';
+    btn.disabled = false;
+  });
+}
+</script>
 
 <script>
 // Modal functions — global, loaded before any onclick fires
