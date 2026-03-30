@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mysa Case Study — Kuber Chauhan</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --blue: #1A56DB;
+  --blue-light: #EEF2FF;
+  --green: #059669;
+  --green-light: #ECFDF5;
+  --orange: #D97706;
+  --orange-light: #FFFBEB;
+  --red: #DC2626;
+  --red-light: #FEF2F2;
+  --grey-50: #F9FAFB;
+  --grey-100: #F3F4F6;
+  --grey-200: #E5E7EB;
+  --grey-300: #D1D5DB;
+  --grey-400: #9CA3AF;
+  --grey-500: #6B7280;
+  --grey-600: #4B5563;
+  --grey-700: #374151;
+  --grey-900: #111827;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #FAFAFA;
+  color: var(--grey-900);
+  line-height: 1.7;
+}
+
+.page {
+  max-width: 740px;
+  margin: 0 auto;
+  padding: 60px 24px 120px;
+}
+
+/* COVER */
+.cover {
+  background: linear-gradient(135deg, #1A56DB 0%, #0F3460 100%);
+  height: 220px;
+  border-radius: 16px;
+  margin-bottom: 48px;
+  display: flex;
+  align-items: flex-end;
+  padding: 28px 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cover::before {
+  content: '';
+  position: absolute;
+  top: -40px; right: -40px;
+  width: 200px; height: 200px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 50%;
+}
+
+.cover::after {
+  content: '';
+  position: absolute;
+  bottom: -60px; left: 30%;
+  width: 280px; height: 280px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 50%;
+}
+
+.cover-tag {
+  background: rgba(255,255,255,0.15);
+  color: white;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.cover-title {
+  color: white;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+}
+
+/* METADATA */
+.meta-row {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--grey-200);
+}
+
+.meta-item { display: flex; flex-direction: column; gap: 3px; }
+.meta-label { font-size: 11px; font-weight: 600; color: var(--grey-400); text-transform: uppercase; letter-spacing: 0.8px; }
+.meta-value { font-size: 13px; color: var(--grey-700); font-weight: 500; }
+.meta-value a { color: var(--blue); text-decoration: none; }
+
+/* SECTIONS */
+.section { margin-bottom: 48px; }
+
+h1 { font-size: 32px; font-weight: 700; letter-spacing: -0.8px; margin-bottom: 8px; }
+h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--grey-900);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+h2 .emoji { font-size: 18px; }
+
+p {
+  font-size: 15px;
+  color: var(--grey-700);
+  line-height: 1.75;
+  margin-bottom: 14px;
+}
+
+/* CALLOUT BOXES */
+.callout {
+  border-radius: 12px;
+  padding: 18px 20px;
+  margin-bottom: 16px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.callout-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+.callout-content { flex: 1; }
+.callout-content p { margin-bottom: 0; font-size: 14px; }
+.callout-content strong { color: var(--grey-900); }
+
+.callout.blue { background: var(--blue-light); border: 1px solid #C7D7F8; }
+.callout.green { background: var(--green-light); border: 1px solid #A7F3D0; }
+.callout.orange { background: var(--orange-light); border: 1px solid #FDE68A; }
+.callout.red { background: var(--red-light); border: 1px solid #FECACA; }
+.callout.grey { background: var(--grey-50); border: 1px solid var(--grey-200); }
+
+/* QUOTE */
+.quote {
+  border-left: 3px solid var(--blue);
+  padding: 12px 20px;
+  background: var(--blue-light);
+  border-radius: 0 10px 10px 0;
+  margin-bottom: 16px;
+  font-size: 14px;
+  color: var(--grey-700);
+  font-style: italic;
+}
+
+.quote cite {
+  display: block;
+  font-style: normal;
+  font-size: 12px;
+  color: var(--grey-400);
+  margin-top: 6px;
+  font-weight: 600;
+}
+
+/* METRICS GRID */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.metric-card {
+  border-radius: 14px;
+  padding: 20px;
+  border: 1px solid transparent;
+}
+
+.metric-card.blue { background: var(--blue-light); border-color: #C7D7F8; }
+.metric-card.green { background: var(--green-light); border-color: #A7F3D0; }
+.metric-card.orange { background: var(--orange-light); border-color: #FDE68A; }
+.metric-card.grey { background: var(--grey-50); border-color: var(--grey-200); }
+
+.metric-type {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--grey-400);
+  margin-bottom: 6px;
+}
+
+.metric-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--grey-900);
+  margin-bottom: 4px;
+}
+
+.metric-target {
+  font-size: 12px;
+  color: var(--grey-600);
+}
+
+.metric-target strong { color: var(--grey-900); }
+
+/* FLOW DIAGRAM */
+.flow {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 20px;
+}
+
+.flow-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.flow-line {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.flow-dot {
+  width: 32px;
+  height: 32px;
+  background: var(--blue);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.flow-connector {
+  width: 2px;
+  height: 32px;
+  background: var(--grey-200);
+  margin: 2px 0;
+}
+
+.flow-content {
+  padding-top: 5px;
+  padding-bottom: 24px;
+}
+
+.flow-title { font-size: 14px; font-weight: 700; color: var(--grey-900); margin-bottom: 3px; }
+.flow-desc { font-size: 13px; color: var(--grey-600); line-height: 1.5; }
+.flow-time { font-size: 11px; color: var(--blue); font-weight: 600; margin-top: 4px; }
+
+/* BEFORE/AFTER */
+.compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.compare-card {
+  border-radius: 12px;
+  padding: 18px;
+  border: 1px solid transparent;
+}
+
+.compare-card.before { background: var(--red-light); border-color: #FECACA; }
+.compare-card.after { background: var(--green-light); border-color: #A7F3D0; }
+
+.compare-header {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 12px;
+}
+
+.compare-card.before .compare-header { color: var(--red); }
+.compare-card.after .compare-header { color: var(--green); }
+
+.compare-item {
+  font-size: 13px;
+  color: var(--grey-700);
+  padding: 4px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  display: flex;
+  gap: 8px;
+}
+
+.compare-item:last-child { border-bottom: none; }
+.compare-item .icon { flex-shrink: 0; }
+
+/* TABLE */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--grey-200);
+}
+
+th {
+  background: var(--grey-50);
+  padding: 10px 16px;
+  text-align: left;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--grey-500);
+  border-bottom: 1px solid var(--grey-200);
+}
+
+td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--grey-100);
+  color: var(--grey-700);
+  vertical-align: top;
+}
+
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: var(--grey-50); }
+td strong { color: var(--grey-900); }
+
+/* DIVIDER */
+.divider {
+  height: 1px;
+  background: var(--grey-200);
+  margin: 40px 0;
+}
+
+/* PROTOTYPE EMBED */
+.prototype-embed {
+  background: var(--grey-900);
+  border-radius: 16px;
+  padding: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.prototype-label {
+  color: rgba(255,255,255,0.5);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+
+.prototype-title {
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.prototype-sub {
+  color: rgba(255,255,255,0.6);
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+
+.prototype-btn {
+  display: inline-block;
+  background: var(--blue);
+  color: white;
+  padding: 12px 28px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.prototype-btn:hover { background: #1044B8; }
+
+/* FOOTER */
+.footer {
+  padding-top: 40px;
+  border-top: 1px solid var(--grey-200);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: gap;
+}
+
+.footer-left { font-size: 13px; color: var(--grey-500); }
+.footer-left strong { color: var(--grey-900); }
+.footer-links { display: flex; gap: 16px; }
+.footer-link { font-size: 13px; color: var(--blue); text-decoration: none; font-weight: 500; }
+
+/* HYPOTHESIS TAG */
+.hypothesis-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--orange-light);
+  border: 1px solid #FDE68A;
+  color: var(--orange);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+
+/* STAR METRIC */
+.star-metric {
+  background: linear-gradient(135deg, #1A56DB, #0F3460);
+  border-radius: 16px;
+  padding: 24px;
+  color: white;
+  margin-bottom: 12px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.star-icon { font-size: 32px; }
+.star-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; opacity: 0.7; margin-bottom: 4px; }
+.star-name { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+.star-desc { font-size: 13px; opacity: 0.8; }
+
+/* INLINE BADGE */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 5px;
+}
+
+.badge.blue { background: var(--blue-light); color: var(--blue); }
+.badge.green { background: var(--green-light); color: var(--green); }
+.badge.red { background: var(--red-light); color: var(--red); }
+
+ul { padding-left: 20px; margin-bottom: 14px; }
+ul li { font-size: 14px; color: var(--grey-700); margin-bottom: 6px; line-height: 1.6; }
+
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- COVER -->
+  <div class="cover">
+    <div>
+      <div class="cover-tag">Product Case Study · Mysa</div>
+      <div class="cover-title">From 17 Days to 10 Minutes:<br>A PLG Onboarding for Mysa</div>
+    </div>
+  </div>
+
+  <!-- METADATA -->
+  <div class="meta-row">
+    <div class="meta-item">
+      <div class="meta-label">Author</div>
+      <div class="meta-value">Kuber Chauhan</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Company</div>
+      <div class="meta-value">Mysa (mysa.io)</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Focus</div>
+      <div class="meta-value">Tech Startups · PLG · Conversion</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Date</div>
+      <div class="meta-value">March 2026</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Portfolio</div>
+      <div class="meta-value"><a href="https://kuber-portfolio-sepia.vercel.app">kuber-portfolio-sepia.vercel.app</a></div>
+    </div>
+  </div>
+
+  <!-- SECTION 1: TLDR -->
+  <div class="section">
+    <h2><span class="emoji">⚡</span> TL;DR</h2>
+
+    <div class="callout blue">
+      <div class="callout-icon">💡</div>
+      <div class="callout-content">
+        <p><strong>The problem:</strong> Mysa currently requires every customer to book a demo, speak to sales, and go through a 2-week setup before seeing any value. For tech founders — Mysa's fastest-converting segment — this 17-day gap is where they lose interest and go back to Excel.</p>
+      </div>
+    </div>
+
+    <div class="callout green">
+      <div class="callout-icon">🎯</div>
+      <div class="callout-content">
+        <p><strong>The solution:</strong> A self-serve Product-Led Growth (PLG) onboarding that shows a tech founder their exact burn rate in under 10 minutes — before asking them to complete any setup — so value comes before effort, not after it.</p>
+      </div>
+    </div>
+
+    <div class="callout grey">
+      <div class="callout-icon">📌</div>
+      <div class="callout-content">
+        <p><strong>Honest caveat:</strong> This is a validated hypothesis based on Mysa's public product and customer data. What happens inside their demo call is not publicly available. The prototype assumes that gap exists and should be confirmed with 3 customer interviews before building.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 2: COMPANY -->
+  <div class="section">
+    <h2><span class="emoji">🏢</span> About Mysa</h2>
+
+    <p>Mysa is an AI-powered finance automation platform built for growing Indian startups. Founded in 2023 by Arpita Kapoor, Mohit Rangaraju and Ashutosh Panigrahi, Mysa has raised $6.5Mn from Blume Ventures, Piper Serica, and IIMA Ventures.</p>
+
+    <table>
+      <tr>
+        <th>Data Point</th>
+        <th>Source</th>
+        <th>Value</th>
+      </tr>
+      <tr>
+        <td><strong>Total funding raised</strong></td>
+        <td>Entrackr, Jan 2026</td>
+        <td>$6.5Mn across 4 rounds</td>
+      </tr>
+      <tr>
+        <td><strong>Team size</strong></td>
+        <td>Arpita Kapoor (direct message)</td>
+        <td>30 people</td>
+      </tr>
+      <tr>
+        <td><strong>Transaction volume</strong></td>
+        <td>mysa.io press release</td>
+        <td>Rs 1,500 crore annualised</td>
+      </tr>
+      <tr>
+        <td><strong>Bank partnerships</strong></td>
+        <td>mysa.io product page</td>
+        <td>15+ banks including HDFC, Axis, ICICI</td>
+      </tr>
+      <tr>
+        <td><strong>Onboarding timeline</strong></td>
+        <td>mysa.io tech startups page</td>
+        <td>"Complete implementation in 2 weeks"</td>
+      </tr>
+      <tr>
+        <td><strong>Current acquisition model</strong></td>
+        <td>mysa.io/book-a-demo</td>
+        <td>Demo-led sales only (no self-serve)</td>
+      </tr>
+    </table>
+
+    <p><strong>What Mysa does — 4 products:</strong></p>
+
+    <table>
+      <tr>
+        <th>Product</th>
+        <th>Frequency of use</th>
+        <th>Primary value</th>
+      </tr>
+      <tr>
+        <td><strong>Accounts Payable</strong></td>
+        <td>Daily</td>
+        <td>22-validation bill processing via Slack/email</td>
+      </tr>
+      <tr>
+        <td><strong>Integrated Banking</strong></td>
+        <td>Multiple times daily</td>
+        <td>Real-time burn rate and cash visibility</td>
+      </tr>
+      <tr>
+        <td><strong>AI Accounting</strong></td>
+        <td>Ongoing + month-end</td>
+        <td>Auto GST/TDS calculation, ERP sync</td>
+      </tr>
+      <tr>
+        <td><strong>Expense Management</strong></td>
+        <td>Weekly + month-end</td>
+        <td>Team expense tracking and budget limits</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 3: USER -->
+  <div class="section">
+    <h2><span class="emoji">👤</span> Who Feels This Problem</h2>
+
+    <p>Based on Mysa's own customer data and demo form, their ICP for tech startups is:</p>
+
+    <div class="callout grey">
+      <div class="callout-icon">🎯</div>
+      <div class="callout-content">
+        <p><strong>Rahul — Founder or Finance Lead at a 15-50 person Indian SaaS startup</strong><br>
+        Series A or B funded. Rs 10-100 crore revenue. Processing 100+ vendor payments per month (confirmed as Mysa's minimum threshold from their demo form). Uses Slack as primary work tool. Has no dedicated finance team — handles everything himself or with one generalist.</p>
+      </div>
+    </div>
+
+    <p><strong>Rahul's Monday morning reality without Mysa:</strong></p>
+
+    <div class="compare">
+      <div class="compare-card before">
+        <div class="compare-header">❌ Without Mysa</div>
+        <div class="compare-item"><span class="icon">⏱</span> Opens 3 bank portals separately</div>
+        <div class="compare-item"><span class="icon">📊</span> Downloads 3 statements manually</div>
+        <div class="compare-item"><span class="icon">📋</span> Adds salaries from HR sheet</div>
+        <div class="compare-item"><span class="icon">📧</span> Finds AWS bill in email</div>
+        <div class="compare-item"><span class="icon">😤</span> 2-3 hours. Every single month.</div>
+      </div>
+      <div class="compare-card after">
+        <div class="compare-header">✅ With Mysa</div>
+        <div class="compare-item"><span class="icon">📱</span> Opens Mysa on phone</div>
+        <div class="compare-item"><span class="icon">📊</span> Sees exact burn rate live</div>
+        <div class="compare-item"><span class="icon">📈</span> Runway calculated instantly</div>
+        <div class="compare-item"><span class="icon">✅</span> Answers investor in 10 seconds</div>
+        <div class="compare-item"><span class="icon">🚀</span> Back to building by 9:02am</div>
+      </div>
+    </div>
+
+    <div class="quote">
+      "We used to spend 20-30 minutes every day just to make a simple payment, even as a small organization of 25-40 people. Yesterday, with Mysa, I did 400 payments in a matter of 3.5 minutes."
+      <cite>— Real customer quote, mysa.io homepage</cite>
+    </div>
+
+    <p><strong>Why tech founders convert faster than other segments (from real data):</strong></p>
+    <ul>
+      <li>Already trust software with critical functions (AWS, Razorpay, Notion, Slack)</li>
+      <li>Small team = founder decides = deal closes fast</li>
+      <li>Slack-first workflow = Mysa's Slack bot embeds deeply from day 1</li>
+      <li>Investor pressure on burn rate = primary pain point is urgent and recurring</li>
+      <li>High switching cost after adoption = natural retention built in</li>
+    </ul>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 4: PROBLEM -->
+  <div class="section">
+    <h2><span class="emoji">🔍</span> The Problem — Based on Real Data</h2>
+
+    <div class="hypothesis-tag">⚠️ Hypothesis — validated by public data, not internal metrics</div>
+
+    <p>After studying Mysa's public product, demo flow, and customer stories, I found one structural gap that likely costs them conversions every month:</p>
+
+    <div class="callout red">
+      <div class="callout-icon">🚫</div>
+      <div class="callout-content">
+        <p><strong>Mysa has no self-serve path.</strong> Every customer must book a demo, speak to a salesperson, then complete a 2-week setup before seeing any value. There is no "sign up and try" option. This is confirmed directly from mysa.io — the only CTA is "Book a Demo."</p>
+      </div>
+    </div>
+
+    <p><strong>The evidence from Mysa's own website:</strong></p>
+
+    <table>
+      <tr>
+        <th>Observation</th>
+        <th>Source</th>
+        <th>Implication</th>
+      </tr>
+      <tr>
+        <td>No free trial button on homepage</td>
+        <td>mysa.io</td>
+        <td>Zero self-serve entry point</td>
+      </tr>
+      <tr>
+        <td>"Complete implementation in 2 weeks"</td>
+        <td>mysa.io/solution/tech-startups</td>
+        <td>17+ days from interest to first value</td>
+      </tr>
+      <tr>
+        <td>Demo form filters under 100 bills/month</td>
+        <td>mysa.io/book-a-demo</td>
+        <td>Confirms ICP but also shows high friction entry</td>
+      </tr>
+      <tr>
+        <td>Drink Prime started with zero balance, 1 account</td>
+        <td>mysa.io/customers/drink-prime</td>
+        <td>Trust ladder exists but is not designed — customers figure it out alone</td>
+      </tr>
+    </table>
+
+    <p><strong>Why this matters for conversion:</strong></p>
+
+    <p>A tech founder discovers Mysa on Monday. They are interested. They book a demo. Demo is scheduled for Wednesday. Setup starts Thursday. Two weeks later the trial ends. In those 17 days: three customer escalations, two investor calls, one hiring crisis. Setup kept getting pushed. They never finished. Trial ends. They go back to Excel. Not because Mysa is bad — because something more urgent always won.</p>
+
+    <div class="callout orange">
+      <div class="callout-icon">💡</div>
+      <div class="callout-content">
+        <p><strong>The core insight:</strong> The problem is not that setup is hard. The problem is that Mysa asks for effort before delivering value. Flip the sequence — show value in 10 minutes, let full setup happen naturally after — and conversion changes fundamentally.</p>
+      </div>
+    </div>
+
+    <p><strong>Market context:</strong></p>
+    <ul>
+      <li>India has ~207,000 DPIIT-recognised startups (January 2026)</li>
+      <li>Tech startups: ~25% = ~52,000 companies</li>
+      <li>With 100+ bills/month and active ERP: ~5,000-6,000 companies (Mysa's realistic TAM)</li>
+      <li>Estimated Mysa customers today: 100-300 companies (under 5% of TAM)</li>
+      <li>Runway to grow: massive — but high-touch sales model cannot scale to thousands</li>
+    </ul>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 5: SOLUTION -->
+  <div class="section">
+    <h2><span class="emoji">🛠️</span> The Solution — Product-Led Growth Onboarding</h2>
+
+    <p>Instead of demo → sales call → 2-week setup → first value, design a self-serve path that delivers first value in 10 minutes, then lets full setup happen naturally.</p>
+
+    <p><strong>The principle: Value before effort. Always.</strong></p>
+
+    <div class="flow">
+      <div class="flow-item">
+        <div class="flow-line">
+          <div class="flow-dot">1</div>
+          <div class="flow-connector"></div>
+        </div>
+        <div class="flow-content">
+          <div class="flow-title">Sign up with Google — zero friction</div>
+          <div class="flow-desc">Name, email, company. No credit card. No sales call. No demo booking. Just start.</div>
+          <div class="flow-time">⏱ 90 seconds</div>
+        </div>
+      </div>
+
+      <div class="flow-item">
+        <div class="flow-line">
+          <div class="flow-dot">2</div>
+          <div class="flow-connector"></div>
+        </div>
+        <div class="flow-content">
+          <div class="flow-title">Connect one bank account — read only</div>
+          <div class="flow-desc">Only view access. Zero payment risk. "We cannot make any payments yet. You are in full control." Trust addressed before it becomes a concern.</div>
+          <div class="flow-time">⏱ 2-3 minutes</div>
+        </div>
+      </div>
+
+      <div class="flow-item">
+        <div class="flow-line">
+          <div class="flow-dot">3</div>
+          <div class="flow-connector"></div>
+        </div>
+        <div class="flow-content">
+          <div class="flow-title">The wow moment — burn rate in 5 minutes</div>
+          <div class="flow-desc">Mysa instantly shows: burn last month, runway, expense breakdown by category. The number their investor asks for every Monday. Available in one screen. Pulled live. No Excel needed. This is the moment they never forget.</div>
+          <div class="flow-time">⏱ Under 5 minutes total from signup</div>
+        </div>
+      </div>
+
+      <div class="flow-item">
+        <div class="flow-line">
+          <div class="flow-dot">4</div>
+          <div class="flow-connector"></div>
+        </div>
+        <div class="flow-content">
+          <div class="flow-title">Process first bill — 90 seconds</div>
+          <div class="flow-desc">Forward any bill to bills@mysa.io. Mysa AI scans it, calculates GST and TDS automatically, maps to right ledger, flags duplicates. What took 20 minutes took 90 seconds. Second wow moment.</div>
+          <div class="flow-time">⏱ 90 seconds</div>
+        </div>
+      </div>
+
+      <div class="flow-item">
+        <div class="flow-line">
+          <div class="flow-dot">5</div>
+        </div>
+        <div class="flow-content">
+          <div class="flow-title">Natural expansion — no pressure</div>
+          <div class="flow-desc">Connect payment account, ERP, invite finance person — when ready. No rush. Burn rate is already live. Each expansion step deepens embedding and raises switching cost naturally.</div>
+          <div class="flow-time">⏱ Over days/weeks — self-directed</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout blue">
+      <div class="callout-icon">🔑</div>
+      <div class="callout-content">
+        <p><strong>Why this works for trust:</strong> The Drink Prime case study showed that even sophisticated finance leaders start with zero balance and one account. They built their own trust ladder manually. This prototype makes that trust ladder a designed, intentional product experience — not something each customer discovers alone.</p>
+      </div>
+    </div>
+
+    <!-- PROTOTYPE EMBED -->
+    <div class="prototype-embed">
+      <div class="prototype-label">Interactive Prototype</div>
+      <div class="prototype-title">Mysa PLG Onboarding — 5 Screen Clickable Demo</div>
+      <div class="prototype-sub">Click through all 5 screens: Pain → Sign Up → Connect Bank → Burn Rate → First Bill</div>
+      <a class="prototype-btn" href="Mysa_PLG_Prototype.html" target="_blank">Open Prototype →</a>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 6: METRICS -->
+  <div class="section">
+    <h2><span class="emoji">📊</span> How We Measure Success</h2>
+
+    <div class="star-metric">
+      <div class="star-icon">⭐</div>
+      <div>
+        <div class="star-label">North Star Metric</div>
+        <div class="star-name">Time to First Value (TTFV)</div>
+        <div class="star-desc">Minutes from signup to first burn rate seen. Current: 17+ days. Target: Under 10 minutes.</div>
+      </div>
+    </div>
+
+    <div class="metrics-grid">
+      <div class="metric-card blue">
+        <div class="metric-type">Primary Metric</div>
+        <div class="metric-name">Trial to Paid Conversion Rate</div>
+        <div class="metric-target">Target: <strong>+30-40% improvement</strong> from baseline after PLG launch</div>
+      </div>
+      <div class="metric-card green">
+        <div class="metric-type">Secondary Metric</div>
+        <div class="metric-name">Onboarding Step Completion Rate</div>
+        <div class="metric-target">Which step do most founders drop at? Fix that step first.</div>
+      </div>
+      <div class="metric-card orange">
+        <div class="metric-type">Secondary Metric</div>
+        <div class="metric-name">DAU During Trial</div>
+        <div class="metric-target">Are they coming back daily? If yes — conversion is near. If no — wow moment failed.</div>
+      </div>
+      <div class="metric-card grey">
+        <div class="metric-type">Guardrail Metric</div>
+        <div class="metric-name">Customer Quality Score</div>
+        <div class="metric-target">Average bills/month of converted customers must stay <strong>above 100</strong>. Do not dilute ICP while opening self-serve.</div>
+      </div>
+    </div>
+
+    <div class="callout grey">
+      <div class="callout-icon">📌</div>
+      <div class="callout-content">
+        <p><strong>Note on metrics:</strong> Mysa's actual baseline conversion rate is internal data I do not have access to. These targets are directional, not absolute. The real baseline should be pulled from Mysa's analytics before setting specific percentage targets.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 7: WHAT I WOULD VALIDATE -->
+  <div class="section">
+    <h2><span class="emoji">🔬</span> What I Would Validate Before Building</h2>
+
+    <p>This prototype is a well-researched hypothesis. Before any engineering investment, I would validate 3 things:</p>
+
+    <table>
+      <tr>
+        <th>#</th>
+        <th>Question</th>
+        <th>How to validate</th>
+        <th>Time</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>Does Mysa already show burn rate in their demo call?</td>
+        <td>Sit in 3 sales demo calls</td>
+        <td>1 week</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Where do trial users actually drop off?</td>
+        <td>Pull funnel data from Mixpanel or internal analytics</td>
+        <td>2 days</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Would a tech founder sign up without a demo call?</td>
+        <td>Interview 5 founders who considered Mysa but did not convert</td>
+        <td>1 week</td>
+      </tr>
+    </table>
+
+    <div class="callout green">
+      <div class="callout-icon">✅</div>
+      <div class="callout-content">
+        <p><strong>If validated:</strong> Build the PLG onboarding as described. Expected outcome: significant improvement in trial-to-paid conversion for tech startups without increasing sales headcount.</p>
+      </div>
+    </div>
+
+    <div class="callout orange">
+      <div class="callout-icon">↩️</div>
+      <div class="callout-content">
+        <p><strong>If not validated:</strong> The real drop-off point might be elsewhere — post-payment setup, ERP integration, or team adoption. The same framework of "find where effort exceeds value and flip the sequence" still applies, just at a different stage.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-left">
+      Built by <strong>Kuber Chauhan</strong> · 2026 CSE Graduate · Immediate Joiner
+    </div>
+    <div class="footer-links">
+      <a class="footer-link" href="https://kuber-portfolio-sepia.vercel.app">Portfolio</a>
+      <a class="footer-link" href="https://linkedin.com/in/kuber-chauhanbu12">LinkedIn</a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

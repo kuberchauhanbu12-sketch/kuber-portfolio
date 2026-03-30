@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mysa — See Your Burn Rate in 5 Minutes</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --mysa-blue: #1A56DB;
+    --mysa-blue-light: #EEF2FF;
+    --mysa-blue-dark: #1044B8;
+    --green: #059669;
+    --green-light: #ECFDF5;
+    --orange: #D97706;
+    --orange-light: #FFFBEB;
+    --red: #DC2626;
+    --red-light: #FEF2F2;
+    --grey-50: #F9FAFB;
+    --grey-100: #F3F4F6;
+    --grey-200: #E5E7EB;
+    --grey-400: #9CA3AF;
+    --grey-600: #4B5563;
+    --grey-900: #111827;
+    --font: 'DM Sans', sans-serif;
+    --mono: 'DM Mono', monospace;
+  }
+
+  body {
+    font-family: var(--font);
+    background: #0F172A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 24px;
+  }
+
+  .device {
+    width: 390px;
+    height: 844px;
+    background: white;
+    border-radius: 48px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 50px 100px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.1);
+  }
+
+  .screen {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    padding: 52px 28px 40px;
+    display: none;
+    flex-direction: column;
+    background: white;
+    overflow-y: auto;
+    transition: opacity 0.3s ease;
+  }
+
+  .screen.active { display: flex; }
+
+  /* NAV */
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 32px;
+  }
+
+  .logo {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--mysa-blue);
+    letter-spacing: -0.5px;
+  }
+
+  .logo span { color: var(--grey-900); }
+
+  .step-pill {
+    background: var(--mysa-blue-light);
+    color: var(--mysa-blue);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.3px;
+  }
+
+  /* TYPOGRAPHY */
+  .headline {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--grey-900);
+    line-height: 1.25;
+    letter-spacing: -0.5px;
+    margin-bottom: 10px;
+  }
+
+  .subtext {
+    font-size: 14px;
+    color: var(--grey-600);
+    line-height: 1.6;
+    margin-bottom: 28px;
+  }
+
+  /* BUTTONS */
+  .btn-primary {
+    width: 100%;
+    padding: 16px;
+    background: var(--mysa-blue);
+    color: white;
+    border: none;
+    border-radius: 14px;
+    font-family: var(--font);
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-top: auto;
+  }
+
+  .btn-primary:hover { background: var(--mysa-blue-dark); transform: translateY(-1px); }
+
+  .btn-secondary {
+    width: 100%;
+    padding: 14px;
+    background: transparent;
+    color: var(--mysa-blue);
+    border: 1.5px solid var(--mysa-blue-light);
+    border-radius: 14px;
+    font-family: var(--font);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.2s;
+  }
+
+  .btn-secondary:hover { background: var(--mysa-blue-light); }
+
+  .hint {
+    text-align: center;
+    font-size: 12px;
+    color: var(--grey-400);
+    margin-top: 12px;
+  }
+
+  /* PROGRESS BAR */
+  .progress-bar {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 28px;
+  }
+
+  .progress-bar .step {
+    height: 3px;
+    border-radius: 4px;
+    flex: 1;
+    background: var(--grey-200);
+  }
+
+  .progress-bar .step.done { background: var(--mysa-blue); }
+
+  /* ===================== SCREEN 1 — PAIN ===================== */
+  .pain-scene {
+    background: var(--grey-50);
+    border: 1px solid var(--grey-200);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .pain-scene-label {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--grey-400);
+    margin-bottom: 12px;
+  }
+
+  .whatsapp-bubble {
+    background: #DCF8C6;
+    border-radius: 12px 12px 12px 0;
+    padding: 10px 14px;
+    font-size: 13px;
+    color: #1a1a1a;
+    display: inline-block;
+    margin-bottom: 14px;
+    max-width: 85%;
+    line-height: 1.5;
+  }
+
+  .whatsapp-time {
+    font-size: 10px;
+    color: var(--grey-400);
+    margin-top: 4px;
+    margin-bottom: 16px;
+  }
+
+  .excel-mess {
+    background: white;
+    border: 1px solid var(--grey-200);
+    border-radius: 10px;
+    padding: 14px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--grey-600);
+    line-height: 1.8;
+  }
+
+  .excel-row { display: flex; justify-content: space-between; }
+  .excel-row.total { color: var(--red); font-weight: 600; border-top: 1px solid var(--grey-200); padding-top: 6px; margin-top: 4px; }
+
+  .pain-tag {
+    background: var(--red-light);
+    color: var(--red);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 10px;
+    margin-top: 12px;
+    text-align: center;
+  }
+
+  /* ===================== SCREEN 2 — SIGNUP ===================== */
+  .input-field {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1.5px solid var(--grey-200);
+    border-radius: 12px;
+    font-family: var(--font);
+    font-size: 14px;
+    color: var(--grey-900);
+    margin-bottom: 12px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .input-field:focus { border-color: var(--mysa-blue); }
+  .input-field::placeholder { color: var(--grey-400); }
+
+  .google-btn {
+    width: 100%;
+    padding: 14px;
+    background: white;
+    border: 1.5px solid var(--grey-200);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-family: var(--font);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--grey-900);
+    cursor: pointer;
+    margin-bottom: 16px;
+    transition: all 0.2s;
+  }
+
+  .google-btn:hover { background: var(--grey-50); }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--grey-400);
+    font-size: 12px;
+    margin-bottom: 16px;
+  }
+
+  .divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--grey-200);
+  }
+
+  .trust-logos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+
+  .trust-logo {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--grey-400);
+    letter-spacing: 0.3px;
+  }
+
+  /* ===================== SCREEN 3 — BANK ===================== */
+  .trust-badge {
+    background: var(--mysa-blue-light);
+    border: 1px solid #C7D7F8;
+    border-radius: 14px;
+    padding: 16px;
+    margin-bottom: 24px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .trust-icon {
+    width: 32px;
+    height: 32px;
+    background: var(--mysa-blue);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .trust-text { font-size: 13px; color: var(--grey-600); line-height: 1.5; }
+  .trust-text strong { color: var(--grey-900); display: block; margin-bottom: 2px; font-size: 13px; }
+
+  .bank-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .bank-card {
+    border: 1.5px solid var(--grey-200);
+    border-radius: 12px;
+    padding: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+  }
+
+  .bank-card:hover, .bank-card.selected {
+    border-color: var(--mysa-blue);
+    background: var(--mysa-blue-light);
+  }
+
+  .bank-name { font-size: 13px; font-weight: 600; color: var(--grey-900); margin-top: 4px; }
+  .bank-icon { font-size: 22px; }
+
+  /* ===================== SCREEN 4 — WOW MOMENT ===================== */
+  .wow-header {
+    background: linear-gradient(135deg, #1A56DB 0%, #1044B8 100%);
+    border-radius: 20px;
+    padding: 20px;
+    color: white;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .wow-header::after {
+    content: '';
+    position: absolute;
+    top: -20px; right: -20px;
+    width: 100px; height: 100px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 50%;
+  }
+
+  .wow-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.7;
+    margin-bottom: 6px;
+  }
+
+  .wow-number {
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    margin-bottom: 4px;
+  }
+
+  .wow-sub { font-size: 13px; opacity: 0.8; }
+
+  .metric-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .metric-card {
+    border-radius: 14px;
+    padding: 16px;
+    border: 1px solid transparent;
+  }
+
+  .metric-card.green { background: var(--green-light); border-color: #A7F3D0; }
+  .metric-card.orange { background: var(--orange-light); border-color: #FDE68A; }
+
+  .metric-label { font-size: 11px; font-weight: 600; color: var(--grey-400); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+  .metric-value { font-size: 20px; font-weight: 700; color: var(--grey-900); letter-spacing: -0.5px; }
+  .metric-sub { font-size: 11px; color: var(--grey-600); margin-top: 2px; }
+
+  .insight-card {
+    background: var(--grey-50);
+    border: 1px solid var(--grey-200);
+    border-radius: 14px;
+    padding: 16px;
+    margin-bottom: 20px;
+  }
+
+  .insight-title { font-size: 12px; font-weight: 600; color: var(--grey-400); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px; }
+
+  .insight-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+
+  .insight-bar-wrap { flex: 1; height: 6px; background: var(--grey-200); border-radius: 3px; overflow: hidden; }
+  .insight-bar { height: 100%; background: var(--mysa-blue); border-radius: 3px; }
+  .insight-name { font-size: 12px; color: var(--grey-600); width: 80px; }
+  .insight-pct { font-size: 12px; font-weight: 600; color: var(--grey-900); width: 30px; text-align: right; }
+
+  .time-saved {
+    text-align: center;
+    font-size: 12px;
+    color: var(--grey-400);
+    margin-bottom: 16px;
+    font-style: italic;
+  }
+
+  .time-saved strong { color: var(--green); }
+
+  /* ===================== SCREEN 5 — FIRST BILL ===================== */
+  .success-header {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .success-icon {
+    width: 64px;
+    height: 64px;
+    background: var(--green-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 14px;
+    font-size: 28px;
+  }
+
+  .bill-card {
+    background: var(--grey-50);
+    border: 1px solid var(--grey-200);
+    border-radius: 16px;
+    padding: 18px;
+    margin-bottom: 20px;
+  }
+
+  .bill-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 14px;
+  }
+
+  .bill-name { font-size: 15px; font-weight: 700; color: var(--grey-900); }
+  .bill-amount { font-size: 16px; font-weight: 700; color: var(--mysa-blue); }
+
+  .bill-rows { display: flex; flex-direction: column; gap: 8px; }
+
+  .bill-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+  }
+
+  .bill-key { color: var(--grey-400); }
+  .bill-val { color: var(--grey-900); font-weight: 500; }
+  .bill-val.green { color: var(--green); }
+
+  .ai-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: var(--mysa-blue-light);
+    color: var(--mysa-blue);
+    font-size: 10px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 6px;
+    margin-left: 6px;
+  }
+
+  .next-steps { margin-bottom: 20px; }
+  .next-label { font-size: 12px; font-weight: 600; color: var(--grey-400); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; }
+
+  .next-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px;
+    border: 1.5px solid var(--grey-200);
+    border-radius: 12px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .next-card:hover { border-color: var(--mysa-blue); background: var(--mysa-blue-light); }
+
+  .next-icon {
+    width: 36px; height: 36px;
+    background: var(--grey-100);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .next-text { flex: 1; }
+  .next-title { font-size: 13px; font-weight: 600; color: var(--grey-900); }
+  .next-sub { font-size: 11px; color: var(--grey-400); }
+  .next-arrow { color: var(--grey-400); font-size: 16px; }
+
+  /* BOTTOM NOTE */
+  .bottom-note {
+    text-align: center;
+    font-size: 11px;
+    color: var(--grey-400);
+    line-height: 1.6;
+    margin-top: 4px;
+  }
+
+  /* EXTERNAL WRAPPER */
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .prototype-label {
+    color: rgba(255,255,255,0.5);
+    font-family: var(--font);
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .nav-dots {
+    display: flex;
+    gap: 8px;
+  }
+
+  .nav-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .nav-dot.active { background: white; width: 20px; border-radius: 4px; }
+
+  /* Screen label */
+  .screen-counter {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 11px;
+    color: var(--grey-400);
+    font-family: var(--font);
+  }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .screen.active > * {
+    animation: fadeUp 0.4s ease forwards;
+  }
+
+  .screen.active > *:nth-child(2) { animation-delay: 0.05s; }
+  .screen.active > *:nth-child(3) { animation-delay: 0.1s; }
+  .screen.active > *:nth-child(4) { animation-delay: 0.15s; }
+  .screen.active > *:nth-child(5) { animation-delay: 0.2s; }
+
+  @keyframes countUp {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .wow-number { animation: countUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s both; }
+</style>
+</head>
+<body>
+
+<div class="wrapper">
+  <div class="prototype-label">Mysa PLG Onboarding · Prototype by Kuber Chauhan</div>
+
+  <div class="device">
+
+    <!-- SCREEN 1: PAIN MOMENT -->
+    <div class="screen active" id="screen1">
+      <div class="nav">
+        <div class="logo">my<span>sa</span></div>
+        <div class="step-pill">The Problem</div>
+      </div>
+
+      <div class="headline">Monday 9am.<br>Investor just asked.</div>
+      <div class="subtext">"What's our burn rate this month?" — Every founder dreads this message.</div>
+
+      <div class="pain-scene">
+        <div class="pain-scene-label">📱 WhatsApp · Investor</div>
+        <div class="whatsapp-bubble">Bhai, what's our burn this month? Board meeting tomorrow 🙏</div>
+        <div class="whatsapp-time">9:02 AM · Delivered</div>
+
+        <div class="excel-mess">
+          <div class="excel-row"><span>HDFC Bank portal...</span><span>⏳</span></div>
+          <div class="excel-row"><span>Axis statement...</span><span>⏳</span></div>
+          <div class="excel-row"><span>AWS bill from email...</span><span>⏳</span></div>
+          <div class="excel-row"><span>Salaries from HR...</span><span>⏳</span></div>
+          <div class="excel-row"><span>Vendor payments...</span><span>⏳</span></div>
+          <div class="excel-row total"><span>TOTAL BURN =</span><span>??? 😤</span></div>
+        </div>
+
+        <div class="pain-tag">⏱ 2–3 hours. Every single month. Just for this.</div>
+      </div>
+
+      <div class="subtext" style="margin-bottom: 0; color: #374151; font-size: 13px;">Tech founders lose <strong>3–4 hours monthly</strong> just answering one investor question. Mysa fixes this in 5 minutes.</div>
+
+      <button class="btn-primary" onclick="goTo(2)">See the fix →</button>
+    </div>
+
+    <!-- SCREEN 2: SIGN UP -->
+    <div class="screen" id="screen2">
+      <div class="nav">
+        <div class="logo">my<span>sa</span></div>
+        <div class="step-pill">Step 1 of 4</div>
+      </div>
+
+      <div class="progress-bar">
+        <div class="step done"></div>
+        <div class="step"></div>
+        <div class="step"></div>
+        <div class="step"></div>
+      </div>
+
+      <div class="headline">See your burn rate in 5 minutes.</div>
+      <div class="subtext">No sales call. No 2-week setup. No credit card. Just sign up and we show you something you have never seen this fast.</div>
+
+      <button class="google-btn" onclick="goTo(3)">
+        <svg width="18" height="18" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.36-8.16 2.36-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+        Continue with Google
+      </button>
+
+      <div class="divider">or fill in manually</div>
+
+      <input class="input-field" type="text" placeholder="Your name" />
+      <input class="input-field" type="email" placeholder="Work email" />
+      <input class="input-field" type="text" placeholder="Company name" />
+
+      <button class="btn-primary" onclick="goTo(3)">Get started free →</button>
+
+      <div class="hint">Free for 30 days · No credit card · Cancel anytime</div>
+
+      <div class="trust-logos">
+        <span class="trust-logo">DHAN</span>
+        <span class="trust-logo">·</span>
+        <span class="trust-logo">SWISH</span>
+        <span class="trust-logo">·</span>
+        <span class="trust-logo">DRINKPRIME</span>
+        <span class="trust-logo">·</span>
+        <span class="trust-logo">RIGI</span>
+      </div>
+    </div>
+
+    <!-- SCREEN 3: CONNECT BANK -->
+    <div class="screen" id="screen3">
+      <div class="nav">
+        <div class="logo">my<span>sa</span></div>
+        <div class="step-pill">Step 2 of 4</div>
+      </div>
+
+      <div class="progress-bar">
+        <div class="step done"></div>
+        <div class="step done"></div>
+        <div class="step"></div>
+        <div class="step"></div>
+      </div>
+
+      <div class="headline">Connect one bank account.</div>
+      <div class="subtext">Just to show you something. We promise you will not regret this.</div>
+
+      <div class="trust-badge">
+        <div class="trust-icon">🔒</div>
+        <div class="trust-text">
+          <strong>Read-only access. Zero payment risk.</strong>
+          We can only view your transactions. We cannot initiate any payments. You stay in complete control.
+        </div>
+      </div>
+
+      <div class="bank-grid">
+        <div class="bank-card selected" onclick="selectBank(this)">
+          <div class="bank-icon">🏦</div>
+          <div class="bank-name">HDFC Bank</div>
+        </div>
+        <div class="bank-card" onclick="selectBank(this)">
+          <div class="bank-icon">🏦</div>
+          <div class="bank-name">Axis Bank</div>
+        </div>
+        <div class="bank-card" onclick="selectBank(this)">
+          <div class="bank-icon">🏦</div>
+          <div class="bank-name">ICICI Bank</div>
+        </div>
+        <div class="bank-card" onclick="selectBank(this)">
+          <div class="bank-icon">🏦</div>
+          <div class="bank-name">Yes Bank</div>
+        </div>
+      </div>
+
+      <div style="margin-bottom: 16px; text-align: center; font-size: 12px; color: var(--grey-400);">+ 11 more banks supported</div>
+
+      <button class="btn-primary" onclick="goTo(4)">Connect HDFC Bank →</button>
+      <button class="btn-secondary" onclick="goTo(4)">Skip — show me anyway</button>
+    </div>
+
+    <!-- SCREEN 4: WOW MOMENT -->
+    <div class="screen" id="screen4">
+      <div class="nav">
+        <div class="logo">my<span>sa</span></div>
+        <div class="step-pill">Step 3 of 4</div>
+      </div>
+
+      <div class="progress-bar">
+        <div class="step done"></div>
+        <div class="step done"></div>
+        <div class="step done"></div>
+        <div class="step"></div>
+      </div>
+
+      <div class="wow-header">
+        <div class="wow-label">Your burn last month</div>
+        <div class="wow-number">₹14.2L</div>
+        <div class="wow-sub">Pulled from HDFC · Updated live</div>
+      </div>
+
+      <div class="metric-grid">
+        <div class="metric-card green">
+          <div class="metric-label">Runway</div>
+          <div class="metric-value">21 mo</div>
+          <div class="metric-sub">At current burn</div>
+        </div>
+        <div class="metric-card orange">
+          <div class="metric-label">vs Last Month</div>
+          <div class="metric-value">+7%</div>
+          <div class="metric-sub">↑ Rs 92K more</div>
+        </div>
+      </div>
+
+      <div class="insight-card">
+        <div class="insight-title">Where your money went</div>
+        <div class="insight-row">
+          <div class="insight-name">Salaries</div>
+          <div class="insight-bar-wrap"><div class="insight-bar" style="width:68%"></div></div>
+          <div class="insight-pct">68%</div>
+        </div>
+        <div class="insight-row">
+          <div class="insight-name">AWS</div>
+          <div class="insight-bar-wrap"><div class="insight-bar" style="width:18%"></div></div>
+          <div class="insight-pct">18%</div>
+        </div>
+        <div class="insight-row">
+          <div class="insight-name">Vendors</div>
+          <div class="insight-bar-wrap"><div class="insight-bar" style="width:9%"></div></div>
+          <div class="insight-pct">9%</div>
+        </div>
+        <div class="insight-row">
+          <div class="insight-name">Other</div>
+          <div class="insight-bar-wrap"><div class="insight-bar" style="width:5%"></div></div>
+          <div class="insight-pct">5%</div>
+        </div>
+      </div>
+
+      <div class="time-saved">This used to take you <strong>3 hours in Excel</strong>. Mysa did it in <strong>4 minutes.</strong></div>
+
+      <button class="btn-primary" onclick="goTo(5)">Process your first bill →</button>
+    </div>
+
+    <!-- SCREEN 5: FIRST BILL -->
+    <div class="screen" id="screen5">
+      <div class="nav">
+        <div class="logo">my<span>sa</span></div>
+        <div class="step-pill">Step 4 of 4</div>
+      </div>
+
+      <div class="progress-bar">
+        <div class="step done"></div>
+        <div class="step done"></div>
+        <div class="step done"></div>
+        <div class="step done"></div>
+      </div>
+
+      <div class="success-header">
+        <div class="success-icon">✅</div>
+        <div class="headline" style="font-size: 22px;">First bill processed.</div>
+        <div class="subtext" style="margin-bottom: 0;">What took your CA 20 minutes took Mysa 90 seconds.</div>
+      </div>
+
+      <div class="bill-card">
+        <div class="bill-header">
+          <div>
+            <div class="bill-name">AWS Invoice</div>
+            <div style="font-size: 11px; color: var(--grey-400);">Jul 2025 · forwarded to bills@mysa.io</div>
+          </div>
+          <div class="bill-amount">₹45,200</div>
+        </div>
+        <div class="bill-rows">
+          <div class="bill-row">
+            <span class="bill-key">GST (18%)</span>
+            <span class="bill-val">Auto-calculated <span class="ai-badge">AI</span></span>
+          </div>
+          <div class="bill-row">
+            <span class="bill-key">TDS mapping</span>
+            <span class="bill-val green">Correct ✓</span>
+          </div>
+          <div class="bill-row">
+            <span class="bill-key">Ledger</span>
+            <span class="bill-val">Cloud Infrastructure <span class="ai-badge">AI</span></span>
+          </div>
+          <div class="bill-row">
+            <span class="bill-key">Duplicate check</span>
+            <span class="bill-val green">Clear ✓</span>
+          </div>
+          <div class="bill-row">
+            <span class="bill-key">Status</span>
+            <span class="bill-val">Ready to pay →</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="next-steps">
+        <div class="next-label">When you are ready</div>
+        <div class="next-card" onclick="void(0)">
+          <div class="next-icon">💳</div>
+          <div class="next-text">
+            <div class="next-title">Connect payment account</div>
+            <div class="next-sub">Start paying directly from Mysa</div>
+          </div>
+          <div class="next-arrow">›</div>
+        </div>
+        <div class="next-card" onclick="void(0)">
+          <div class="next-icon">🔗</div>
+          <div class="next-text">
+            <div class="next-title">Connect your ERP</div>
+            <div class="next-sub">Tally, Zoho, ERPNext — 1 click</div>
+          </div>
+          <div class="next-arrow">›</div>
+        </div>
+        <div class="next-card" onclick="void(0)">
+          <div class="next-icon">👤</div>
+          <div class="next-text">
+            <div class="next-title">Invite your finance person</div>
+            <div class="next-sub">They handle it on Slack</div>
+          </div>
+          <div class="next-arrow">›</div>
+        </div>
+      </div>
+
+      <div class="bottom-note">No rush. Your burn rate is already live.<br>Set up the rest when you are ready.</div>
+
+      <button class="btn-primary" onclick="goTo(1)" style="margin-top: 16px; background: var(--grey-900);">↩ Restart prototype</button>
+    </div>
+
+  </div>
+
+  <div class="nav-dots" id="navDots">
+    <div class="nav-dot active" onclick="goTo(1)"></div>
+    <div class="nav-dot" onclick="goTo(2)"></div>
+    <div class="nav-dot" onclick="goTo(3)"></div>
+    <div class="nav-dot" onclick="goTo(4)"></div>
+    <div class="nav-dot" onclick="goTo(5)"></div>
+  </div>
+
+  <div class="prototype-label">Built by Kuber Chauhan · kuber-portfolio-sepia.vercel.app</div>
+</div>
+
+<script>
+  let current = 1;
+  const total = 5;
+
+  function goTo(n) {
+    document.getElementById('screen' + current).classList.remove('active');
+    current = n;
+    document.getElementById('screen' + current).classList.add('active');
+    document.querySelectorAll('.nav-dot').forEach((d, i) => {
+      d.classList.toggle('active', i === n - 1);
+    });
+    window.scrollTo(0, 0);
+  }
+
+  function selectBank(el) {
+    document.querySelectorAll('.bank-card').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+  }
+</script>
+
+</body>
+</html>
