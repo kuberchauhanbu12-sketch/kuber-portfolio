@@ -273,16 +273,58 @@ body.cursor-view #cursor-label { opacity: 1; }
 .js-loaded .fade.visible { opacity: 1; transform: none; }
 
 /* LIVE WORK SECTION */
-#live-work { background: #0C0C0C; }
-.lw-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(255,255,255,0.06); }
-.lw-card { background: #141414; padding: 36px 40px; display: flex; flex-direction: column; gap: 20px; cursor: pointer; transition: background 0.2s; }
-.lw-card:hover { background: #1a1a1a; }
-.lw-card-right { border-left: 1px solid rgba(255,255,255,0.06); }
-.lw-stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; overflow: hidden; margin-top: 36px; }
-.lw-stat { background: rgba(0,0,0,0.3); padding: 18px 20px; text-align: center; }
-.lw-stat + .lw-stat { border-left: 1px solid rgba(255,255,255,0.1); }
-.lw-stat-n { font-family: 'Playfair Display', serif; font-size: 26px; color: #fff; line-height: 1; }
+#live-work { background: #0C0C0C; padding: 100px 56px; }
+.lw-inner { max-width: 1160px; margin: 0 auto; }
+.lw-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 56px; gap: 24px; flex-wrap: wrap; }
+.lw-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 14px; }
+.lw-title { font-family: 'Playfair Display', serif; font-size: clamp(38px,4.5vw,60px); font-weight: 400; line-height: 1.08; letter-spacing: -0.02em; color: #fff; margin-bottom: 0; }
+.lw-sub { font-size: 15px; color: #555; max-width: 400px; line-height: 1.75; }
+.lw-company-card { border-radius: 24px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); margin-bottom: 24px; }
+.lw-gradient-header { padding: 48px 56px 44px; position: relative; overflow: hidden; }
+.lw-gradient-header::before { content: ''; position: absolute; top: -60px; right: -60px; width: 300px; height: 300px; border-radius: 50%; background: rgba(255,255,255,0.05); pointer-events: none; }
+.lw-badge-row { display: inline-flex; align-items: center; gap: 8px; border: 1px solid rgba(255,255,255,0.18); border-radius: 100px; padding: 5px 14px; margin-bottom: 20px; background: rgba(255,255,255,0.12); }
+.lw-badge-dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; animation: blink 1.8s ease-in-out infinite; }
+.lw-badge-text { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.85); }
+.lw-card-title { font-family: 'Playfair Display', serif; font-size: clamp(22px,3vw,38px); color: #fff; line-height: 1.15; margin-bottom: 12px; font-weight: 400; }
+.lw-card-desc { font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.7; max-width: 500px; }
+.lw-founder-badge { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); border-radius: 16px; padding: 18px 22px; flex-shrink: 0; min-width: 210px; }
+.lw-founder-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 8px; }
+.lw-founder-quote { font-size: 13px; color: #fff; font-style: italic; line-height: 1.6; margin-bottom: 12px; }
+.lw-founder-row { display: flex; align-items: center; gap: 10px; }
+.lw-founder-avatar { width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #fff; flex-shrink: 0; }
+.lw-founder-name { font-size: 12px; font-weight: 700; color: #fff; }
+.lw-founder-role { font-size: 10px; color: rgba(255,255,255,0.45); }
+.lw-header-inner { display: flex; align-items: flex-start; justify-content: space-between; gap: 32px; flex-wrap: wrap; position: relative; }
+.lw-stats-row { display: grid; gap: 1px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; overflow: hidden; margin-top: 36px; }
+.lw-stat-cell { background: rgba(0,0,0,0.3); padding: 16px 20px; text-align: center; border-left: 1px solid rgba(255,255,255,0.1); }
+.lw-stat-cell:first-child { border-left: none; }
+.lw-stat-n { font-family: 'Playfair Display', serif; font-size: 24px; line-height: 1; }
 .lw-stat-l { font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 4px; }
+.lw-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(255,255,255,0.06); }
+.lw-action-card { padding: 34px 38px; display: flex; flex-direction: column; gap: 18px; cursor: pointer; transition: background 0.2s; text-decoration: none; }
+.lw-action-card:hover { background: rgba(255,255,255,0.04); }
+.lw-action-right { border-left: 1px solid rgba(255,255,255,0.06); }
+.lw-action-icon-row { display: flex; align-items: center; gap: 14px; }
+.lw-action-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+.lw-action-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 3px; }
+.lw-action-title { font-size: 15px; font-weight: 700; color: #fff; }
+.lw-action-desc { font-size: 13px; color: #666; line-height: 1.75; }
+.lw-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.lw-tag { font-size: 11px; padding: 3px 10px; border-radius: 100px; font-weight: 600; }
+.lw-action-footer { margin-top: auto; display: flex; align-items: center; justify-content: space-between; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.07); font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+.lw-action-arrow { font-size: 20px; }
+.lw-mini-mockup { background: #0a0a0a; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 14px; display: flex; gap: 14px; align-items: center; }
+.lw-mini-phone { width: 56px; height: 96px; border-radius: 10px; flex-shrink: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; position: relative; overflow: hidden; }
+.lw-mini-phone-label { font-size: 8px; font-weight: 700; color: rgba(255,255,255,0.5); text-align: center; }
+.lw-mini-phone-num { font-size: 15px; font-weight: 700; color: #fff; line-height: 1; }
+.lw-mini-phone-sub { font-size: 7px; color: rgba(255,255,255,0.45); }
+.lw-mini-bars { flex: 1; display: flex; flex-direction: column; gap: 7px; }
+.lw-mini-bar-row { display: flex; align-items: center; gap: 6px; }
+.lw-mini-bar-label { font-size: 10px; color: #666; width: 52px; }
+.lw-mini-bar-track { flex: 1; height: 6px; background: rgba(255,255,255,0.06); border-radius: 3px; overflow: hidden; }
+.lw-mini-bar-fill { height: 100%; border-radius: 3px; }
+.lw-mini-bar-pct { font-size: 10px; color: #555; width: 24px; text-align: right; }
+.lw-mini-caption { font-size: 10px; color: #444; margin-top: 3px; }
 
 /* RESPONSIVE — tablet */
 @media (max-width: 960px) {
@@ -301,10 +343,11 @@ body.cursor-view #cursor-label { opacity: 1; }
   footer { flex-direction: column; gap: 8px; text-align: center; padding: 20px 24px; }
   .nav-links .nav-link-hide { display: none; }
   .hero-linkedin { width: 100%; }
+  #live-work { padding: 72px 24px; }
   .lw-two-col { grid-template-columns: 1fr; }
-  .lw-stats { grid-template-columns: 1fr 1fr; }
-  .lw-card { padding: 24px 20px; }
-  .lw-card-right { border-left: none; border-top: 1px solid rgba(255,255,255,0.06); }
+  .lw-action-right { border-left: none; border-top: 1px solid rgba(255,255,255,0.06); }
+  .lw-gradient-header { padding: 32px 24px; }
+  .lw-stats-row { grid-template-columns: 1fr 1fr !important; }
 }
 
 /* RESPONSIVE — phone */
@@ -472,9 +515,9 @@ function closeIfOverlay(e,id){if(e.target===document.getElementById(id))closeMod
     </div>
 
     <div class="hero-stats fade">
-      <div class="stat-cell"><div class="stat-n">4</div><div class="stat-l">PM case studies including live company work at Mysa</div></div>
+      <div class="stat-cell"><div class="stat-n">5</div><div class="stat-l">PM case studies including live company work</div></div>
       <div class="stat-cell"><div class="stat-n">+20%</div><div class="stat-l">Enrollment conversion uplift at Coding Ninjas</div></div>
-      <div class="stat-cell"><div class="stat-n">CEO</div><div class="stat-l">Mysa's CEO personally replied to my product teardown</div></div>
+      <div class="stat-cell"><div class="stat-n">2 CEOs</div><div class="stat-l">Founders personally replied to my teardowns</div></div>
       <div class="stat-cell"><div class="stat-n">45d</div><div class="stat-l">Building PM thinking in public on LinkedIn — daily</div></div>
     </div>
   </div>
@@ -503,117 +546,180 @@ function closeIfOverlay(e,id){if(e.target===document.getElementById(id))closeMod
   </div>
 </section>
 
-<!-- ===================== MYSA LIVE WORK SECTION ===================== -->
-<section id="live-work">
-  <div class="sec-inner">
 
-    <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:56px;gap:24px;flex-wrap:wrap;">
+<!-- ==================== LIVE WORK SECTION ==================== -->
+<section id="live-work">
+  <div class="lw-inner">
+
+    <div class="lw-header">
       <div>
-        <div class="sec-eyebrow" style="color:#4B78FF;">Live Product Work</div>
-        <div class="sec-title" style="color:#fff;">Real company. Real insight.<br><em style="font-style:italic;color:#4B78FF;">Built end-to-end.</em></div>
+        <div class="lw-eyebrow" style="color:#4B78FF;">Live Product Work</div>
+        <div class="lw-title">Real companies.<br>Real insight. <em style="font-style:italic;color:#4B78FF;">Built end-to-end.</em></div>
       </div>
-      <div class="sec-sub" style="color:#555;">Not a textbook exercise. I identified a real product gap at Mysa — a $6.5Mn funded fintech — built a full case study and clickable prototype. The CEO personally replied.</div>
+      <div class="lw-sub">Not textbook exercises. I identified real product gaps at funded startups, built full case studies and clickable prototypes. Founders personally replied.</div>
     </div>
 
-    <!-- MYSA MAIN CARD -->
-    <div style="border-radius:24px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);">
-
-      <!-- GRADIENT HEADER -->
-      <div style="background:linear-gradient(135deg,#0A1A6A 0%,#1434C8 50%,#2D52E8 100%);padding:48px 56px 44px;position:relative;overflow:hidden;">
-        <div style="position:absolute;top:-60px;right:-60px;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,0.05);pointer-events:none;"></div>
-        <div style="position:absolute;bottom:-80px;left:20%;width:400px;height:400px;border-radius:50%;background:rgba(255,255,255,0.03);pointer-events:none;"></div>
-
-        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:32px;flex-wrap:wrap;position:relative;">
+    <!-- ===== MYSA CARD ===== -->
+    <div class="lw-company-card" style="background:#141414;">
+      <div class="lw-gradient-header" style="background:linear-gradient(135deg,#0A1A6A 0%,#1434C8 50%,#2D52E8 100%);">
+        <div class="lw-header-inner">
           <div style="flex:1;min-width:260px;">
-            <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.18);border-radius:100px;padding:5px 14px;margin-bottom:20px;">
-              <span style="width:6px;height:6px;background:#7EB3FF;border-radius:50%;display:inline-block;animation:blink 1.8s ease-in-out infinite;"></span>
-              <span style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.85);">Live Work · Mysa · B2B Fintech SaaS</span>
+            <div class="lw-badge-row">
+              <span class="lw-badge-dot" style="background:#7EB3FF;"></span>
+              <span class="lw-badge-text">Live Work · Mysa · B2B Fintech SaaS</span>
             </div>
-            <div style="font-family:'Playfair Display',serif;font-size:clamp(24px,3.5vw,40px);color:#fff;line-height:1.15;margin-bottom:14px;font-weight:400;">From 17 Days to 10 Minutes:<br><em style="font-style:italic;color:#93C5FD;">A PLG Onboarding for Mysa</em></div>
-            <div style="font-size:14px;color:rgba(255,255,255,0.65);line-height:1.7;max-width:500px;">Identified Mysa's missing self-serve path through deep product research. Built a complete case study and clickable prototype showing how a tech founder goes from zero to burn rate visibility in 10 minutes — no sales call needed.</div>
+            <div class="lw-card-title">From 17 Days to 10 Minutes:<br><em style="font-style:italic;color:#93C5FD;">A PLG Onboarding for Mysa</em></div>
+            <div class="lw-card-desc">Identified Mysa's missing self-serve path. Built a complete case study and clickable prototype showing how a tech founder goes from zero to burn rate visibility in 10 minutes — no sales call needed.</div>
           </div>
-
-          <!-- CEO REPLY BADGE -->
-          <div style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);border-radius:16px;padding:20px 24px;flex-shrink:0;min-width:220px;">
-            <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:10px;">CEO Response · LinkedIn</div>
-            <div style="font-size:13px;color:#fff;font-style:italic;line-height:1.6;margin-bottom:14px;">"Good perspective... look forward to reading."</div>
-            <div style="display:flex;align-items:center;gap:10px;">
-              <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#4B78FF,#1434C8);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;flex-shrink:0;">AK</div>
+          <div class="lw-founder-badge">
+            <div class="lw-founder-label">CEO Response · LinkedIn</div>
+            <div class="lw-founder-quote">"Good perspective... look forward to reading."</div>
+            <div class="lw-founder-row">
+              <div class="lw-founder-avatar" style="background:linear-gradient(135deg,#4B78FF,#1434C8);">AK</div>
               <div>
-                <div style="font-size:12px;font-weight:700;color:#fff;">Arpita Kapoor</div>
-                <div style="font-size:10px;color:rgba(255,255,255,0.45);">CEO & Co-Founder, Mysa</div>
+                <div class="lw-founder-name">Arpita Kapoor</div>
+                <div class="lw-founder-role">CEO & Co-Founder, Mysa</div>
               </div>
             </div>
           </div>
         </div>
-
-        <!-- STATS ROW -->
-        <div class="lw-stats">
-          <div class="lw-stat"><div class="lw-stat-n">$6.5M</div><div class="lw-stat-l">Company funding</div></div>
-          <div class="lw-stat"><div class="lw-stat-n" style="color:#93C5FD;">17d → 10m</div><div class="lw-stat-l">Time to first value</div></div>
-          <div class="lw-stat"><div class="lw-stat-n" style="color:#6EE7B7;">5K+</div><div class="lw-stat-l">TAM identified</div></div>
-          <div class="lw-stat"><div class="lw-stat-n" style="color:#FCA5A5;">PLG</div><div class="lw-stat-l">Solution approach</div></div>
+        <div class="lw-stats-row" style="grid-template-columns:repeat(4,1fr);">
+          <div class="lw-stat-cell"><div class="lw-stat-n" style="color:#fff;">$6.5M</div><div class="lw-stat-l">Company funding</div></div>
+          <div class="lw-stat-cell"><div class="lw-stat-n" style="color:#93C5FD;">17d → 10m</div><div class="lw-stat-l">Time to first value</div></div>
+          <div class="lw-stat-cell"><div class="lw-stat-n" style="color:#6EE7B7;">5K+</div><div class="lw-stat-l">TAM identified</div></div>
+          <div class="lw-stat-cell"><div class="lw-stat-n" style="color:#FCA5A5;">PLG</div><div class="lw-stat-l">Solution approach</div></div>
         </div>
       </div>
-
-      <!-- TWO ACTION CARDS -->
       <div class="lw-two-col">
-
-        <!-- CASE STUDY -->
-        <div class="lw-card" onclick="window.open('Mysa_Case_Study.html','_blank')">
-          <div style="display:flex;align-items:center;gap:14px;">
-            <div style="width:44px;height:44px;background:rgba(20,52,200,0.2);border:1px solid rgba(20,52,200,0.35);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">📋</div>
+        <a href="Mysa_Case_Study.html" target="_blank" class="lw-action-card" style="background:#141414;color:inherit;">
+          <div class="lw-action-icon-row">
+            <div class="lw-action-icon" style="background:rgba(20,52,200,0.2);border:1px solid rgba(20,52,200,0.35);">📋</div>
             <div>
-              <div style="font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#4B78FF;margin-bottom:3px;">Full Case Study</div>
-              <div style="font-size:15px;font-weight:700;color:#fff;">Research → Problem → Solution → Metrics</div>
+              <div class="lw-action-label" style="color:#4B78FF;">Full Case Study</div>
+              <div class="lw-action-title">Research → Problem → Solution → Metrics</div>
             </div>
           </div>
-          <div style="font-size:13px;color:#666;line-height:1.75;">Real data from Mysa's website, demo form, and customer stories. Problem identified, solution designed, 4 metrics defined, validation plan included. Honest about what is confirmed vs hypothesised.</div>
-          <div style="display:flex;flex-wrap:wrap;gap:8px;">
-            <span style="font-size:11px;padding:3px 10px;background:rgba(20,52,200,0.15);color:#93C5FD;border-radius:100px;font-weight:600;">PLG Strategy</span>
-            <span style="font-size:11px;padding:3px 10px;background:rgba(20,52,200,0.15);color:#93C5FD;border-radius:100px;font-weight:600;">Market Sizing</span>
-            <span style="font-size:11px;padding:3px 10px;background:rgba(20,52,200,0.15);color:#93C5FD;border-radius:100px;font-weight:600;">North Star Metric</span>
-            <span style="font-size:11px;padding:3px 10px;background:rgba(20,52,200,0.15);color:#93C5FD;border-radius:100px;font-weight:600;">Validation Plan</span>
+          <div class="lw-action-desc">Real data from Mysa's website, demo form, and customer stories. Cold start problem identified, PLG solution designed, 4 metrics defined, validation plan included.</div>
+          <div class="lw-tags">
+            <span class="lw-tag" style="background:rgba(20,52,200,0.15);color:#93C5FD;border:1px solid rgba(20,52,200,0.2);">PLG Strategy</span>
+            <span class="lw-tag" style="background:rgba(20,52,200,0.15);color:#93C5FD;border:1px solid rgba(20,52,200,0.2);">Market Sizing</span>
+            <span class="lw-tag" style="background:rgba(20,52,200,0.15);color:#93C5FD;border:1px solid rgba(20,52,200,0.2);">North Star Metric</span>
           </div>
-          <div style="margin-top:auto;display:flex;align-items:center;justify-content:space-between;padding-top:18px;border-top:1px solid rgba(255,255,255,0.07);">
-            <span style="font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#4B78FF;">Read Full Case Study</span>
-            <span style="font-size:20px;color:#4B78FF;transition:transform 0.2s;">→</span>
+          <div class="lw-action-footer" style="color:#4B78FF;">
+            <span>Read Case Study</span>
+            <span class="lw-action-arrow" style="color:#4B78FF;">→</span>
           </div>
-        </div>
-
-        <!-- PROTOTYPE -->
-        <div class="lw-card lw-card-right" onclick="window.open('Mysa_PLG_Prototype.html','_blank')">
-          <div style="display:flex;align-items:center;gap:14px;">
-            <div style="width:44px;height:44px;background:rgba(6,150,105,0.2);border:1px solid rgba(6,150,105,0.35);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">📱</div>
+        </a>
+        <a href="Mysa_PLG_Prototype.html" target="_blank" class="lw-action-card lw-action-right" style="background:#141414;color:inherit;">
+          <div class="lw-action-icon-row">
+            <div class="lw-action-icon" style="background:rgba(6,150,105,0.2);border:1px solid rgba(6,150,105,0.35);">📱</div>
             <div>
-              <div style="font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#6EE7B7;margin-bottom:3px;">Clickable Prototype</div>
-              <div style="font-size:15px;font-weight:700;color:#fff;">5-Screen PLG Onboarding Flow</div>
+              <div class="lw-action-label" style="color:#6EE7B7;">Clickable Prototype</div>
+              <div class="lw-action-title">5-Screen PLG Onboarding Flow</div>
             </div>
           </div>
-
-          <!-- MINI MOCKUP PREVIEW -->
-          <div style="background:#0a0a0a;border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:16px;display:flex;gap:14px;align-items:center;">
-            <div style="width:56px;height:96px;background:linear-gradient(160deg,#1434C8,#0a1060);border-radius:10px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;position:relative;overflow:hidden;">
+          <div class="lw-mini-mockup">
+            <div class="lw-mini-phone" style="background:linear-gradient(160deg,#1434C8,#0a1060);">
               <div style="position:absolute;top:4px;right:4px;width:14px;height:14px;background:rgba(255,255,255,0.1);border-radius:50%;"></div>
-              <div style="font-size:8px;font-weight:700;color:rgba(255,255,255,0.5);text-align:center;">Burn Rate</div>
-              <div style="font-size:16px;font-weight:700;color:#fff;line-height:1;">₹14L</div>
-              <div style="font-size:7px;color:rgba(255,255,255,0.45);">21mo runway</div>
+              <div class="lw-mini-phone-label">Burn Rate</div>
+              <div class="lw-mini-phone-num">₹14L</div>
+              <div class="lw-mini-phone-sub">21mo runway</div>
             </div>
-            <div style="flex:1;display:flex;flex-direction:column;gap:7px;">
-              <div style="display:flex;align-items:center;gap:6px;"><div style="font-size:10px;color:#666;width:52px;">Salaries</div><div style="flex:1;height:6px;background:rgba(255,255,255,0.06);border-radius:3px;overflow:hidden;"><div style="width:68%;height:100%;background:#4B78FF;border-radius:3px;"></div></div><div style="font-size:10px;color:#555;width:24px;text-align:right;">68%</div></div>
-              <div style="display:flex;align-items:center;gap:6px;"><div style="font-size:10px;color:#666;width:52px;">AWS</div><div style="flex:1;height:6px;background:rgba(255,255,255,0.06);border-radius:3px;overflow:hidden;"><div style="width:18%;height:100%;background:#6EE7B7;border-radius:3px;"></div></div><div style="font-size:10px;color:#555;width:24px;text-align:right;">18%</div></div>
-              <div style="display:flex;align-items:center;gap:6px;"><div style="font-size:10px;color:#666;width:52px;">Vendors</div><div style="flex:1;height:6px;background:rgba(255,255,255,0.06);border-radius:3px;overflow:hidden;"><div style="width:9%;height:100%;background:#FCA5A5;border-radius:3px;"></div></div><div style="font-size:10px;color:#555;width:24px;text-align:right;">9%</div></div>
-              <div style="font-size:10px;color:#444;margin-top:3px;">Pain → Signup → Bank → Burn Rate → Bill</div>
+            <div class="lw-mini-bars">
+              <div class="lw-mini-bar-row"><div class="lw-mini-bar-label">Salaries</div><div class="lw-mini-bar-track"><div class="lw-mini-bar-fill" style="width:68%;background:#4B78FF;"></div></div><div class="lw-mini-bar-pct">68%</div></div>
+              <div class="lw-mini-bar-row"><div class="lw-mini-bar-label">AWS</div><div class="lw-mini-bar-track"><div class="lw-mini-bar-fill" style="width:18%;background:#6EE7B7;"></div></div><div class="lw-mini-bar-pct">18%</div></div>
+              <div class="lw-mini-bar-row"><div class="lw-mini-bar-label">Vendors</div><div class="lw-mini-bar-track"><div class="lw-mini-bar-fill" style="width:9%;background:#FCA5A5;"></div></div><div class="lw-mini-bar-pct">9%</div></div>
+              <div class="lw-mini-caption">Pain → Signup → Bank → Burn Rate → Bill</div>
             </div>
           </div>
+          <div class="lw-action-desc">Fully clickable iPhone-frame mockup. Pain moment to first bill processed in 90 seconds.</div>
+          <div class="lw-action-footer" style="color:#6EE7B7;">
+            <span>Open Prototype</span>
+            <span class="lw-action-arrow" style="color:#6EE7B7;">→</span>
+          </div>
+        </a>
+      </div>
+    </div>
 
-          <div style="font-size:13px;color:#666;line-height:1.75;">Fully clickable iPhone-frame mockup. Shows the complete journey from founder's pain moment to first bill processed in 90 seconds.</div>
-          <div style="margin-top:auto;display:flex;align-items:center;justify-content:space-between;padding-top:18px;border-top:1px solid rgba(255,255,255,0.07);">
-            <span style="font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#6EE7B7;">Open Prototype</span>
-            <span style="font-size:20px;color:#6EE7B7;">→</span>
+    <!-- ===== BIZOM CARD ===== -->
+    <div class="lw-company-card" style="background:#141414;">
+      <div class="lw-gradient-header" style="background:linear-gradient(135deg,#1A0800 0%,#7C2D00 50%,#FF5C1A 100%);">
+        <div class="lw-header-inner">
+          <div style="flex:1;min-width:260px;">
+            <div class="lw-badge-row">
+              <span class="lw-badge-dot" style="background:#FCA5A5;"></span>
+              <span class="lw-badge-text">Live Work · Bizom · B2B Retail Intelligence SaaS</span>
+            </div>
+            <div class="lw-card-title">Bizom's Rs 100 Crore Bet<br><em style="font-style:italic;color:#FDBA74;">Has a Week-One Problem.</em></div>
+            <div class="lw-card-desc">Identified that Bizom's Real Intelligence — their Series B AI bet — cannot deliver value to new mid-market brands for 3-6 months due to cold start. Built a case study and prototype showing how category-level collaborative filtering solves this from day one.</div>
+          </div>
+          <div class="lw-founder-badge">
+            <div class="lw-founder-label">Target · VP Product</div>
+            <div class="lw-founder-quote">"RI uses outlet history, buying trends, and rep-specific targets."</div>
+            <div class="lw-founder-row">
+              <div class="lw-founder-avatar" style="background:linear-gradient(135deg,#FF5C1A,#7C2D00);">RS</div>
+              <div>
+                <div class="lw-founder-name">Raj Singh Grewal</div>
+                <div class="lw-founder-role">VP Product, Bizom</div>
+              </div>
+            </div>
           </div>
         </div>
-
+        <div class="lw-stats-row" style="grid-template-columns:repeat(4,1fr);">
+          <div class="lw-stat-cell"><div class="lw-stat-n" style="color:#fff;">$19.1M</div><div class="lw-stat-l">Total funding</div></div>
+          <div class="lw-stat-cell"><div class="lw-stat-n" style="color:#FDBA74;">3-6mo → D1</div><div class="lw-stat-l">Time to RI value</div></div>
+          <div class="lw-stat-cell"><div class="lw-stat-n" style="color:#6EE7B7;">8M+</div><div class="lw-stat-l">Kiranas — data moat</div></div>
+          <div class="lw-stat-cell"><div class="lw-stat-n" style="color:#FCA5A5;">Cold Start</div><div class="lw-stat-l">Problem identified</div></div>
+        </div>
+      </div>
+      <div class="lw-two-col">
+        <a href="Bizom_Case_Study.html" target="_blank" class="lw-action-card" style="background:#141414;color:inherit;">
+          <div class="lw-action-icon-row">
+            <div class="lw-action-icon" style="background:rgba(255,92,26,0.15);border:1px solid rgba(255,92,26,0.3);">📋</div>
+            <div>
+              <div class="lw-action-label" style="color:#FF5C1A;">Full Case Study</div>
+              <div class="lw-action-title">Cold Start → Bizom First 30 → Metrics</div>
+            </div>
+          </div>
+          <div class="lw-action-desc">Confirmed via real Capterra reviews and Bizom's own product page. 10-section case study with alternatives considered, metrics defined, and honest validation plan.</div>
+          <div class="lw-tags">
+            <span class="lw-tag" style="background:rgba(255,92,26,0.12);color:#FF5C1A;border:1px solid rgba(255,92,26,0.2);">AI Cold Start</span>
+            <span class="lw-tag" style="background:rgba(255,92,26,0.12);color:#FF5C1A;border:1px solid rgba(255,92,26,0.2);">Collaborative Filtering</span>
+            <span class="lw-tag" style="background:rgba(255,92,26,0.12);color:#FF5C1A;border:1px solid rgba(255,92,26,0.2);">FMCG · RTM</span>
+          </div>
+          <div class="lw-action-footer" style="color:#FF5C1A;">
+            <span>Read Case Study</span>
+            <span class="lw-action-arrow" style="color:#FF5C1A;">→</span>
+          </div>
+        </a>
+        <a href="Bizom_Prototype.html" target="_blank" class="lw-action-card lw-action-right" style="background:#141414;color:inherit;">
+          <div class="lw-action-icon-row">
+            <div class="lw-action-icon" style="background:rgba(255,92,26,0.15);border:1px solid rgba(255,92,26,0.3);">📱</div>
+            <div>
+              <div class="lw-action-label" style="color:#FDBA74;">Clickable Prototype</div>
+              <div class="lw-action-title">Bizom First 30 — 5 Screen Onboarding</div>
+            </div>
+          </div>
+          <div class="lw-mini-mockup">
+            <div class="lw-mini-phone" style="background:linear-gradient(160deg,#7C2D00,#1A0800);">
+              <div style="position:absolute;top:4px;right:4px;width:14px;height:14px;background:rgba(255,255,255,0.1);border-radius:50%;"></div>
+              <div class="lw-mini-phone-label">RI Copilot</div>
+              <div class="lw-mini-phone-num" style="font-size:11px;text-align:center;line-height:1.2;">Day 1<br>Active</div>
+              <div class="lw-mini-phone-sub">Beardo · Dadar</div>
+            </div>
+            <div class="lw-mini-bars">
+              <div class="lw-mini-bar-row"><div class="lw-mini-bar-label">Beard Oil</div><div class="lw-mini-bar-track"><div class="lw-mini-bar-fill" style="width:82%;background:#FF5C1A;"></div></div><div class="lw-mini-bar-pct">82%</div></div>
+              <div class="lw-mini-bar-row"><div class="lw-mini-bar-label">Face Wash</div><div class="lw-mini-bar-track"><div class="lw-mini-bar-fill" style="width:67%;background:#FDBA74;"></div></div><div class="lw-mini-bar-pct">67%</div></div>
+              <div class="lw-mini-bar-row"><div class="lw-mini-bar-label">Hair Clay</div><div class="lw-mini-bar-track"><div class="lw-mini-bar-fill" style="width:45%;background:#6EE7B7;"></div></div><div class="lw-mini-bar-pct">45%</div></div>
+              <div class="lw-mini-caption">Category intelligence · 47 grooming brands</div>
+            </div>
+          </div>
+          <div class="lw-action-desc">Beardo onboards Bizom. RI Copilot activates on day one using grooming category data from Maharashtra. Ramesh gets real suggestions from visit one.</div>
+          <div class="lw-action-footer" style="color:#FDBA74;">
+            <span>Open Prototype</span>
+            <span class="lw-action-arrow" style="color:#FDBA74;">→</span>
+          </div>
+        </a>
       </div>
     </div>
 
@@ -1276,9 +1382,7 @@ function closeIfOverlay(e,id){if(e.target===document.getElementById(id))closeMod
 
 <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 <script>
-(function(){ 
-  try { emailjs.init("user_placeholder"); } catch(e) {}
-})();
+(function(){ try { emailjs.init("user_placeholder"); } catch(e) {} })();
 
 function openResumeModal(e) {
   e.preventDefault();
@@ -1311,25 +1415,26 @@ function submitResumeRequest() {
   btn.style.opacity = '0.7';
   btn.disabled = true;
 
-  // Always use mailto as the reliable method
-  var subject = encodeURIComponent('Resume Request from ' + name + ' at ' + company);
-  var body = encodeURIComponent(
-    'Hi Kuber,\n\n' +
-    'I would like to request your resume.\n\n' +
-    'Name: ' + name + '\n' +
-    'Company: ' + company + '\n' +
-    'Contact: ' + contact + '\n\n' +
-    'Please send your resume at your earliest convenience.\n\nThank you!'
-  );
-  window.location.href = 'mailto:kuberchauhanbu12@gmail.com?subject=' + subject + '&body=' + body;
-  
-  setTimeout(function() {
+  // Send via EmailJS
+  emailjs.send('service_placeholder', 'template_placeholder', {
+    from_name: name,
+    company: company,
+    contact: contact,
+    to_email: 'kuberchauhanbu12@gmail.com'
+  }).then(function() {
+    document.getElementById('resume-form-area').style.display = 'none';
+    document.getElementById('resume-success').style.display = 'block';
+  }, function() {
+    // Fallback: open mailto if EmailJS fails
+    var subject = encodeURIComponent('Resume Request from ' + name + ' - ' + company);
+    var body = encodeURIComponent('Name: ' + name + '\nCompany: ' + company + '\nContact: ' + contact);
+    window.open('mailto:kuberchauhanbu12@gmail.com?subject=' + subject + '&body=' + body);
     document.getElementById('resume-form-area').style.display = 'none';
     document.getElementById('resume-success').style.display = 'block';
     btn.textContent = 'Send Request →';
     btn.style.opacity = '1';
     btn.disabled = false;
-  }, 800);
+  });
 }
 </script>
 
