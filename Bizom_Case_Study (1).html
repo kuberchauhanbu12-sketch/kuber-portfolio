@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bizom Case Study — Kuber Chauhan</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange: #FF5C1A;
+    --orange-soft: #FF7A42;
+    --dark: #0E0E0E;
+    --dark-2: #1A1A1A;
+    --dark-3: #252525;
+    --text: #E8E8E8;
+    --text-dim: #8A8A8A;
+    --text-dimmer: #555;
+    --white: #FFFFFF;
+    --green: #22C55E;
+    --blue: #3B82F6;
+    --yellow: #F59E0B;
+    --border: rgba(255,255,255,0.07);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--dark); color: var(--text); font-family: 'DM Sans', sans-serif; line-height: 1.7; font-size: 16px; -webkit-font-smoothing: antialiased; }
+
+  /* HERO */
+  .hero { background: linear-gradient(135deg, #0E0E0E 0%, #1A0A00 50%, #0E0E0E 100%); border-bottom: 1px solid var(--border); padding: 80px 40px 60px; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: -200px; right: -200px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(255,92,26,0.12) 0%, transparent 70%); pointer-events: none; }
+  .hero-inner { max-width: 860px; margin: 0 auto; position: relative; }
+  .badge-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 28px; }
+  .badge { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 100px; font-size: 11px; font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; }
+  .badge-orange { background: rgba(255,92,26,0.15); color: var(--orange); border: 1px solid rgba(255,92,26,0.25); }
+  .badge-white { background: rgba(255,255,255,0.07); color: var(--text-dim); border: 1px solid var(--border); }
+  .badge-green { background: rgba(34,197,94,0.12); color: var(--green); border: 1px solid rgba(34,197,94,0.2); }
+  .hero h1 { font-family: 'Syne', sans-serif; font-size: clamp(32px,5vw,54px); font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 20px; color: var(--white); }
+  .hero h1 span { color: var(--orange); }
+  .hero-sub { font-size: 18px; color: var(--text-dim); max-width: 620px; line-height: 1.6; margin-bottom: 36px; font-weight: 300; }
+  .hero-stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; max-width: 680px; }
+  .stat { background: rgba(255,255,255,0.03); padding: 18px 20px; text-align: center; }
+  .stat-num { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 700; color: var(--orange); display: block; }
+  .stat-label { font-size: 11px; color: var(--text-dimmer); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 3px; }
+
+  /* LAYOUT */
+  .container { max-width: 860px; margin: 0 auto; padding: 0 40px; }
+  section { padding: 60px 0; border-bottom: 1px solid var(--border); }
+  section:last-child { border-bottom: none; }
+  .section-label { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--orange); margin-bottom: 12px; }
+  h2 { font-family: 'Syne', sans-serif; font-size: clamp(22px,3vw,30px); font-weight: 700; color: var(--white); margin-bottom: 24px; letter-spacing: -0.01em; line-height: 1.2; }
+  h3 { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 600; color: var(--white); margin-bottom: 12px; }
+  p { color: var(--text-dim); margin-bottom: 16px; font-weight: 300; line-height: 1.75; }
+  p strong { color: var(--text); font-weight: 500; }
+
+  /* CALLOUTS */
+  .callout { border-radius: 12px; padding: 24px 28px; margin: 28px 0; }
+  .callout-orange { background: rgba(255,92,26,0.07); border-left: 3px solid var(--orange); }
+  .callout-dark { background: var(--dark-2); border: 1px solid var(--border); }
+  .callout-green { background: rgba(34,197,94,0.07); border-left: 3px solid var(--green); }
+  .callout-blue { background: rgba(59,130,246,0.07); border-left: 3px solid var(--blue); }
+  .callout-yellow { background: rgba(245,158,11,0.07); border-left: 3px solid var(--yellow); }
+  .callout p:last-child { margin-bottom: 0; }
+  .callout-title { font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; color: var(--text-dim); }
+  .callout-orange .callout-title { color: var(--orange); }
+  .callout-green .callout-title { color: var(--green); }
+  .callout-yellow .callout-title { color: var(--yellow); }
+  .callout-blue .callout-title { color: var(--blue); }
+
+  /* CHAIN */
+  .chain { display: flex; align-items: center; flex-wrap: wrap; margin: 28px 0; background: var(--dark-2); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+  .chain-node { flex: 1; min-width: 100px; padding: 18px 14px; text-align: center; border-right: 1px solid var(--border); }
+  .chain-node:last-child { border-right: none; }
+  .chain-node-icon { font-size: 22px; margin-bottom: 6px; display: block; }
+  .chain-node-label { font-size: 12px; font-weight: 600; color: var(--text); display: block; text-transform: uppercase; letter-spacing: 0.5px; }
+  .chain-node-sub { font-size: 11px; color: var(--text-dimmer); margin-top: 3px; display: block; }
+  .chain-node.highlight { background: rgba(255,92,26,0.08); }
+  .chain-node.highlight .chain-node-label { color: var(--orange); }
+
+  /* PRIORITY TABLE */
+  .priority-table { width: 100%; border-collapse: collapse; margin: 28px 0; font-size: 14px; }
+  .priority-table th { font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--text-dimmer); padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--border); background: var(--dark-2); }
+  .priority-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--text-dim); vertical-align: top; line-height: 1.5; }
+  .priority-table tr:last-child td { border-bottom: none; }
+  .priority-table tr:hover td { background: rgba(255,255,255,0.015); }
+  .prob-name { font-weight: 500; color: var(--text); font-size: 14px; margin-bottom: 3px; }
+  .prob-sub { font-size: 12px; color: var(--text-dimmer); }
+  .priority-dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
+  .dot-high { background: var(--orange); }
+  .dot-mid { background: var(--yellow); }
+  .dot-low { background: var(--text-dimmer); }
+  .priority-pill { display: inline-block; padding: 3px 10px; border-radius: 100px; font-size: 11px; font-weight: 600; white-space: nowrap; }
+  .pill-chosen { background: rgba(255,92,26,0.15); color: var(--orange); border: 1px solid rgba(255,92,26,0.3); }
+  .pill-defer { background: rgba(245,158,11,0.1); color: var(--yellow); border: 1px solid rgba(245,158,11,0.25); }
+  .pill-skip { background: rgba(255,255,255,0.04); color: var(--text-dimmer); border: 1px solid var(--border); }
+
+  /* PROBLEM LAYERS */
+  .layers { display: flex; flex-direction: column; gap: 12px; margin: 28px 0; }
+  .layer { display: flex; align-items: flex-start; gap: 16px; padding: 20px 22px; background: var(--dark-2); border: 1px solid var(--border); border-radius: 10px; transition: border-color 0.2s; }
+  .layer:hover { border-color: rgba(255,92,26,0.3); }
+  .layer-num { font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 800; color: rgba(255,92,26,0.2); line-height: 1; flex-shrink: 0; width: 36px; }
+  .layer-content h4 { font-size: 15px; font-weight: 600; color: var(--white); margin-bottom: 5px; }
+  .layer-content p { font-size: 14px; margin: 0; line-height: 1.6; }
+  .layer.root { border-color: rgba(255,92,26,0.3); background: rgba(255,92,26,0.05); }
+  .layer.root .layer-num { color: var(--orange); }
+
+  /* REVIEWS */
+  .review-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 28px 0; }
+  .review-card { background: var(--dark-2); border: 1px solid var(--border); border-radius: 10px; padding: 20px; }
+  .review-text { font-size: 14px; color: var(--text-dim); line-height: 1.65; font-style: italic; margin-bottom: 14px; }
+  .review-text::before { content: '"'; color: var(--orange); font-size: 20px; line-height: 0; vertical-align: -6px; margin-right: 2px; }
+  .review-text::after { content: '"'; color: var(--orange); font-size: 20px; line-height: 0; vertical-align: -6px; margin-left: 2px; }
+  .review-meta { display: flex; align-items: center; gap: 8px; }
+  .review-avatar { width: 28px; height: 28px; border-radius: 50%; background: var(--dark-3); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; color: var(--text-dim); }
+  .review-name { font-size: 12px; color: var(--text-dim); }
+  .review-role { font-size: 11px; color: var(--text-dimmer); }
+  .source-tag { margin-left: auto; font-size: 10px; color: var(--text-dimmer); background: var(--dark-3); padding: 2px 7px; border-radius: 4px; }
+
+  /* ROOT CAUSE VISUAL */
+  .root-cause-visual { background: var(--dark-2); border: 1px solid rgba(255,92,26,0.2); border-radius: 12px; padding: 32px; margin: 28px 0; text-align: center; }
+  .rcv-top { font-size: 13px; color: var(--text-dimmer); margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+  .rcv-chain { display: flex; align-items: center; justify-content: center; gap: 0; flex-wrap: wrap; }
+  .rcv-item { background: var(--dark-3); border: 1px solid var(--border); border-radius: 8px; padding: 12px 18px; font-size: 13px; font-weight: 500; color: var(--text-dim); white-space: nowrap; margin: 4px 0; }
+  .rcv-item.cause { border-color: rgba(255,92,26,0.3); color: var(--text); }
+  .rcv-item.root { background: rgba(255,92,26,0.12); border-color: var(--orange); color: var(--orange); font-weight: 600; }
+  .rcv-arrow { color: var(--text-dimmer); font-size: 18px; margin: 0 8px; }
+  .rcv-label { margin-top: 12px; font-size: 12px; color: var(--text-dimmer); font-style: italic; }
+
+  /* ALTERNATIVES */
+  .alt-grid { display: flex; flex-direction: column; gap: 12px; margin: 28px 0; }
+  .alt-card { display: grid; grid-template-columns: 2fr 2fr 1.5fr; gap: 0; background: var(--dark-2); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+  .alt-card.chosen { border-color: rgba(255,92,26,0.35); background: rgba(255,92,26,0.04); }
+  .alt-col { padding: 20px 22px; border-right: 1px solid var(--border); }
+  .alt-col:last-child { border-right: none; }
+  .alt-label { font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--text-dimmer); margin-bottom: 7px; }
+  .alt-name { font-size: 14px; font-weight: 600; color: var(--white); margin-bottom: 8px; line-height: 1.4; }
+  .alt-body { font-size: 13px; color: var(--text-dim); line-height: 1.6; }
+  .alt-body.pass { color: var(--green); }
+  .alt-body.fail { color: #EF4444; }
+  .alt-body.win { color: var(--orange); font-weight: 500; }
+
+  /* SOLUTION STEPS */
+  .steps { display: flex; flex-direction: column; gap: 16px; margin: 28px 0; }
+  .step { display: flex; gap: 20px; padding: 22px 24px; background: var(--dark-2); border: 1px solid var(--border); border-radius: 12px; transition: border-color 0.2s; }
+  .step:hover { border-color: rgba(255,92,26,0.25); }
+  .step-dot { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,92,26,0.12); border: 1px solid rgba(255,92,26,0.25); display: flex; align-items: center; justify-content: center; font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 700; color: var(--orange); flex-shrink: 0; }
+  .step-body h4 { font-size: 16px; font-weight: 600; color: var(--white); margin-bottom: 8px; }
+  .step-body p { font-size: 14px; margin-bottom: 10px; }
+  .step-tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .tag-orange { background: rgba(255,92,26,0.12); color: var(--orange); border: 1px solid rgba(255,92,26,0.2); }
+  .tag-green { background: rgba(34,197,94,0.1); color: var(--green); border: 1px solid rgba(34,197,94,0.2); }
+  .tag-blue { background: rgba(59,130,246,0.1); color: var(--blue); border: 1px solid rgba(59,130,246,0.2); }
+  .tag-yellow { background: rgba(245,158,11,0.1); color: var(--yellow); border: 1px solid rgba(245,158,11,0.2); }
+
+  /* METRICS */
+  .metrics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 28px 0; }
+  .metric-card { background: var(--dark-2); border: 1px solid var(--border); border-radius: 12px; padding: 22px; }
+  .metric-card.primary { border-color: rgba(255,92,26,0.2); }
+  .metric-card.guardrail { border-color: rgba(245,158,11,0.2); background: rgba(245,158,11,0.03); }
+  .metric-type { font-size: 10px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-dimmer); margin-bottom: 8px; }
+  .metric-card.primary .metric-type { color: var(--orange); }
+  .metric-card.guardrail .metric-type { color: var(--yellow); }
+  .metric-name { font-size: 16px; font-weight: 600; color: var(--white); margin-bottom: 10px; line-height: 1.3; }
+  .metric-desc { font-size: 13px; color: var(--text-dim); line-height: 1.6; margin-bottom: 14px; }
+  .metric-target { display: flex; align-items: center; gap: 8px; font-size: 13px; flex-wrap: wrap; }
+  .metric-from { color: var(--text-dimmer); text-decoration: line-through; font-style: italic; }
+  .metric-arrow { color: var(--orange); font-weight: 700; }
+  .metric-to { color: var(--green); font-weight: 500; }
+
+  /* HONEST BOX */
+  .honest-box { background: rgba(59,130,246,0.05); border: 1px solid rgba(59,130,246,0.2); border-radius: 12px; padding: 28px; margin: 28px 0; }
+  .honest-box h3 { color: var(--blue); margin-bottom: 16px; font-size: 16px; }
+  .honest-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .honest-list li { font-size: 14px; color: var(--text-dim); line-height: 1.6; padding-left: 20px; position: relative; }
+  .honest-list li::before { content: '→'; position: absolute; left: 0; color: var(--blue); font-weight: 700; }
+
+  /* FOOTER */
+  .footer { background: var(--dark-2); border-top: 1px solid var(--border); padding: 40px; text-align: center; }
+  .footer-name { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 700; color: var(--white); margin-bottom: 6px; }
+  .footer-links { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 16px; }
+  .footer-link { font-size: 13px; color: var(--text-dimmer); text-decoration: none; padding: 6px 14px; border: 1px solid var(--border); border-radius: 6px; transition: all 0.2s; }
+  .footer-link:hover { color: var(--orange); border-color: rgba(255,92,26,0.3); }
+  .cta-btn { display: inline-flex; align-items: center; gap: 8px; margin-top: 24px; padding: 12px 26px; background: var(--orange); color: white; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 14px; transition: all 0.2s; }
+  .cta-btn:hover { background: var(--orange-soft); transform: translateY(-1px); }
+
+  mark { background: rgba(255,92,26,0.15); color: var(--orange); padding: 1px 4px; border-radius: 3px; font-style: normal; }
+
+  /* RESPONSIVE */
+  @media (max-width: 720px) {
+    .hero { padding: 50px 20px 40px; }
+    .container { padding: 0 20px; }
+    .hero-stats { grid-template-columns: repeat(2,1fr); }
+    .review-grid, .metrics-grid { grid-template-columns: 1fr; }
+    .chain { flex-direction: column; }
+    .chain-node { border-right: none; border-bottom: 1px solid var(--border); }
+    .rcv-chain { flex-direction: column; align-items: center; }
+    .rcv-arrow { transform: rotate(90deg); }
+    .alt-card { grid-template-columns: 1fr; }
+    .alt-col { border-right: none; border-bottom: 1px solid var(--border); }
+    .alt-col:last-child { border-bottom: none; }
+    .priority-table { font-size: 12px; }
+    .priority-table th, .priority-table td { padding: 10px 10px; }
+    .footer { padding: 30px 20px; }
+  }
+
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="badge-row">
+      <span class="badge badge-orange">B2B SaaS · Retail Intelligence</span>
+      <span class="badge badge-white">FMCG · Distribution Tech</span>
+      <span class="badge badge-green">✓ Confirmed Data Sources</span>
+    </div>
+    <h1>Bizom's Rs 100 Crore Bet<br>Has a <span>Week-One Problem.</span></h1>
+    <p class="hero-sub">Bizom raised Series B to roll out Real Intelligence — AI guidance for 250,000 sales reps across 8 million kirana stores. The product works. But every new brand that joins today waits 3–6 months before RI becomes useful. Most don't wait that long.</p>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">750+</span><span class="stat-label">Brand customers</span></div>
+      <div class="stat"><span class="stat-num">250K</span><span class="stat-label">Sales reps</span></div>
+      <div class="stat"><span class="stat-num">$19.1M</span><span class="stat-label">Total raised</span></div>
+      <div class="stat"><span class="stat-num">8M+</span><span class="stat-label">Kiranas on platform</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <section class="fade-in">
+    <div class="section-label">01 — What Is Bizom</div>
+    <h2>The Operating System for FMCG Distribution</h2>
+    <p>Every FMCG brand in India sells through a chain. The brand makes the product. A distributor carries it to a region. A sales rep visits kirana stores. The kirana sells to consumers. That chain — called Route to Market (RTM) — was always invisible to brands. They could not see what stock a distributor held, whether a rep actually visited a shop, or whether a scheme reached the retailer.</p>
+    <p><strong>Bizom made this chain visible.</strong> Founded in 2008 by Lalit Bhise, Bizom built India's largest Retail Intelligence Platform — digitising the entire RTM chain from brand to kirana.</p>
+    <div class="chain">
+      <div class="chain-node"><span class="chain-node-icon">🏭</span><span class="chain-node-label">Brand</span><span class="chain-node-sub">Godrej, Mondelez, Red Bull</span></div>
+      <div class="chain-node"><span class="chain-node-icon">🚚</span><span class="chain-node-label">Distributor</span><span class="chain-node-sub">DMS manages stock + payments</span></div>
+      <div class="chain-node highlight"><span class="chain-node-icon">👤</span><span class="chain-node-label">Sales Rep</span><span class="chain-node-sub">SFA + RI Copilot guides visits</span></div>
+      <div class="chain-node"><span class="chain-node-icon">🏪</span><span class="chain-node-label">Kirana</span><span class="chain-node-sub">8 million retailers on platform</span></div>
+    </div>
+    <p>Their product has three layers: <strong>Digitalisation</strong> (SFA + DMS — making reps and distributors go digital), <strong>Optimisation</strong> (AI that improves how they work), and <strong>Expansion</strong> (new channels like WhatsApp ordering and B2B BNPL). The December 2024 Series B funds their biggest bet yet — <mark>Real Intelligence (RI)</mark>.</p>
+  </section>
+
+  <section class="fade-in">
+    <div class="section-label">02 — The Rs 100 Crore Bet</div>
+    <h2>Real Intelligence: What It Promises</h2>
+    <p>RI Copilot is Bizom's AI layer. It sits inside the sales rep's mobile app and guides every outlet visit in real time.</p>
+    <div class="callout callout-dark">
+      <div class="callout-title">What RI Copilot Actually Does — From Bizom's Own Website</div>
+      <p>When Ramesh (a field sales rep) opens the Bizom app before heading to market, RI Copilot tells him: which outlet to visit first, what SKUs to push at each shop, what pitch to use, and what cross-sell opportunity exists. It uses outlet-level purchase history, nearby store trends, and rep performance data to generate these suggestions.</p>
+    </div>
+    <p>The results from existing large customers are real and impressive — <strong>76% drop in sales returns</strong> (Akshayakalpa dairy), <strong>55% sales growth</strong> (packaged food brand), <strong>$42M saved</strong> stopping scheme leakages at a major beverage company, <strong>96% increase in productive calls</strong> (consumer durables brand). RI is not a marketing feature. It works — for brands that have been on Bizom long enough.</p>
+  </section>
+
+  <section class="fade-in">
+    <div class="section-label">03 — The Problem</div>
+    <h2>The Problem No One Is Talking About</h2>
+    <p>RI Copilot generates its recommendations from three data sources: <strong>outlet purchase history</strong>, <strong>nearby store trends</strong>, and <strong>rep performance baseline</strong>.</p>
+    <div class="callout callout-orange">
+      <div class="callout-title">The Critical Dependency</div>
+      <p>Every one of these data sources requires time on the platform to build. A brand that joined Bizom last month has zero outlet history, zero buying trend data, and no rep performance baseline. <strong>RI Copilot has nothing to learn from.</strong> Their own website states RI uses "outlet history, buying trends, and rep-specific targets" — all of which take months to accumulate.</p>
+    </div>
+    <p>This is the <strong>cold start problem</strong> — a well-documented challenge in AI recommendation systems. The algorithm cannot personalise until it has data. The data only exists after the brand has been using the platform. This creates a valley of low value in the critical first months — exactly when a new customer is forming their opinion of whether the product is worth the price.</p>
+    <div class="root-cause-visual">
+      <div class="rcv-top">The Sequence Problem</div>
+      <div class="rcv-chain">
+        <div class="rcv-item">New brand joins Bizom</div>
+        <div class="rcv-arrow">→</div>
+        <div class="rcv-item cause">Zero historical data</div>
+        <div class="rcv-arrow">→</div>
+        <div class="rcv-item cause">RI gives generic suggestions</div>
+        <div class="rcv-arrow">→</div>
+        <div class="rcv-item root">Brand questions ROI</div>
+      </div>
+      <div class="rcv-label">The valley of low value — before the data flywheel kicks in</div>
+    </div>
+    <p>This matters most because <strong>Bizom's Series B growth strategy depends on acquiring more mid-market brands</strong> — the Beardos, regional dairy brands, and Rs 100–500 crore FMCG companies. These brands are smaller, more price-sensitive, and less patient than P&G or Coca-Cola. They evaluate ROI faster. They churn faster.</p>
+  </section>
+
+  <section class="fade-in">
+    <div class="section-label">04 — What Real Customers Say</div>
+    <h2>The Evidence From Actual Reviews</h2>
+    <p>Bizom has strong reviews overall. But the patterns in the critical feedback are consistent and tell a clear story. Every quote below is from a verified Capterra review — not an inference.</p>
+    <div class="review-grid">
+      <div class="review-card">
+        <p class="review-text">Customizations take a long time because of new implementation. Difficult for new people to understand.</p>
+        <div class="review-meta"><div class="review-avatar">OP</div><div><div class="review-name">Omkar P.</div><div class="review-role">Telecom industry</div></div><span class="source-tag">Capterra</span></div>
+      </div>
+      <div class="review-card">
+        <p class="review-text">Pricing is expensive. Would be great if they offer a pay-as-you-use model.</p>
+        <div class="review-meta"><div class="review-avatar">SC</div><div><div class="review-name">Srikanth C.</div><div class="review-role">Consumer Goods</div></div><span class="source-tag">Capterra</span></div>
+      </div>
+      <div class="review-card">
+        <p class="review-text">UI and UX can be better. Would be nice to have the app run lighter on the phone.</p>
+        <div class="review-meta"><div class="review-avatar">SL</div><div><div class="review-name">Surbhit L.</div><div class="review-role">VP Digitisation, F&B</div></div><span class="source-tag">Capterra</span></div>
+      </div>
+      <div class="review-card">
+        <p class="review-text">App is glitchy when internet connectivity is poor. This is a challenge in rural markets.</p>
+        <div class="review-meta"><div class="review-avatar">BS</div><div><div class="review-name">Bana S.</div><div class="review-role">FMCG, rural distribution</div></div><span class="source-tag">Capterra</span></div>
+      </div>
+    </div>
+    <p>Three themes emerge consistently: <strong>complex onboarding for new users</strong>, <strong>pricing that feels enterprise-level for mid-market brands</strong>, and <strong>UX/performance gaps</strong> in real field conditions. These are the fingerprint of a product built for sophisticated enterprise customers, now being sold to a growing mid-market segment.</p>
+  </section>
+
+  <section class="fade-in">
+    <div class="section-label">05 — Problem Diagnosis</div>
+    <h2>Why This Is a Structural Gap, Not a Feature Request</h2>
+    <p>The reviews, the product architecture, and the growth strategy all point to the same structural gap. Here is how the layers connect:</p>
+    <div class="layers">
+      <div class="layer">
+        <div class="layer-num">1</div>
+        <div class="layer-content"><h4>Surface: New customers find Bizom complex</h4><p>"Difficult for new people to understand" — this is the visible symptom. Multiple reviewers flag it independently.</p></div>
+      </div>
+      <div class="layer">
+        <div class="layer-num">2</div>
+        <div class="layer-content"><h4>Deeper: The product has 20+ features, built for enterprise buyers with dedicated IT teams</h4><p>A mid-market brand with 50 reps and no IT team gets the same product as P&G. They use 30% of it and never unlock the features they actually paid for.</p></div>
+      </div>
+      <div class="layer">
+        <div class="layer-num">3</div>
+        <div class="layer-content"><h4>Deeper still: RI — the most valuable feature — requires historical data to work</h4><p>New customers pay for the AI from day one. But RI cannot personalise recommendations until the platform has 3–6 months of outlet-level data. The best feature is unavailable during the period when the customer is most likely to churn.</p></div>
+      </div>
+      <div class="layer root">
+        <div class="layer-num">→</div>
+        <div class="layer-content"><h4>Root cause: Bizom's onboarding was designed for retention, not activation</h4><p>Enterprise customers stay because switching costs are enormous. Mid-market customers leave because they have not seen enough value before the first renewal conversation. <strong>The product that performs brilliantly at month 12 is invisible at month 1.</strong></p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEW: PROBLEM PRIORITISATION -->
+  <section class="fade-in">
+    <div class="section-label">06 — Problem Prioritisation</div>
+    <h2>Why This Problem, and Not the Others</h2>
+    <p>Identifying a problem is only half the PM's job. The other half is choosing which problem is worth solving first. Bizom has several real problems. Here is how I evaluated them before arriving at the cold-start gap as the right focus for a Series B-stage company with mid-market expansion as its core growth thesis.</p>
+    <p>The three evaluation criteria: <strong>Revenue / retention impact</strong> — how much does solving this move the business? <strong>Is it already being addressed?</strong> — don't duplicate engineering work that's ongoing. <strong>Solvable without rearchitecting?</strong> — can this be addressed with a product-level change, not an infrastructure rebuild?</p>
+
+    <div style="overflow-x: auto;">
+      <table class="priority-table">
+        <thead>
+          <tr>
+            <th style="width:22%">Problem</th>
+            <th style="width:26%">Revenue / Retention Impact</th>
+            <th style="width:22%">Already Being Addressed?</th>
+            <th style="width:18%">Solvable Without Rearchitecting?</th>
+            <th style="width:12%">Decision</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="prob-name"><span class="priority-dot dot-high"></span>RI cold-start for new brands</div>
+              <div class="prob-sub">New customers see zero RI value for months</div>
+            </td>
+            <td><strong style="color:var(--orange)">High.</strong> Directly threatens mid-market expansion — Bizom's stated Series B growth bet. Every churned mid-market brand is a lost ARR expansion opportunity.</td>
+            <td>No visible solution found on the website, in customer communications, or in product changelogs.</td>
+            <td>Yes — category-level collaborative filtering is a known technique that sits on top of existing data, not below it.</td>
+            <td><span class="priority-pill pill-chosen">✓ Chosen</span></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="prob-name"><span class="priority-dot dot-mid"></span>App performance in low connectivity</div>
+              <div class="prob-sub">Glitchy for field reps in rural India</div>
+            </td>
+            <td><strong style="color:var(--yellow)">Medium.</strong> Affects rep usage quality and therefore data quality — but not a direct churn trigger for the brand buyer making the renewal decision.</td>
+            <td>Likely ongoing — standard engineering challenge for a platform of this age. Offline improvements are common in enterprise mobility products.</td>
+            <td>Partially. Offline-first architecture requires significant engineering investment and a long timeline.</td>
+            <td><span class="priority-pill pill-defer">Defer</span></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="prob-name"><span class="priority-dot dot-mid"></span>Pricing model mismatch</div>
+              <div class="prob-sub">Per-seat pricing feels expensive for mid-market</div>
+            </td>
+            <td><strong style="color:var(--yellow)">Medium.</strong> Affects conversion rate but this is a commercial team decision, not a product decision. PM influence here is limited.</td>
+            <td>Business leadership decision — outside PM's direct scope. Raising it as input to leadership is appropriate; owning it is not.</td>
+            <td>Not a product problem — a pricing and packaging problem for commercial and sales teams.</td>
+            <td><span class="priority-pill pill-skip">Not PM-owned</span></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="prob-name"><span class="priority-dot dot-low"></span>UI/UX complexity</div>
+              <div class="prob-sub">20+ features overwhelming for new users</div>
+            </td>
+            <td><strong style="color:var(--text-dimmer)">Low–Medium.</strong> Contributes to the onboarding problem but is a symptom of the root cause, not the root cause itself.</td>
+            <td>Continuous improvement — UI work happens at any product company at all times. Not a gap, just ongoing work.</td>
+            <td>Yes — but fixing UI without fixing the cold-start data problem still leaves RI useless at month 1. Solving the symptom, not the cause.</td>
+            <td><span class="priority-pill pill-skip">Symptom</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout callout-green">
+      <div class="callout-title">Why Cold-Start Wins the Prioritisation</div>
+      <p>The RI cold-start gap is the only problem that is simultaneously: tied directly to Bizom's Series B growth thesis, not visibly being addressed today, solvable with a product approach that doesn't require core architecture changes, and — critically — the underlying reason the other problems feel bad. If RI worked from day one, new brands would tolerate the complexity and pricing long enough to reach the product's real value. Fix this one thing and the retention problem materially improves.</p>
+    </div>
+  </section>
+
+  <!-- NEW: ALTERNATIVES CONSIDERED -->
+  <section class="fade-in">
+    <div class="section-label">07 — Alternatives Considered</div>
+    <h2>Why This Solution, and Not the Others</h2>
+    <p>Once the cold-start problem is confirmed as the right focus, the question becomes: what is the right way to solve it? I evaluated three distinct approaches before arriving at category-level collaborative filtering.</p>
+
+    <div class="alt-grid">
+      <div class="alt-card">
+        <div class="alt-col">
+          <div class="alt-label">Approach A</div>
+          <div class="alt-name">Manual onboarding by a dedicated customer success team</div>
+          <div class="alt-body">Assign a dedicated CSM to every new brand for the first 30 days. The CSM manually configures RI priorities based on their own category knowledge and brand briefing — essentially human intelligence bridging the data gap.</div>
+        </div>
+        <div class="alt-col">
+          <div class="alt-label">Why It Fails</div>
+          <div class="alt-body fail">Doesn't scale. At 750+ brands growing toward thousands, this model requires headcount to grow linearly with customers. Every new brand costs a CSM's time. Margins compress as the business grows — the exact opposite of what a SaaS model should do post Series B.</div>
+        </div>
+        <div class="alt-col">
+          <div class="alt-label">Verdict</div>
+          <div class="alt-body fail">❌ Rejected — operationally expensive, doesn't scale, creates a bottleneck that slows growth</div>
+        </div>
+      </div>
+
+      <div class="alt-card">
+        <div class="alt-col">
+          <div class="alt-label">Approach B</div>
+          <div class="alt-name">Pre-built category templates to reduce onboarding complexity</div>
+          <div class="alt-body">Build category-specific templates (Dairy, Beverages, Grooming, Snacks) with pre-configured targets, beat structures, and outlet types. New brands pick a template on day one and go live faster.</div>
+        </div>
+        <div class="alt-col">
+          <div class="alt-label">Why It Falls Short</div>
+          <div class="alt-body fail">Addresses complexity but not the core problem. Templates make setup faster, but RI still has no data and still delivers generic suggestions on day one. The brand gets onboarded faster — then hits the same empty RI experience. It's a better waiting room, not a shorter wait.</div>
+        </div>
+        <div class="alt-col">
+          <div class="alt-label">Verdict</div>
+          <div class="alt-body fail">❌ Rejected as primary solution — solves the wrong part of the problem. Worth doing as a complementary improvement, not a substitute.</div>
+        </div>
+      </div>
+
+      <div class="alt-card chosen">
+        <div class="alt-col">
+          <div class="alt-label">Approach C — Chosen</div>
+          <div class="alt-name">Category-level collaborative filtering using Bizom's existing data moat</div>
+          <div class="alt-body">Use anonymised, aggregated data from existing brands in the same category and geography to power RI from day one. As the new brand's own data accumulates over 30–60 days, the weighting gradually shifts from category intelligence to brand-specific intelligence. The transition is invisible to the rep.</div>
+        </div>
+        <div class="alt-col">
+          <div class="alt-label">Why It Works</div>
+          <div class="alt-body pass">✓ Fixes the actual problem — RI is useful on day one, not month four.<br><br>✓ Scales without adding headcount — it's a product feature, not a service.<br><br>✓ Leverages the asset Bizom already has — 8M kiranas and 750+ brands of historical data.<br><br>✓ Gets smarter as more brands join — the network effect works in Bizom's favour over time.</div>
+        </div>
+        <div class="alt-col">
+          <div class="alt-label">Verdict</div>
+          <div class="alt-body win">✓ Chosen — addresses root cause, scales cleanly, and turns Bizom's existing data moat into a direct competitive advantage for new customer acquisition</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout callout-yellow">
+      <div class="callout-title">Key Assumption to Validate Before Building</div>
+      <p>This approach assumes Bizom's outlet data is structured and tagged consistently enough for cross-brand category aggregation — that kirana purchase data from grooming brands in Maharashtra can be meaningfully applied to a new grooming brand in the same geography. This needs a technical feasibility assessment with the data engineering team before any roadmap commitment. If the data structure doesn't support clean aggregation today, Approach B (templates) becomes the right MVP to reduce friction while data infrastructure is improved in parallel.</p>
+    </div>
+  </section>
+
+  <section class="fade-in">
+    <div class="section-label">08 — The Solution</div>
+    <h2>Bizom First 30 — Delivering Week-One Value Before Data Exists</h2>
+    <p>The fix is not a new feature. It is a redesigned onboarding philosophy. The goal: <strong>every new brand sees measurable RI value in the first 30 days</strong> — before their own historical data is rich enough to power personalisation.</p>
+    <div class="callout callout-orange">
+      <div class="callout-title">Core Insight</div>
+      <p>RI needs outlet-specific data. But Bizom already has outlet-level data from 8 million kiranas and 750+ brands across India. A new brand in the packaged dairy category in Maharashtra doesn't need its own 6 months of data. It can borrow intelligence from every other dairy brand already on the platform — anonymised, aggregated, and filtered by category and geography. This is the same mechanism that powers Spotify's recommendations for new artists, and Amazon's for new products.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-dot">1</div>
+        <div class="step-body">
+          <h4>Category-Level RI From Day One</h4>
+          <p>Before a brand's own outlet data exists, RI Copilot draws from anonymised aggregated data of similar brands in the same category and geography. Ramesh gets meaningful suggestions from day one — not perfect, but genuinely useful. As the brand's own data accumulates, the weighting gradually shifts from category intelligence to brand-specific intelligence.</p>
+          <span class="step-tag tag-orange">Solves the cold start problem</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-dot">2</div>
+        <div class="step-body">
+          <h4>The Bizom First 30 Onboarding Track</h4>
+          <p>A structured 30-day guided programme for every new brand. Instead of presenting all 20+ features at once, each week unlocks one layer matched to where a brand realistically is in their journey. Week 1: SFA live, reps active. Week 2: First distributor on DMS. Week 3: RI Copilot activates with category intelligence. Week 4: First AI-driven results reviewed with account manager. Every step is designed to produce one visible win before asking the brand to go deeper.</p>
+          <span class="step-tag tag-green">Reduces onboarding overwhelm</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-dot">3</div>
+        <div class="step-body">
+          <h4>The Week-One Win Report</h4>
+          <p>At the end of week one, every new brand receives an automatically generated report: outlets covered, orders placed, reps active. Not a dashboard full of numbers — a curated narrative of what happened. The purpose is specific: give the sales manager or brand head a win they can share upward with their leadership team before week two begins. One internal win in week one dramatically changes the renewal conversation at month three.</p>
+          <span class="step-tag tag-blue">Drives internal advocacy</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-dot">4</div>
+        <div class="step-body">
+          <h4>Offline-First Performance for Field Conditions</h4>
+          <p>Multiple Capterra reviewers confirm the app struggles in low-connectivity areas — a real field condition across India's semi-urban and rural markets. Building offline-first sync means the app works fully with zero internet and syncs on reconnection. This directly increases genuine rep usage, which directly improves data quality, which directly accelerates the shift from category intelligence to brand-specific RI.</p>
+          <span class="step-tag tag-yellow">Accelerates the data flywheel</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="fade-in">
+    <div class="section-label">09 — Success Metrics</div>
+    <h2>How We Know It Is Working</h2>
+    <div class="metrics-grid">
+      <div class="metric-card primary">
+        <div class="metric-type">North Star Metric</div>
+        <div class="metric-name">Time to First RI Value</div>
+        <div class="metric-desc">Days from a new brand's onboarding to their first confirmed RI-influenced order. This is the clearest signal that the cold-start gap is closing and that category intelligence is genuinely useful in the field — not just present on screen.</div>
+        <div class="metric-target"><span class="metric-from">~3–6 months</span><span class="metric-arrow">→</span><span class="metric-to">Target: ≤30 days</span></div>
+      </div>
+      <div class="metric-card primary">
+        <div class="metric-type">Primary Business Metric</div>
+        <div class="metric-name">Month-3 Retention Rate (New Brands)</div>
+        <div class="metric-desc">Percentage of new brand customers still active at month 3. This is where mid-market churn is most likely to occur — before RI has proven itself with the brand's own data. Improvement here directly impacts Bizom's ARR expansion.</div>
+        <div class="metric-target"><span class="metric-from">Baseline (internal)</span><span class="metric-arrow">→</span><span class="metric-to">Target: +20% improvement</span></div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-type">Secondary Metric</div>
+        <div class="metric-name">RI Recommendation Acceptance Rate</div>
+        <div class="metric-desc">Percentage of RI Copilot suggestions that reps act on during the first 30 days. This is the most direct signal of whether category-level intelligence is actually useful in the field — the core assumption the entire solution rests on.</div>
+        <div class="metric-target"><span class="metric-from">Baseline unknown</span><span class="metric-arrow">→</span><span class="metric-to">Track from Day 1 of launch</span></div>
+      </div>
+      <div class="metric-card guardrail">
+        <div class="metric-type">Guardrail Metric</div>
+        <div class="metric-name">Enterprise Customer Experience</div>
+        <div class="metric-desc">Any changes to the platform or data layer for mid-market onboarding must not degrade the experience for existing enterprise customers. Their RI accuracy and data integrity must be fully protected — they are the anchor of Bizom's revenue today.</div>
+        <div class="metric-target"><span class="metric-from">Current: High</span><span class="metric-arrow">→</span><span class="metric-to">Must not decrease</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="fade-in">
+    <div class="section-label">10 — What I Would Validate Next</div>
+    <h2>Where This Analysis Is Strong and Where It Needs Testing</h2>
+    <div class="honest-box">
+      <h3>Honest Caveat — This Is a Hypothesis, Not a Confirmed Solution</h3>
+      <ul class="honest-list">
+        <li>The cold-start problem is a real, known AI challenge — but I have not verified Bizom's actual month-1 or month-3 churn data. Bizom may already have partial internal solutions not visible from outside the company.</li>
+        <li>Category-level collaborative filtering assumes Bizom's outlet data is structured and tagged consistently enough for cross-brand aggregation to work cleanly. This requires a technical feasibility check before roadmap commitment.</li>
+        <li>The "First 30" onboarding programme requires meaningful customer success co-ordination. Before building, I would run 5 interviews with brands onboarded in the last 6 months to confirm where they felt the most friction — and whether month-1 RI usability was actually their biggest pain point.</li>
+        <li>The offline-first performance complaint is confirmed in reviews, but its quantified impact on data quality and RI accuracy would need to be established before it is prioritised as an engineering workstream.</li>
+        <li>The specific metric targets (≤30 days TTFV, +20% M3 retention) are directional — they would be set with the data team against actual baseline numbers at project kick-off, not before.</li>
+      </ul>
+    </div>
+    <p>A senior PM would present this as a <strong>testable hypothesis, not a roadmap item</strong>. The right next step is a 2-week discovery sprint — 5 customer interviews with recently onboarded mid-market brands, plus internal analysis of month-1 to month-3 retention data — before any engineering resources are committed.</p>
+  </section>
+
+</div>
+
+<div class="footer">
+  <div class="footer-name">Kuber Chauhan</div>
+  <p style="color:var(--text-dimmer); font-size:13px; margin:4px 0 0;">PM Case Study · Bizom · Built as part of 45-day public PM build</p>
+  <div class="footer-links">
+    <a href="https://kuber-portfolio-sepia.vercel.app" class="footer-link">Portfolio</a>
+    <a href="https://linkedin.com/in/kuber-chauhanbu12" class="footer-link">LinkedIn</a>
+    <a href="Bizom_Prototype.html" class="footer-link">View Prototype →</a>
+  </div>
+  <a href="https://kuber-portfolio-sepia.vercel.app" class="cta-btn">See All Case Studies</a>
+</div>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

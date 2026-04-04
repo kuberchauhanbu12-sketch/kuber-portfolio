@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bizom First 30 — Prototype</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background: #0A0A0A;
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 40px 20px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── TOP BAR ── */
+  .topbar {
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 32px;
+  }
+
+  .topbar-logo {
+    font-family: 'Syne', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #FF5C1A;
+    letter-spacing: -0.5px;
+  }
+
+  .topbar-title {
+    font-size: 13px;
+    color: #555;
+  }
+
+  .topbar-link {
+    font-size: 12px;
+    color: #444;
+    text-decoration: none;
+    border: 1px solid #222;
+    padding: 5px 12px;
+    border-radius: 6px;
+    transition: all 0.2s;
+  }
+  .topbar-link:hover { color: #FF5C1A; border-color: rgba(255,92,26,0.4); }
+
+  /* ── PROGRESS ── */
+  .progress-wrap {
+    width: 100%;
+    max-width: 420px;
+    margin-bottom: 28px;
+    text-align: center;
+  }
+
+  .progress-label {
+    font-size: 11px;
+    color: #444;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .progress-dots {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+  }
+
+  .dot {
+    width: 28px; height: 4px;
+    border-radius: 2px;
+    background: #1E1E1E;
+    transition: all 0.3s;
+  }
+
+  .dot.active { background: #FF5C1A; }
+  .dot.done { background: rgba(255,92,26,0.3); }
+
+  /* ── PHONE SHELL ── */
+  .phone-shell {
+    width: 375px;
+    background: #111;
+    border-radius: 40px;
+    border: 1px solid #2A2A2A;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.6), inset 0 0 0 1px #1C1C1C;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .phone-notch {
+    background: #0A0A0A;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .notch-pill {
+    width: 90px; height: 10px;
+    background: #1C1C1C;
+    border-radius: 5px;
+  }
+
+  .phone-screen {
+    background: #111;
+    min-height: 680px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ── SCREEN SHARED PARTS ── */
+  .screen-header {
+    padding: 20px 22px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .app-icon {
+    width: 32px; height: 32px;
+    background: linear-gradient(135deg, #FF5C1A, #FF8C42);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+  }
+
+  .app-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #FFF;
+  }
+
+  .app-sub {
+    font-size: 10px;
+    color: #555;
+    margin-top: 1px;
+  }
+
+  .screen-content {
+    padding: 20px 22px;
+  }
+
+  /* ── CTA BUTTON ── */
+  .btn-primary {
+    width: 100%;
+    padding: 14px;
+    background: #FF5C1A;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .btn-primary:hover { background: #FF7A42; transform: scale(1.01); }
+
+  .btn-ghost {
+    width: 100%;
+    padding: 11px;
+    background: transparent;
+    color: #555;
+    border: 1px solid #222;
+    border-radius: 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.2s;
+  }
+
+  .btn-ghost:hover { color: #888; border-color: #333; }
+
+  /* ══════════════════════════════
+     SCREEN 1 — THE PAIN
+  ══════════════════════════════ */
+  .s1-pain-card {
+    background: #1A1A1A;
+    border: 1px solid #252525;
+    border-radius: 14px;
+    padding: 18px;
+    margin-bottom: 14px;
+  }
+
+  .s1-pain-label {
+    font-size: 10px;
+    color: #444;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+
+  .s1-pain-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #E8E8E8;
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+
+  .s1-pain-body {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.55;
+  }
+
+  .s1-stat-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+    margin: 14px 0;
+  }
+
+  .s1-stat-mini {
+    background: #1A1A1A;
+    border: 1px solid #222;
+    border-radius: 10px;
+    padding: 12px 10px;
+    text-align: center;
+  }
+
+  .s1-stat-mini-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #FF5C1A;
+    display: block;
+  }
+
+  .s1-stat-mini-lbl {
+    font-size: 10px;
+    color: #444;
+    margin-top: 2px;
+    line-height: 1.3;
+  }
+
+  .s1-alert {
+    background: rgba(255, 92, 26, 0.08);
+    border: 1px solid rgba(255,92,26,0.2);
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-bottom: 18px;
+  }
+
+  .s1-alert-text {
+    font-size: 13px;
+    color: #FF8A5B;
+    line-height: 1.5;
+  }
+
+  /* ══════════════════════════════
+     SCREEN 2 — BRAND JOIN
+  ══════════════════════════════ */
+  .s2-welcome {
+    text-align: center;
+    padding: 20px 0 18px;
+  }
+
+  .s2-icon { font-size: 36px; margin-bottom: 10px; }
+
+  .s2-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: #FFF;
+    margin-bottom: 6px;
+    line-height: 1.2;
+  }
+
+  .s2-sub {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.55;
+  }
+
+  .s2-form-group {
+    margin-bottom: 12px;
+  }
+
+  .s2-label {
+    font-size: 11px;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  .s2-input {
+    width: 100%;
+    background: #1A1A1A;
+    border: 1px solid #252525;
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 14px;
+    color: #888;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .s2-category-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+
+  .s2-cat-btn {
+    padding: 7px 14px;
+    border-radius: 8px;
+    border: 1px solid #252525;
+    background: #1A1A1A;
+    color: #555;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .s2-cat-btn.selected {
+    background: rgba(255,92,26,0.12);
+    border-color: rgba(255,92,26,0.3);
+    color: #FF5C1A;
+  }
+
+  .s2-note {
+    font-size: 11px;
+    color: #333;
+    text-align: center;
+    margin-top: 8px;
+  }
+
+  /* ══════════════════════════════
+     SCREEN 3 — CATEGORY INTELLIGENCE
+  ══════════════════════════════ */
+  .s3-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(255,92,26,0.12);
+    border: 1px solid rgba(255,92,26,0.2);
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 11px;
+    color: #FF5C1A;
+    margin-bottom: 14px;
+    font-weight: 500;
+  }
+
+  .s3-heading {
+    font-family: 'Syne', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: #FFF;
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+
+  .s3-sub {
+    font-size: 12px;
+    color: #555;
+    margin-bottom: 16px;
+    line-height: 1.5;
+  }
+
+  .s3-source-card {
+    background: #1A1A1A;
+    border: 1px solid #252525;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 10px;
+  }
+
+  .s3-source-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  .s3-source-name { font-size: 13px; font-weight: 500; color: #CCC; }
+  .s3-source-count { font-size: 11px; color: #444; }
+
+  .s3-bar-outer {
+    height: 4px;
+    background: #222;
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 4px;
+  }
+
+  .s3-bar-inner {
+    height: 100%;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #FF5C1A, #FF8C42);
+  }
+
+  .s3-bar-lbl { font-size: 10px; color: #444; }
+
+  .s3-preview {
+    background: rgba(255,92,26,0.06);
+    border: 1px solid rgba(255,92,26,0.15);
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-top: 12px;
+  }
+
+  .s3-preview-lbl { font-size: 10px; color: #FF7A42; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+  .s3-preview-text { font-size: 12px; color: #888; line-height: 1.5; }
+
+  /* ══════════════════════════════
+     SCREEN 4 — RI COPILOT DAY 1
+  ══════════════════════════════ */
+  .s4-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 22px 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .s4-greeting { font-size: 12px; color: #555; }
+  .s4-name { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; color: #FFF; }
+
+  .s4-tag {
+    font-size: 10px;
+    background: rgba(34,197,94,0.12);
+    color: #22C55E;
+    padding: 3px 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(34,197,94,0.2);
+  }
+
+  .s4-insight {
+    background: linear-gradient(135deg, rgba(255,92,26,0.1), rgba(255,92,26,0.04));
+    border: 1px solid rgba(255,92,26,0.2);
+    border-radius: 14px;
+    padding: 18px;
+    margin: 14px 22px;
+  }
+
+  .s4-insight-lbl { font-size: 10px; color: #FF7A42; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+  .s4-insight-text { font-size: 13px; color: #DDD; line-height: 1.55; margin-bottom: 10px; }
+
+  .s4-source-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 10px;
+    color: #555;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid #222;
+    padding: 3px 8px;
+    border-radius: 100px;
+  }
+
+  .s4-outlet-list {
+    padding: 0 22px;
+  }
+
+  .s4-outlet-card {
+    background: #1A1A1A;
+    border: 1px solid #252525;
+    border-radius: 10px;
+    padding: 14px;
+    margin-bottom: 8px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .s4-outlet-rank {
+    width: 26px; height: 26px;
+    background: rgba(255,92,26,0.12);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #FF5C1A;
+    flex-shrink: 0;
+  }
+
+  .s4-outlet-name { font-size: 13px; font-weight: 500; color: #CCC; margin-bottom: 3px; }
+  .s4-outlet-sku { font-size: 11px; color: #555; }
+  .s4-outlet-target { font-size: 11px; color: #22C55E; margin-top: 3px; }
+
+  .s4-disclaimer {
+    margin: 10px 22px 18px;
+    font-size: 11px;
+    color: #333;
+    text-align: center;
+    font-style: italic;
+  }
+
+  .s4-cta {
+    padding: 0 22px 22px;
+  }
+
+  /* ══════════════════════════════
+     SCREEN 5 — WEEK ONE WIN
+  ══════════════════════════════ */
+  .s5-win-header {
+    text-align: center;
+    padding: 24px 22px 18px;
+    background: linear-gradient(180deg, rgba(34,197,94,0.08) 0%, transparent 100%);
+  }
+
+  .s5-check {
+    width: 52px; height: 52px;
+    background: rgba(34,197,94,0.12);
+    border: 2px solid rgba(34,197,94,0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    margin: 0 auto 14px;
+  }
+
+  .s5-win-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: #FFF;
+    margin-bottom: 4px;
+  }
+
+  .s5-win-sub { font-size: 13px; color: #555; }
+
+  .s5-metrics-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    padding: 0 22px;
+    margin-bottom: 14px;
+  }
+
+  .s5-metric-box {
+    background: #1A1A1A;
+    border: 1px solid #252525;
+    border-radius: 10px;
+    padding: 14px;
+    text-align: center;
+  }
+
+  .s5-metric-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: #22C55E;
+    display: block;
+  }
+
+  .s5-metric-lbl { font-size: 11px; color: #444; margin-top: 3px; line-height: 1.3; }
+
+  .s5-next-card {
+    margin: 0 22px 10px;
+    background: #1A1A1A;
+    border: 1px solid #252525;
+    border-radius: 10px;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: border-color 0.2s;
+  }
+
+  .s5-next-card:hover { border-color: rgba(255,92,26,0.3); }
+
+  .s5-next-icon {
+    width: 32px; height: 32px;
+    background: rgba(59,130,246,0.12);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  .s5-next-label { font-size: 13px; font-weight: 500; color: #CCC; }
+  .s5-next-sub { font-size: 11px; color: #444; margin-top: 2px; }
+
+  .s5-footer {
+    padding: 10px 22px 22px;
+    text-align: center;
+  }
+
+  .s5-footer-text { font-size: 12px; color: #333; margin-bottom: 14px; }
+
+  /* SCREEN VISIBILITY */
+  .screen { display: none; animation: fadeSlide 0.3s ease; }
+  .screen.active { display: block; }
+
+  @keyframes fadeSlide {
+    from { opacity: 0; transform: translateX(20px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  /* CAPTION */
+  .caption-wrap {
+    max-width: 375px;
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .caption-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #888;
+    margin-bottom: 4px;
+  }
+
+  .caption-text { font-size: 12px; color: #333; line-height: 1.5; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-logo">bizom · first 30</div>
+  <div class="topbar-title">Prototype by Kuber Chauhan</div>
+  <a href="Bizom_Case_Study.html" class="topbar-link">← Case Study</a>
+</div>
+
+<div class="progress-wrap">
+  <div class="progress-label">Screen <span id="screen-num">1</span> of 5</div>
+  <div class="progress-dots">
+    <div class="dot active" id="d0"></div>
+    <div class="dot" id="d1"></div>
+    <div class="dot" id="d2"></div>
+    <div class="dot" id="d3"></div>
+    <div class="dot" id="d4"></div>
+  </div>
+</div>
+
+<div class="phone-shell">
+  <div class="phone-notch"><div class="notch-pill"></div></div>
+  <div class="phone-screen">
+
+    <!-- SCREEN 1: The Problem -->
+    <div class="screen active" id="s1">
+      <div class="screen-header">
+        <div class="app-icon">📊</div>
+        <div>
+          <div class="app-name">Bizom</div>
+          <div class="app-sub">Retail Intelligence · New Brand Setup</div>
+        </div>
+      </div>
+      <div class="screen-content">
+        <div class="s1-pain-card">
+          <div class="s1-pain-label">The reality for new brands</div>
+          <div class="s1-pain-title">Beardo just went live on Bizom. Now what?</div>
+          <div class="s1-pain-body">Their 80 reps are using the app. Data is flowing in. But the RI Copilot dashboard says: <span style="color:#FF5C1A;">"Insufficient data to generate recommendations."</span></div>
+        </div>
+
+        <div class="s1-stat-row">
+          <div class="s1-stat-mini">
+            <span class="s1-stat-mini-num">0</span>
+            <span class="s1-stat-mini-lbl">RI suggestions available</span>
+          </div>
+          <div class="s1-stat-mini">
+            <span class="s1-stat-mini-num">3–6</span>
+            <span class="s1-stat-mini-lbl">Months to meaningful AI</span>
+          </div>
+          <div class="s1-stat-mini">
+            <span class="s1-stat-mini-num">Day 1</span>
+            <span class="s1-stat-mini-lbl">When churn risk is highest</span>
+          </div>
+        </div>
+
+        <div class="s1-alert">
+          <div class="s1-alert-text">Mid-market brands evaluate ROI faster than P&amp;G. They won't wait 6 months for the AI to become useful. Most churn before the data flywheel kicks in.</div>
+        </div>
+
+        <button class="btn-primary" onclick="go(1)">See the solution →</button>
+      </div>
+    </div>
+
+    <!-- SCREEN 2: Brand Onboards -->
+    <div class="screen" id="s2">
+      <div class="screen-header">
+        <div class="app-icon">🏭</div>
+        <div>
+          <div class="app-name">Bizom First 30</div>
+          <div class="app-sub">New brand setup · Step 1 of 4</div>
+        </div>
+      </div>
+      <div class="screen-content">
+        <div class="s2-welcome">
+          <div class="s2-icon">👋</div>
+          <div class="s2-title">Welcome to Bizom.<br>Let's get RI working today.</div>
+          <div class="s2-sub">Tell us your category. We'll activate intelligence from day one using anonymised data from similar brands already on the platform.</div>
+        </div>
+
+        <div class="s2-form-group">
+          <span class="s2-label">Brand name</span>
+          <div class="s2-input">Beardo India Pvt Ltd</div>
+        </div>
+
+        <div class="s2-form-group">
+          <span class="s2-label">Select your category</span>
+          <div class="s2-category-row">
+            <div class="s2-cat-btn selected">Men's Grooming</div>
+            <div class="s2-cat-btn">Dairy</div>
+            <div class="s2-cat-btn">Beverages</div>
+            <div class="s2-cat-btn">Snacks</div>
+            <div class="s2-cat-btn">Personal Care</div>
+          </div>
+        </div>
+
+        <div class="s2-form-group">
+          <span class="s2-label">Primary markets</span>
+          <div class="s2-input">Maharashtra, Karnataka, Delhi NCR</div>
+        </div>
+
+        <button class="btn-primary" onclick="go(2)">Activate category intelligence →</button>
+        <div class="s2-note">Your brand data remains private. Only anonymised aggregates are used.</div>
+      </div>
+    </div>
+
+    <!-- SCREEN 3: Category Intelligence Activated -->
+    <div class="screen" id="s3">
+      <div class="screen-header">
+        <div class="app-icon">🧠</div>
+        <div>
+          <div class="app-name">Intelligence Active</div>
+          <div class="app-sub">Powered by 8M+ outlets · Men's Grooming</div>
+        </div>
+      </div>
+      <div class="screen-content">
+        <div class="s3-tag">✓ Category Intelligence Activated</div>
+        <div class="s3-heading">RI Copilot is ready for your reps — right now.</div>
+        <div class="s3-sub">Suggestions are drawn from 47 Men's Grooming brands across Maharashtra and Karnataka. As your own outlet data grows, recommendations will personalise automatically.</div>
+
+        <div class="s3-source-card">
+          <div class="s3-source-row">
+            <span class="s3-source-name">Men's Grooming · Maharashtra</span>
+            <span class="s3-source-count">2,340 outlets</span>
+          </div>
+          <div class="s3-bar-outer"><div class="s3-bar-inner" style="width:82%"></div></div>
+          <div class="s3-bar-lbl">82% data confidence · 12 similar brands</div>
+        </div>
+
+        <div class="s3-source-card">
+          <div class="s3-source-row">
+            <span class="s3-source-name">Men's Grooming · Karnataka</span>
+            <span class="s3-source-count">1,870 outlets</span>
+          </div>
+          <div class="s3-bar-outer"><div class="s3-bar-inner" style="width:67%"></div></div>
+          <div class="s3-bar-lbl">67% data confidence · 9 similar brands</div>
+        </div>
+
+        <div class="s3-preview">
+          <div class="s3-preview-lbl">Sample suggestion for your reps today</div>
+          <div class="s3-preview-text">"In Dadar West, grooming brands typically see 2.3× higher sell-through when beard oil is pitched alongside face wash. Push combo in this zone."</div>
+        </div>
+
+        <button class="btn-primary" onclick="go(3)" style="margin-top:16px;">See RI Copilot in action →</button>
+      </div>
+    </div>
+
+    <!-- SCREEN 4: RI Copilot Day 1 -->
+    <div class="screen" id="s4">
+      <div class="s4-topbar">
+        <div>
+          <div class="s4-greeting">Good morning,</div>
+          <div class="s4-name">Ramesh · Dadar Zone</div>
+        </div>
+        <div class="s4-tag">RI Active · Day 1</div>
+      </div>
+
+      <div class="s4-insight">
+        <div class="s4-insight-lbl">RI Copilot · Today's market insight</div>
+        <div class="s4-insight-text">It's week 3 of the month. In your zone, grooming outlets typically run low on beard oil after mid-month. 7 of your outlets likely need restocking today.</div>
+        <div class="s4-source-pill">Based on 12 similar brands · Maharashtra</div>
+      </div>
+
+      <div class="s4-outlet-list">
+        <div class="s4-outlet-card">
+          <div class="s4-outlet-rank">1</div>
+          <div>
+            <div class="s4-outlet-name">Sai Cosmetics, Dadar W</div>
+            <div class="s4-outlet-sku">Push: Beard Oil 60ml + Face Wash combo</div>
+            <div class="s4-outlet-target">Target: ₹2,400 · Similar brand avg: ₹2,100</div>
+          </div>
+        </div>
+        <div class="s4-outlet-card">
+          <div class="s4-outlet-rank">2</div>
+          <div>
+            <div class="s4-outlet-name">Metro General Store, Matunga</div>
+            <div class="s4-outlet-sku">Restock: Beard Serum (out for 6 days nearby)</div>
+            <div class="s4-outlet-target">Target: ₹1,800 · High-traffic morning slot</div>
+          </div>
+        </div>
+        <div class="s4-outlet-card">
+          <div class="s4-outlet-rank">3</div>
+          <div>
+            <div class="s4-outlet-name">Lucky Pharma, Sion</div>
+            <div class="s4-outlet-sku">Cross-sell: Hair clay to grooming buyers</div>
+            <div class="s4-outlet-target">Target: ₹3,200 · New SKU launch opportunity</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="s4-disclaimer">Suggestions sourced from category intelligence. Will personalise as Beardo's data grows over 30 days.</div>
+
+      <div class="s4-cta">
+        <button class="btn-primary" onclick="go(4)">View week one results →</button>
+      </div>
+    </div>
+
+    <!-- SCREEN 5: Week One Win -->
+    <div class="screen" id="s5">
+      <div class="s5-win-header">
+        <div class="s5-check">✓</div>
+        <div class="s5-win-title">Week One Done.</div>
+        <div class="s5-win-sub">Here's what Beardo achieved in 7 days.</div>
+      </div>
+
+      <div class="s5-metrics-grid">
+        <div class="s5-metric-box">
+          <span class="s5-metric-num">312</span>
+          <span class="s5-metric-lbl">Outlets visited by reps</span>
+        </div>
+        <div class="s5-metric-box">
+          <span class="s5-metric-num">74%</span>
+          <span class="s5-metric-lbl">RI suggestion acceptance</span>
+        </div>
+        <div class="s5-metric-box">
+          <span class="s5-metric-num">₹18.4L</span>
+          <span class="s5-metric-lbl">Orders placed via Bizom</span>
+        </div>
+        <div class="s5-metric-box">
+          <span class="s5-metric-num">4 wks</span>
+          <span class="s5-metric-lbl">Until full personalisation</span>
+        </div>
+      </div>
+
+      <div class="s5-next-card">
+        <div class="s5-next-icon">🧠</div>
+        <div>
+          <div class="s5-next-label">Week 2: Distributor data connected</div>
+          <div class="s5-next-sub">RI accuracy improves as stock data joins</div>
+        </div>
+      </div>
+
+      <div class="s5-next-card">
+        <div class="s5-next-icon">📈</div>
+        <div>
+          <div class="s5-next-label">Week 3: Rep-level personalisation starts</div>
+          <div class="s5-next-sub">AI learns Ramesh's strongest outlet types</div>
+        </div>
+      </div>
+
+      <div class="s5-next-card">
+        <div class="s5-next-icon">🚀</div>
+        <div>
+          <div class="s5-next-label">Week 4: Full Bizom intelligence live</div>
+          <div class="s5-next-sub">All suggestions now brand-specific</div>
+        </div>
+      </div>
+
+      <div class="s5-footer">
+        <div class="s5-footer-text">Beardo went from zero RI value to measurable results in 7 days — not 6 months.</div>
+        <button class="btn-primary" onclick="restart()">↺ Restart prototype</button>
+        <a href="Bizom_Case_Study.html" class="btn-ghost">Read full case study</a>
+      </div>
+    </div>
+
+  </div><!-- phone-screen -->
+</div><!-- phone-shell -->
+
+<div class="caption-wrap" id="caption-wrap">
+  <div class="caption-title" id="caption-title">The Problem</div>
+  <div class="caption-text" id="caption-text">New brands wait 3–6 months before RI Copilot becomes useful. Most churn before the flywheel kicks in.</div>
+</div>
+
+<script>
+  const captions = [
+    { title: "The Problem", text: "New brands wait 3–6 months before RI Copilot becomes useful. Most churn before the flywheel kicks in." },
+    { title: "Brand Onboarding", text: "Instead of waiting for data, ask the brand for their category upfront. Use it to activate intelligence immediately." },
+    { title: "Category Intelligence", text: "Draw from 8M+ outlets and 750+ existing brands — anonymised and filtered by category and geography." },
+    { title: "RI Copilot — Day 1", text: "Ramesh gets real suggestions on his first day. The AI isn't perfect yet, but it's useful from the start." },
+    { title: "Week One Win", text: "312 outlets, ₹18.4L orders, 74% RI acceptance — all in 7 days. Beardo's leadership sees value before renewal." }
+  ];
+
+  let current = 0;
+
+  function go(n) {
+    document.getElementById('s' + (current+1)).classList.remove('active');
+    current = n;
+    document.getElementById('s' + (n+1)).classList.add('active');
+
+    document.querySelectorAll('.dot').forEach((d,i) => {
+      d.className = 'dot' + (i < n ? ' done' : i === n ? ' active' : '');
+    });
+
+    document.getElementById('screen-num').textContent = n + 1;
+    document.getElementById('caption-title').textContent = captions[n].title;
+    document.getElementById('caption-text').textContent = captions[n].text;
+  }
+
+  function restart() { go(0); }
+</script>
+</body>
+</html>
